@@ -7,25 +7,31 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createDrawerNavigator } from "react-navigation-drawer";
 
-import TraineeHome from "../screens/Trainee/Home";
-import TraineeProgress from "../screens/Trainee/Progress";
-import TraineeCompetition from "../screens/Trainee/Competition";
-import TraineeAbout from "../screens/Trainee/About";
+import TrainerHome from "../screens/Trainer/Home";
+import TrainerProfile from "../screens/Trainer/Profile";
+import TrainerRequestList from "../screens/Trainer/RequestList";
+import TrainerAbout from "../screens/Trainer/About";
+import TrainerChat from "../screens/Trainer/Chat";
+import TrainerChatList from "../screens/Trainer/ChatList";
+import UpdatedProgress from "../screens/Trainer/UpdateProgress";
 
 const rootNavagation = createStackNavigator(
   {
-    Home: TraineeHome,
-    Progress: TraineeProgress,
-    Competition: TraineeCompetition,
-    About: TraineeAbout,
+    Home: TrainerHome,
+    Profile: TrainerProfile,
+    Request: TrainerRequestList,
+    About: TrainerAbout,
+    Chat : TrainerChat,
+    ChatList : TrainerChatList,
+    UpdatedProgress : UpdatedProgress
   },
   {
     initialRouteName: "Home",
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: "white",
+        backgroundColor: "#247ba0",
       },
-      headerTintColor: "black",
+      headerTintColor: "white",
       headerTitleStyle: {
         fontWeight: "bold",
       },
@@ -36,9 +42,9 @@ const rootNavagation = createStackNavigator(
 const rootDrawerNavagation = createDrawerNavigator(
   {
     Home: rootNavagation,
-    Progress: TraineeProgress,
-    Competition: TraineeCompetition,
-    About: TraineeAbout,
+    Profile: TrainerProfile,
+    Requested: TrainerRequestList,
+    About: TrainerAbout,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -47,10 +53,10 @@ const rootDrawerNavagation = createDrawerNavigator(
         let iconName;
         if (routeName === "Home") {
           iconName = "home";
-        } else if (routeName === "Competition") {
-          iconName = "favorite";
-        } else if (routeName === "Progress") {
-          iconName = "details";
+        } else if (routeName === "Requested") {
+          iconName = "view-list";
+        } else if (routeName === "Profile") {
+          iconName = "person";
         } else if (routeName === "About") {
           iconName = "info";
         }
@@ -69,9 +75,9 @@ const rootDrawerNavagation = createDrawerNavigator(
 const rootBottomTabNavagation = createBottomTabNavigator(
   {
     Home: rootDrawerNavagation,
-    Progress: TraineeProgress,
-    Competition: TraineeCompetition,
-    About: TraineeAbout,
+    Profile: TrainerProfile,
+    Requested: TrainerRequestList,
+    About: TrainerAbout,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -80,11 +86,11 @@ const rootBottomTabNavagation = createBottomTabNavigator(
         let iconName;
         if (routeName === "Home") {
           iconName = "home";
-        } else if (routeName === "Competition") {
-          iconName = "favorite";
+        } else if (routeName === "Requested") {
+          iconName = "view-list";
         }
-      else if (routeName === "Progress") {
-        iconName = "details";
+      else if (routeName === "Profile") {
+        iconName = "person";
       }
       else { if (routeName === "About") {
         iconName = "info";
@@ -94,9 +100,9 @@ const rootBottomTabNavagation = createBottomTabNavigator(
       },
     }),
     tabBarOptions: {
-      activeTintColor: "gray",
+      activeTintColor: "white",
       style: {
-        backgroundColor: "white",
+        backgroundColor: "#247ba0",
       },
       inactiveTintColor: "black",
       inactiveBackgroundColor: "white",

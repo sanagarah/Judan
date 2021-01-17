@@ -1,15 +1,17 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import Nav from "./navigation/AppNavigator";
+import TrainerNav from "./navigation/TrainerNavigator";
+import TraineeNav from "./navigation/TraineeNavigator";
 import { LogBox } from 'react-native';
 LogBox.ignoreLogs([
   "Your project is accessing the following APIs from a deprecated global rather than a module import: Constants (expo-constants).",
 ]);
-
+let user = "trainee";
 export default class app extends React.Component {
   render() {
-    return (
-        <Nav />
-    );
+   
+      if(user=="trainer")
+        return (<TrainerNav />)
+        else if (user=="trainee") return (<TraineeNav />)
+  
   }
 }
