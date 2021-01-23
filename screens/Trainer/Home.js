@@ -6,6 +6,7 @@ export default class Home extends React.Component {
     return (
       <View>
         <Text>Home</Text>
+        <Text>Salwa</Text>
       </View>
     );
   }

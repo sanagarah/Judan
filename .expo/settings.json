@@ -1,9 +1,13 @@
 {
-  "hostType": "lan",
+  "hostType": "tunnel",
   "lanType": "ip",
   "dev": true,
   "minify": false,
+<<<<<<< HEAD
   "urlRandomness": "7i-8du",
+=======
+  "urlRandomness": "sc-msa",
+>>>>>>> 64dfb7b2b4ba40fbf66d1d9e180f192f6bfb9312
   "https": false,
   "scheme": null,
   "devClient": false
