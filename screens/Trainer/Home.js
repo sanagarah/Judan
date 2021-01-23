@@ -5,7 +5,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <View>
-        <Text>Home</Text>
+        <Text>Home change</Text>
         <Text>Salwa</Text>
       </View>
     );
