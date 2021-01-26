@@ -1,14 +1,13 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Button } from "react-native";
 
 export default class Home extends React.Component {
   render() {
     return (
       <View>
-        <Text>Home</Text>
+        <Button title="Match me" onPress={() => { this.props.navigation.navigate('Match') }}></Button>
       </View>
     );
   }
 }
-
 const styles = StyleSheet.create({});
