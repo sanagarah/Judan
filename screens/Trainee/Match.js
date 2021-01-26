@@ -1,4 +1,7 @@
+import React from "react";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Card } from 'react-native-elements';
 import Deck from "../../components/Cards";
 
 const DATA = [
