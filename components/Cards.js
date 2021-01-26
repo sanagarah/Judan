@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet, Animated, PanResponder, Dimensions } from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width
+//To tite the swipe distance to the actual width of the screen
+const SWIP_THRESHOLD = 0.25 * SCREEN_WIDTH;
 
 export default class Cards extends React.Component {
     constructor(props) {
@@ -19,11 +21,39 @@ export default class Cards extends React.Component {
                 position.setValue({ x: gesture.dx, y: gesture.dy })
 
             },
-            onPanResponderRelease: () => { this.onRelease(); }
+            onPanResponderRelease: (event, gesture) => {
+                //Condition to indicate when the card is swiped too much in the right or left to force changing its position
+                if (gesture.dx > SWIP_THRESHOLD) {
+                    this.forceSwipe("right");
+
+                } else if (gesture.dx < -SWIP_THRESHOLD) {
+                    this.forceSwipe("left");
+                }
+                else {
+                    this.onRelease();
+                }
+            }
 
         });
         //Setting both animation and PanResponder to state to call them later
         this.state = { panResponder, position };
+    }
+
+    forceSwipe(direction) {
+        const x = direction === "right" ? SCREEN_WIDTH : -SCREEN_WIDTH;
+        Animated.timing(this.state.position, {
+            toValue: { x: x, y: 0 },
+            //The period of time
+            duration: 250,
+            useNativeDriver: false
+            //This function will be excuted after the animation finishs, taking the direction as a parameter.
+        }).start(() => this.onSwipeComplete(direction))
+    }
+
+    onSwipeComplete(direction) {
+        const { onSwipeRight, onSwipeLeft } = this.props;
+        direction === "right" ? onSwipeRight() : onSwipeLeft();
+
     }
 
     //Reset back to the position
@@ -56,6 +86,7 @@ export default class Cards extends React.Component {
                         {...this.state.panResponder.panHandlers}
                         style={this.cardStyle()}
                     >
+                        {/*Puts each individual card as a parameter in renderCard*/}
                         {this.props.renderCard(item)}
                     </Animated.View>
                 )
@@ -71,5 +102,7 @@ export default class Cards extends React.Component {
         );
     }
 }
+
+
 
 
