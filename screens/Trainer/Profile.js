@@ -129,6 +129,7 @@ export default class PopUps extends React.Component {
 
     if (!result.cancelled) {
       {/*Saving the uri of the selected photo */ }
+      {/*Saving the uri of the selected photo */ }
       this.setState({ image: result.uri });
     }
   };
