@@ -1,11 +1,17 @@
 import React from "react";
-import { View, StyleSheet, Animated, PanResponder, Dimensions } from "react-native";
+import {
+    View, Animated, PanResponder, Dimensions, LayoutAnimation, UIManager
+} from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width
 //To tite the swipe distance to the actual width of the screen
 const SWIP_THRESHOLD = 0.25 * SCREEN_WIDTH;
 
 export default class Cards extends React.Component {
+    static defaultProps = {
+        onSwipeRight: () => { },
+        onSwipeLeft: () => { }
+    }
     constructor(props) {
         super(props);
 
@@ -36,7 +42,18 @@ export default class Cards extends React.Component {
 
         });
         //Setting both animation and PanResponder to state to call them later
-        this.state = { panResponder, position };
+        this.state = { panResponder, position, index: 0 };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.data !== this.props.data) {
+            this.setState({ index: 0 });
+        }
+    }
+
+    componentWillUpdate() {
+        UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+        LayoutAnimation.spring();
     }
 
     forceSwipe(direction) {
@@ -50,9 +67,14 @@ export default class Cards extends React.Component {
     }
 
     onSwipeComplete(direction) {
-        const { onSwipeRight, onSwipeLeft } = this.props;
-        direction === "right" ? onSwipeRight() : onSwipeLeft();
+        const { onSwipeLeft, onSwipeRight, data } = this.props;
+        const item = data[this.state.index];
 
+        direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
+        //Resetting the position to the origin
+        this.state.position.setValue({ x: 0, y: 0 });
+        //Incrementing the index by one to have the next card
+        this.setState({ index: this.state.index + 1 });
     }
 
     //Reset back to the position
@@ -78,21 +100,36 @@ export default class Cards extends React.Component {
     }
 
     renderCards() {
-        return this.props.data.map((item, index) => {
-            if (index === 0) {
+        if (this.state.index >= this.props.data.length) {
+            return this.props.renderNoMoreCards();
+        }
+        return this.props.data.map((item, i) => {
+            //To ignore the previous cards that have been swiped
+            if (i < this.state.index) { return null; };
+            //To give the animation and panResponder to the current card
+            if (i === this.state.index) {
                 return (
-                    <Animated.View key={item.id}
+                    <Animated.View
+                        key={item.id}
+                        style={[this.cardStyle(), styles.cardStyle, { zIndex: 99 }]}
                         {...this.state.panResponder.panHandlers}
-                        style={this.cardStyle()}
-                    >
-                        {/*Puts each individual card as a parameter in renderCard*/}
+                    >{/*Puts each individual card as a parameter in renderCard*/}
                         {this.props.renderCard(item)}
                     </Animated.View>
                 )
             }
-            return this.props.renderCard(item);
-        });
+            //To make the other cards ans show them on screen
+            return (
+                <Animated.View
+                    key={item.id}
+                    style={[styles.cardStyle, { top: 10 * (i - this.state.index), zIndex: 5 }]}
+                >
+                    {this.props.renderCard(item)}
+                </Animated.View>
+            );
+        }).reverse();
     }
+
     render() {
         return (
             <View>
@@ -102,6 +139,9 @@ export default class Cards extends React.Component {
     }
 }
 
-
-
-
+const styles = {
+    cardStyle: {
+        position: 'absolute',
+        width: SCREEN_WIDTH
+    }
+};
