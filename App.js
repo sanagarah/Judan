@@ -8,9 +8,9 @@ LogBox.ignoreLogs([
 let user = "trainee";
 export default class app extends React.Component {
   render() {
-   
-      if(user=="trainer")
-        return (<TrainerNav />)
-        else if (user=="trainee") return (<TraineeNav />)
+
+    if (user == "trainer")
+      return (<TrainerNav />)
+    else if (user == "trainee") return (<TraineeNav />)
   }
 }

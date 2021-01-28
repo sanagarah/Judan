@@ -23,10 +23,10 @@ const rootNavagation = createStackNavigator(
     Progress: TraineeProgress,
     Competition: TraineeCompetition,
     About: TraineeAbout,
-    Chat : TraineeChat,
-    ChatList : TraineeChatList,
-    Match : TraineeMatch,
-    Card : card,
+    Chat: TraineeChat,
+    ChatList: TraineeChatList,
+    Match: TraineeMatch,
+    Card: card,
     Profile: profile
   },
   {
@@ -93,13 +93,15 @@ const rootBottomTabNavagation = createBottomTabNavigator(
         } else if (routeName === "Competition") {
           iconName = "assistant-photo";
         }
-      else if (routeName === "Progress") {
-        iconName = "straighten";
-      }
-      else { if (routeName === "About") {
-        iconName = "info";
+        else if (routeName === "Progress") {
+          iconName = "straighten";
+        }
+        else {
+          if (routeName === "About") {
+            iconName = "info";
 
-      }}
+          }
+        }
         return <MaterialIcons name={iconName} size={20}></MaterialIcons>;
       },
     }),

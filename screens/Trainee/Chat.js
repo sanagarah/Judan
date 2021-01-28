@@ -5,7 +5,7 @@ export default class Chat extends React.Component {
   render() {
     return (
       <View>
-        <Text>Chat</Text>
+        <Text>Chating</Text>
       </View>
     );
   }

@@ -2,9 +2,15 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19000,
+<<<<<<< HEAD
   "expoServerNgrokUrl": "https://sc-msa.anonymous.judan-main.exp.direct",
   "packagerNgrokUrl": "https://packager.sc-msa.anonymous.judan-main.exp.direct",
   "ngrokPid": 15948,
   "packagerPid": null,
   "webpackServerPort": null
+=======
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
+>>>>>>> d8b58ccab6243338c82566fbdb1bf9da86da1b97
 }
