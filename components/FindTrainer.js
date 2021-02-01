@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 
-
-
+const SCREEN_WIDTH = Dimensions.get("window").width
+const SCREEN_HEIGHT = Dimensions.get("window").height
 
 export default class FindTriner extends Component {
     state = {
@@ -12,10 +12,10 @@ export default class FindTriner extends Component {
     render() {
         const { firstQuery } = this.state;
         return (
-            <View style={styles.FindTrainerContainer}>
+            <View style={styles.container}>
                 <Image
                     style={styles.imageStyle}
-                    source={require('../assets/images/findTriner.png')} />
+                    source={require('../assets/images/findTrainer.png')} />
                 <Image
                     style={styles.imageboxStyle}
                     source={require('../assets/images/matchme.png')} />
@@ -50,48 +50,44 @@ export default class FindTriner extends Component {
 
 
 const styles = StyleSheet.create({
-
-    FindTrainerContainer: {
-        height: 370,
-        width: '100%',
-        flexDirection: 'column'
+    container: {
+        height: SCREEN_HEIGHT / 1.8,
     },
-
     imageStyle: {
-        width: '100%',
-        position: 'absolute',
-
+        width: SCREEN_WIDTH,
+        height: SCREEN_HEIGHT / 1.8,
+        position: "absolute"
     },
     searchbarView: {
         backgroundColor: '#fff',
-        width: '85%',
+        width: SCREEN_WIDTH / 1.3,
         alignSelf: 'center',
-        marginLeft: '7%',
-        top: '40%',
+        marginHorizontal: SCREEN_WIDTH / 10,
+        top: SCREEN_HEIGHT / 4,
     },
     imageboxStyle: {
-        width: '80%',
-        height: 120,
-        alignSelf: 'flex-start',
+        width: SCREEN_WIDTH / 1.2,
+        height: SCREEN_HEIGHT / 5,
         borderRadius: 30,
         position: 'absolute',
-        top: '60%',
+        top: SCREEN_HEIGHT / 3,
         alignSelf: 'center',
     },
     setImage: {
-        width: 20, height: 20, left: '80%', position: 'absolute', top: '17%'
+        width: 20,
+        height: 20,
+        left: '80%',
+        position: 'absolute',
     },
-
     MatchMeView: {
-        width: "30%",
-        backgroundColor: '#407cbf',
+        width: 150,
+        height: 30,
+        backgroundColor: '#247BA0',
         alignContent: 'center',
         justifyContent: 'center',
         borderRadius: 10,
         position: 'absolute',
-        left: '20%',
-        top: '80%'
+        left: SCREEN_WIDTH / 5,
+        top: SCREEN_HEIGHT / 2.18,
     },
-
-
 });

@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 
 export default class SignUpButton extends Component {
-
     render() {
         return (
-
             <View style={styles.LoginButoonContainer}>
-
-
                 {/*Sign up buton */}
                 <TouchableOpacity style={styles.BlockButton} onPress={this.props.nav1}>
                     <Text style={{ fontSize: 25, color: '#fff', textAlign: 'center' }}>Sign Up</Text>

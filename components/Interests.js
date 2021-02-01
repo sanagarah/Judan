@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView } from "react-native";
 
-export default class Interests extends React.Component {
+export default class Interests extends Component {
     render() {
         return (
             <View style={styles.background}>
@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 40,
         borderColor: "white",
-        marginTop: 5
+        margin: 5
     },
     name: {
-        color: "#247ba0",
+        color: "white",
         fontWeight: "bold"
     }
 

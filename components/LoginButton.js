@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 
 export default class LoginButton extends Component {
-
     render() {
         return (
-
             <View style={styles.LoginButoonContainer}>
 
 

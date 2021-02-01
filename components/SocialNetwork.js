@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 
 export default class SocialNetwork extends Component {
-
     render() {
         return (
-
             <View style={styles.containerView}>
                 {/** text  */}
-
                 <View style={styles.viewBehindTheText}>
 
                     <View style={styles.textViewStyle}>

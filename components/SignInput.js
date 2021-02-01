@@ -6,11 +6,8 @@ import City from "./City"
 import Country from "./Country"
 
 export default class SignInput extends Component {
-
     render() {
-
         return (
-
             <View style={styles.inputcontainer}>
 
                 {/** text  */}

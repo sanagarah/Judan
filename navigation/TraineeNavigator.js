@@ -14,7 +14,7 @@ import TraineeAbout from "../screens/Trainee/About";
 import TraineeChat from "../screens/Trainee/Chat";
 import TraineeChatList from "../screens/Trainee/ChatList";
 import TraineeMatch from "../screens/Trainee/Match";
-import card from "../screens/Trainee/TrainerCard";
+import card from "../screens/Trainee/Card";
 import profile from "../screens/Trainee/TrainerProfile";
 
 const rootNavigation = createStackNavigator(

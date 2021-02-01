@@ -1,13 +1,11 @@
-import React from "react";
-import {
-    View, Animated, PanResponder, Dimensions, LayoutAnimation, UIManager
-} from "react-native";
+import React, { Component } from 'react';
+import { View, Animated, PanResponder, Dimensions } from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width
 //To tite the swipe distance to the actual width of the screen
 const SWIP_THRESHOLD = 0.25 * SCREEN_WIDTH;
 
-export default class Cards extends React.Component {
+export default class Cards extends Component {
     static defaultProps = {
         onSwipeRight: () => { },
         onSwipeLeft: () => { }

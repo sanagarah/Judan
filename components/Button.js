@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 
 export default class Button extends Component {
-
     render() {
         return (
             <TouchableOpacity style={styles.butoonStyle} onPress={this.props.nav}>

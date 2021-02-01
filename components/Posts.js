@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from 'react';
 import { StyleSheet, View, Image } from "react-native";
 
-export default class Posts extends React.Component {
+export default class Posts extends Component {
     render() {
         return (
             <View>

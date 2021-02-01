@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import FindTriner from "../../components/FindTriner"
-import TrinersList from "../../components/TrinersList"
+import { color } from 'react-native-reanimated';
+import FindTrainer from "../../components/FindTrainer"
+import TrainersList from "../../components/TrainersList"
 
 export default class Home extends React.Component {
   render() {
@@ -10,11 +11,9 @@ export default class Home extends React.Component {
 
       <SafeAreaView style={styles.container}>
 
-        <FindTriner nav={() => this.props.navigation.navigate('Match')} />
-        <TrinersList />
-
-
-
+        <FindTrainer nav={() => this.props.navigation.navigate('Match')} />
+        <Text style={styles.label}>Top trainers</Text>
+        <TrainersList />
 
       </SafeAreaView>
     );
@@ -23,11 +22,15 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1
   },
+  label: {
+    marginTop: 5,
+    marginLeft: 5,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#F25F5F"
+  }
 });
 
 
