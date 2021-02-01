@@ -15,15 +15,16 @@ import TrainerChat from "../screens/Trainer/Chat";
 import TrainerChatList from "../screens/Trainer/ChatList";
 import UpdatedProgress from "../screens/Trainer/UpdateProgress";
 
-const rootNavagation = createStackNavigator(
+const rootNavigation = createStackNavigator(
   {
     Home: TrainerHome,
     Profile: TrainerProfile,
     Request: TrainerRequestList,
     About: TrainerAbout,
-    Chat : TrainerChat,
-    ChatList : TrainerChatList,
-    UpdatedProgress : UpdatedProgress
+    Chat: TrainerChat,
+    ChatList: TrainerChatList,
+    UpdatedProgress: UpdatedProgress,
+
   },
   {
     initialRouteName: "Home",
@@ -39,9 +40,9 @@ const rootNavagation = createStackNavigator(
   }
 );
 
-const rootDrawerNavagation = createDrawerNavigator(
+const rootDrawerNavigation = createDrawerNavigator(
   {
-    Home: rootNavagation,
+    Home: rootNavigation,
     Profile: TrainerProfile,
     Requested: TrainerRequestList,
     About: TrainerAbout,
@@ -72,9 +73,9 @@ const rootDrawerNavagation = createDrawerNavigator(
   }
 );
 
-const rootBottomTabNavagation = createBottomTabNavigator(
+const rootBottomTabNavigation = createBottomTabNavigator(
   {
-    Home: rootDrawerNavagation,
+    Home: rootDrawerNavigation,
     Profile: TrainerProfile,
     Requested: TrainerRequestList,
     About: TrainerAbout,
@@ -89,13 +90,15 @@ const rootBottomTabNavagation = createBottomTabNavigator(
         } else if (routeName === "Requested") {
           iconName = "view-list";
         }
-      else if (routeName === "Profile") {
-        iconName = "person";
-      }
-      else { if (routeName === "About") {
-        iconName = "info";
+        else if (routeName === "Profile") {
+          iconName = "person";
+        }
+        else {
+          if (routeName === "About") {
+            iconName = "info";
 
-      }}
+          }
+        }
         return <MaterialIcons name={iconName} size={20}></MaterialIcons>;
       },
     }),
@@ -110,7 +113,7 @@ const rootBottomTabNavagation = createBottomTabNavigator(
   }
 );
 
-const AppProject = createAppContainer(rootBottomTabNavagation);
+const AppProject = createAppContainer(rootBottomTabNavigation);
 
 export default class app extends React.Component {
   render() {

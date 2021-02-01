@@ -17,7 +17,7 @@ import TraineeMatch from "../screens/Trainee/Match";
 import card from "../screens/Trainee/TrainerCard";
 import profile from "../screens/Trainee/TrainerProfile";
 
-const rootNavagation = createStackNavigator(
+const rootNavigation = createStackNavigator(
   {
     Home: TraineeHome,
     Progress: TraineeProgress,
@@ -27,7 +27,7 @@ const rootNavagation = createStackNavigator(
     ChatList: TraineeChatList,
     Match: TraineeMatch,
     Card: card,
-    Profile: profile
+    Profile: profile,
   },
   {
     initialRouteName: "Home",
@@ -43,9 +43,9 @@ const rootNavagation = createStackNavigator(
   }
 );
 
-const rootDrawerNavagation = createDrawerNavigator(
+const rootDrawerNavigation = createDrawerNavigator(
   {
-    Home: rootNavagation,
+    Home: rootNavigation,
     Progress: TraineeProgress,
     Competition: TraineeCompetition,
     About: TraineeAbout,
@@ -76,9 +76,9 @@ const rootDrawerNavagation = createDrawerNavigator(
   }
 );
 
-const rootBottomTabNavagation = createBottomTabNavigator(
+const rootBottomTabNavigation = createBottomTabNavigator(
   {
-    Home: rootDrawerNavagation,
+    Home: rootDrawerNavigation,
     Progress: TraineeProgress,
     Competition: TraineeCompetition,
     About: TraineeAbout,
@@ -116,7 +116,7 @@ const rootBottomTabNavagation = createBottomTabNavigator(
   }
 );
 
-const AppProject = createAppContainer(rootBottomTabNavagation);
+const AppProject = createAppContainer(rootBottomTabNavigation);
 
 export default class app extends React.Component {
   render() {

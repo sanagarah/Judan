@@ -45,17 +45,6 @@ export default class Cards extends React.Component {
         this.state = { panResponder, position, index: 0 };
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.data !== this.props.data) {
-            this.setState({ index: 0 });
-        }
-    }
-
-    componentWillUpdate() {
-        UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
-        LayoutAnimation.spring();
-    }
-
     forceSwipe(direction) {
         const x = direction === "right" ? SCREEN_WIDTH : -SCREEN_WIDTH;
         Animated.timing(this.state.position, {
