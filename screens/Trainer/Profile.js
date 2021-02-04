@@ -5,7 +5,7 @@ import Review from "../../components/Reviews";
 import Modal from 'react-native-modal';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
-import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, Button, TouchableOpacity, Touchable } from "react-native";
+import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, Button, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
 export default class PopUps extends React.Component {
@@ -135,11 +135,6 @@ export default class PopUps extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
   upload: {
     position: "absolute",
     bottom: 5,

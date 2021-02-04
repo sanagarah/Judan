@@ -2,10 +2,28 @@ import React from "react";
 import Interest from "../../components/Interests";
 import Post from "../../components/Posts";
 import Review from "../../components/Reviews";
-import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, TouchableOpacity, Dimensions } from "react-native";
+import Modal from 'react-native-modal';
+import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, TouchableOpacity, Dimensions, TextInput } from "react-native";
 
-const SCREEN_HEIGHT = Dimensions.get("window").height
+const SCREEN_HEIGHT = Dimensions.get("window").height;
+
 export default class TrainerProfile extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      show: false,
+      toggle: true,
+      image: null,
+    }
+  }
+  onShow = () => {
+    if (this.state.toggle)
+      this.setState({ show: true, toggle: false });
+    else {
+      this.setState({ show: false, toggle: true });
+    }
+  }
 
   render() {
     return (
@@ -55,34 +73,31 @@ export default class TrainerProfile extends React.Component {
             <Review text="hi"></Review>
           </View>
         </ScrollView>
-        {/* Upload button */}
-        <TouchableOpacity style={styles.upload}>
-          <Image source={require("../../assets/images/write.png")} style={styles.uploadImage} ></Image>
+        {/* Write button */}
+        <TouchableOpacity style={styles.write} onPress={this.onShow}>
+          <Image source={require("../../assets/images/write.png")} style={styles.writeImage} ></Image>
         </TouchableOpacity>
+
+        {/* Popup page*/}
+        <Modal isVisible={this.state.show}>
+          <TouchableOpacity activeOpacity={1} onPress={this.onShow}>
+            <View style={styles.popUp}>
+              <TextInput placeholder="Write a review" style={styles.textInput}>
+              </TextInput>
+            </View>
+          </TouchableOpacity>
+        </Modal>
       </SafeAreaView >
     )
   }
 }
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  upload: {
+  write: {
     position: "absolute",
     bottom: 5,
     right: 5,
   },
-  mediaImage: {
-    height: 60,
-    width: 60,
-    opacity: 0.7,
-    borderWidth: 1,
-    borderColor: "#D4D1D1",
-    borderRadius: 90,
-  },
-  uploadImage: {
+  writeImage: {
     height: 60,
     width: 60,
     alignSelf: 'flex-end',
@@ -90,24 +105,15 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0, 0, 0, 0)",
     borderRadius: 90,
   },
-  checkImage: {
-    height: 60,
-    width: 60,
-    alignSelf: 'flex-end',
-    borderWidth: 1,
-    borderColor: "white",
-    borderRadius: 90,
-  },
   popUp: {
-    height: 300,
-    width: 350,
-    alignSelf: "center",
     backgroundColor: "white",
-    paddingLeft: 15,
-    borderWidth: 1,
     borderRadius: 30,
-    flexDirection: "column",
-    justifyContent: "space-evenly"
+    height: SCREEN_HEIGHT / 2,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  textInput: {
+
   },
   section1: {
     flexDirection: "column",
