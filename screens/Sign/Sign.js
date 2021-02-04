@@ -6,8 +6,6 @@ import TraineeTrainer from "../../components/Trainee-trainer"
 export default class Sign extends React.Component {
     render() {
         return (
-
-
             <View style={{
                 flex: 1,
             }}>

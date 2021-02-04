@@ -6,7 +6,7 @@ import Interest from "./Interests";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height
 
-export default class Progress extends Component {
+export default class TrainerCard extends Component {
     render() {
         return (
             <View>

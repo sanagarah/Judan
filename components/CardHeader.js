@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { MaterialIcons } from "@expo/vector-icons";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
-export default class TrainerHeader extends Component {
+export default class CardHeader extends Component {
     render() {
         return (
             <View style={styles.header}>

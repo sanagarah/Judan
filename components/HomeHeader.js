@@ -5,7 +5,7 @@ import { Searchbar } from 'react-native-paper';
 const SCREEN_WIDTH = Dimensions.get("window").width
 const SCREEN_HEIGHT = Dimensions.get("window").height
 
-export default class FindTrainer extends Component {
+export default class HomeHeader extends Component {
     state = {
         firstQuery: '',
     };
@@ -16,18 +16,7 @@ export default class FindTrainer extends Component {
                 <Image
                     style={styles.imageStyle}
                     source={require('../assets/images/findTrainer.png')} />
-                <Image
-                    style={styles.imageboxStyle}
-                    source={require('../assets/images/matchme.png')} />
 
-                <TouchableOpacity style={styles.MatchMeView} onPress={this.props.nav}>
-
-                    <Text style={{ fontSize: 15, color: '#fff', alignSelf: 'center' }}> Match me  </Text>
-
-                    <Image
-                        style={styles.setImage}
-                        source={require('../assets/images/right.png')} />
-                </TouchableOpacity>
 
                 <View style={{ flexDirection: 'row' }}>
 
@@ -51,12 +40,12 @@ export default class FindTrainer extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        height: SCREEN_HEIGHT / 1.8,
+        height: SCREEN_HEIGHT / 2,
     },
     imageStyle: {
         width: SCREEN_WIDTH,
-        height: SCREEN_HEIGHT / 1.8,
-        position: "absolute"
+        height: SCREEN_HEIGHT / 2,
+        position: "absolute",
     },
     searchbarView: {
         backgroundColor: '#fff',
@@ -64,20 +53,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginHorizontal: SCREEN_WIDTH / 10,
         top: SCREEN_HEIGHT / 4,
-    },
-    imageboxStyle: {
-        width: SCREEN_WIDTH / 1.2,
-        height: SCREEN_HEIGHT / 5,
-        borderRadius: 30,
-        position: 'absolute',
-        top: SCREEN_HEIGHT / 3,
-        alignSelf: 'center',
-    },
-    setImage: {
-        width: 20,
-        height: 20,
-        left: '80%',
-        position: 'absolute',
     },
     MatchMeView: {
         width: 150,

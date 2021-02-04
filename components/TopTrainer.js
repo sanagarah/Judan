@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from 'react-native';
-
-const SCREEN_WIDTH = Dimensions.get("window").width
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default class TopTrainers extends Component {
 

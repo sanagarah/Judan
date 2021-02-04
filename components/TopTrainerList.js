@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import TopTrainer from './TopTrainer'
 
 const SCREEN_WIDTH = Dimensions.get("window").width
 
-export default class TopTrainers extends Component {
+export default class TopTrainerList extends Component {
 
     render() {
         return (

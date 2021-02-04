@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Image } from 'react-native';
 
-export default class SocialNetwork extends Component {
+export default class SignupHeader extends Component {
     render() {
         return (
             <View style={{

@@ -1,8 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-
 import TrainerCard from "../../components/TrainerCard"
-import Header from '../../components/TrainerHeader';
+import Header from '../../components/CardHeader';
 
 export default class Card extends React.Component {
   render() {

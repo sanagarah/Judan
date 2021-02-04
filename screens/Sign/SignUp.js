@@ -8,7 +8,6 @@ import SignUpButton from "../../components/SignUpButton"
 export default class SignUp extends React.Component {
     render() {
         return (
-
             <SafeAreaView style={styles.container}>
 
                 <SignupHeader nav={() => this.props.navigation.navigate('Sign')} />

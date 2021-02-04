@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 export default class Interests extends Component {
     render() {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         margin: 5
     },
     name: {
-        color: "white",
+        color: "black",
         fontWeight: "bold"
     }
 

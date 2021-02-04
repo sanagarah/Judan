@@ -2,17 +2,15 @@ import React from "react";
 import Interest from "../../components/Interests";
 import Post from "../../components/Posts";
 import Review from "../../components/Reviews";
-import * as ImagePicker from 'expo-image-picker';
-import Constants from 'expo-constants';
-import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, TouchableOpacity, Dimensions } from "react-native";
 
+const SCREEN_HEIGHT = Dimensions.get("window").height
 export default class TrainerProfile extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.droidSafeArea}>
+      <SafeAreaView>
         <ScrollView>
-          <Button title="Edit profile" color="#247ba0" onPress={this.onShow}></Button>
           {/* Header section */}
           <View style={styles.section1}>
             {/*Container for the first row in the header */}
@@ -59,7 +57,7 @@ export default class TrainerProfile extends React.Component {
         </ScrollView>
         {/* Upload button */}
         <TouchableOpacity style={styles.upload}>
-          <Image source={require("../../assets/images/upload.png")} style={styles.uploadImage} ></Image>
+          <Image source={require("../../assets/images/write.png")} style={styles.uploadImage} ></Image>
         </TouchableOpacity>
       </SafeAreaView >
     )
@@ -111,11 +109,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-evenly"
   },
-  droidSafeArea: {
-    paddingTop: Platform.OS === 'android' ? 25 : 0,
-    backgroundColor: "#247ba0"
-  },
   section1: {
+    height: SCREEN_HEIGHT,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
@@ -151,7 +146,7 @@ const styles = StyleSheet.create({
   label2: {
     fontSize: 14,
     fontWeight: "bold",
-    color: "#247ba0",
+    color: "#F25F5C",
   },
   label3: {
     textAlign: "center",
@@ -163,7 +158,7 @@ const styles = StyleSheet.create({
   label4: {
     fontSize: 16,
     fontWeight: "700",
-    color: "#247ba0",
+    color: "#F25F5C",
     marginTop: 15
   },
 });

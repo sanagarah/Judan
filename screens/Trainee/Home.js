@@ -1,14 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
-import { color } from 'react-native-reanimated';
+import { StyleSheet, Text, SafeAreaView } from 'react-native';
 import FindTrainer from "../../components/FindTrainer"
 import TopTrainer from "../../components/TopTrainerList"
 
 export default class Home extends React.Component {
   render() {
     return (
-
       <SafeAreaView style={styles.container}>
 
         <FindTrainer nav={() => this.props.navigation.navigate('Match')} />
