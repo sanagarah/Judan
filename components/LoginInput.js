@@ -2,16 +2,12 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { TextInput } from 'react-native-paper';
 
-export default class Input extends Component {
-
+export default class LoginInput extends Component {
     render() {
-
         return (
-
             <View style={styles.inputcontainer}>
 
                 {/** text  */}
-
                 <View style={styles.viewBehindTheText}>
 
                     <View style={styles.textViewStyle}>

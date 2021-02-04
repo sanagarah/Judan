@@ -6,68 +6,52 @@ import TraineeTrainer from "../../components/Trainee-trainer"
 export default class Sign extends React.Component {
     render() {
         return (
-            <View style={{
-                flex: 1,
-            }}>
+            <View style={styles.container}>
                 <View style={styles.Secondview}>
 
                     {/*contain a header pic*/}
-                    <View style={styles.blockHeader}>
+                    <View style={styles.header}>
                         <Image
-                            style={styles.imageStyle}
+                            style={styles.image}
                             source={require('../../assets/images/header.jpg')} />
                     </View>
 
-
-                    <View style={styles.textViewStyle}>
-                        <Text style={{ fontSize: 17, color: 'gray', bottom: '5%' }}> Choose what you like to be  </Text>
+                    <View style={styles.textView}>
+                        <Text style={styles.text1}> Choose what you like to be  </Text>
                     </View>
 
                     {/*component for the views below 'Choose what you like to be' text */}
                     <TraineeTrainer />
 
                     {/*Sign up buton */}
-                    <TouchableOpacity style={styles.BlockButton} onPress={() => this.props.navigation.navigate('SignUp')}>
-                        <Text style={{ fontSize: 25, color: '#fff', textAlign: 'center' }}>Sign Up</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('SignUp')}>
+                        <Text style={styles.text2}>Sign Up</Text>
                     </TouchableOpacity>
 
                     {/*  Button component refer to a text button 'it can be changed to any text'*/}
-                    <View style={styles.textViewStyle}>
-                        <Text style={{ fontSize: 15, color: 'gray', marginLeft: '9%' }}> Don't have an account?  </Text>
+                    <View style={styles.textView}>
+                        <Text style={styles.text3}> Don't have an account?  </Text>
                         <Button
                             name='Login'
                             color="pink"
                             nav={() => this.props.navigation.navigate('LogIn')} />
                     </View>
-
-
                 </View>
             </View>
         );
     }
 }
 
-
-
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
     },
-
-    blockHeader: {
+    header: {
         flex: 6,
         width: "100%",
-        flexDirection: "row-reverse",
         justifyContent: 'center',
-        backgroundColor: 'white',
-
     },
-
-    BlockButton: {
+    button: {
         flex: 0.75,
         margin: '3%',
         width: "95%",
@@ -75,31 +59,35 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
         borderRadius: 10,
-
     },
-
-    imageStyle: {
+    image: {
         width: '100%',
         height: 300,
         alignSelf: 'center',
-
     },
     Secondview: {
         flex: 1,
-        marginTop: 10,
-        width: "100%",
-        justifyContent: "center",
         backgroundColor: "#fff"
-
     },
-
-    textViewStyle: {
+    textView: {
         flexDirection: 'row',
         justifyContent: 'center',
-        alignContent: 'center',
-        marginBottom: '5%',
-        marginTop: '5%',
+        marginVertical: '5%',
         bottom: '5%'
+    },
+    text1: {
+        fontSize: 17,
+        color: 'gray',
+        bottom: '5%'
+    },
+    text2: {
+        fontSize: 25,
+        color: '#fff',
+        textAlign: 'center'
+    },
+    text3: {
+        fontSize: 15,
+        color: 'gray',
+        marginLeft: '9%'
     }
-
 });

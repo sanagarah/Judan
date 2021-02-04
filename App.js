@@ -6,7 +6,7 @@ import { LogBox } from 'react-native';
 LogBox.ignoreLogs([
   "Your project is accessing the following APIs from a deprecated global rather than a module import: Constants (expo-constants).",
 ]);
-let user = "trainer";
+let user = "sign";
 export default class app extends React.Component {
   render() {
 

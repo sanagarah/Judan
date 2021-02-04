@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly"
   },
   section1: {
-    height: SCREEN_HEIGHT,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",

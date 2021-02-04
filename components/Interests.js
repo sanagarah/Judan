@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         margin: 5
     },
     name: {
-        color: "black",
+        color: "#373737",
         fontWeight: "bold"
     }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from 'react-native';
+import { StyleSheet, View, Image, Dimensions } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 
 const SCREEN_WIDTH = Dimensions.get("window").width
