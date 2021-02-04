@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
 import { color } from 'react-native-reanimated';
 import FindTrainer from "../../components/FindTrainer"
-import TopTrainer from "../../components/TopTrainer"
+import TopTrainer from "../../components/TopTrainerList"
 
 export default class Home extends React.Component {
   render() {
@@ -13,28 +13,21 @@ export default class Home extends React.Component {
 
         <FindTrainer nav={() => this.props.navigation.navigate('Match')} />
         <Text style={styles.label}>Top trainers</Text>
-        <ScrollView>
-          <TopTrainer
-            image={require('../../assets/images/girlpic.png')}
-            name="Sana"
-            field="drawing trainer"
-            nav={() => this.props.navigation.navigate('Card')}
-          ></TopTrainer>
+        <TopTrainer
+          image1={require('../../assets/images/girlpic.png')}
+          name1="Sana"
+          field1="drawing trainer"
 
-          <TopTrainer
-            image={require('../../assets/images/girlpic.png')}
-            name="Sara"
-            field="coocking trainer"
-            nav={() => this.props.navigation.navigate('Card')}
-          ></TopTrainer>
+          image2={require('../../assets/images/girlpic.png')}
+          name2="Sana"
+          field2="drawing trainer"
 
-          <TopTrainer
-            image={require('../../assets/images/girlpic.png')}
-            name="Hind"
-            field="dancing trainer"
-            nav={() => this.props.navigation.navigate('Card')}
-          ></TopTrainer>
-        </ScrollView>
+          image3={require('../../assets/images/girlpic.png')}
+          name3="Sana"
+          field3="drawing trainer"
+
+          nav={() => this.props.navigation.navigate('Card')}
+        ></TopTrainer>
 
       </SafeAreaView>
     );

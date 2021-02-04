@@ -7,11 +7,11 @@ export default class TopTrainers extends Component {
 
     render() {
         return (
-            <TouchableOpacity style={styles.messageView} onPress={this.props.nav}>
+            <View style={styles.container1}>
                 <Image
                     style={styles.imageStyle1}
                     source={this.props.image} />
-                <View style={styles.container}>
+                <View style={styles.container2}>
                     <Text style={styles.textinsideview}>
                         {this.props.name}
                     </Text>
@@ -19,25 +19,19 @@ export default class TopTrainers extends Component {
                         {this.props.field}
                     </Text>
                 </View>
-            </TouchableOpacity>
+            </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    messageView: {
-        backgroundColor: "#FADBD8",
-        width: SCREEN_WIDTH - 30,
-        height: 90,
+    container1: {
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: 'center',
         alignSelf: 'center',
-        padding: 10,
-        borderRadius: 20,
-        marginBottom: '3%',
     },
-    container: {
+    container2: {
         flexDirection: "column",
         marginLeft: 20
     },
@@ -47,8 +41,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     Seconddtextinsideview: {
-        color: '#8A7582',
-        fontSize: 15
+        color: '#247BA0',
+        fontSize: 15,
     },
     imageStyle1: {
         width: 50,
