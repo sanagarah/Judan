@@ -6,17 +6,17 @@ export default class TrainerHeader extends Component {
     render() {
         return (
             <View style={styles.header}>
-                <TouchableOpacity style={styles.container}>
+                <TouchableOpacity style={styles.container} onPress={this.props.proNav}>
                     <MaterialIcons name="person" size={30}></MaterialIcons>
                     <Text style={styles.text}>Profile</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.container}>
+                <TouchableOpacity style={styles.container} onPress={this.props.tNav}>
                     <MaterialIcons name="school" size={30}></MaterialIcons>
                     <Text style={styles.text}>Training</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.container}>
+                <TouchableOpacity style={styles.container} onPress={this.props.perNav}>
                     <MaterialIcons name="mic" size={30}></MaterialIcons>
                     <Text style={styles.text}>Performing</Text>
                 </TouchableOpacity>

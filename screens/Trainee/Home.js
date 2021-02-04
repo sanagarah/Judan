@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
 import { color } from 'react-native-reanimated';
 import FindTrainer from "../../components/FindTrainer"
-import TrainersList from "../../components/TrainersList"
+import TopTrainer from "../../components/TopTrainer"
 
 export default class Home extends React.Component {
   render() {
@@ -13,7 +13,28 @@ export default class Home extends React.Component {
 
         <FindTrainer nav={() => this.props.navigation.navigate('Match')} />
         <Text style={styles.label}>Top trainers</Text>
-        <TrainersList />
+        <ScrollView>
+          <TopTrainer
+            image={require('../../assets/images/girlpic.png')}
+            name="Sana"
+            field="drawing trainer"
+            nav={() => this.props.navigation.navigate('Card')}
+          ></TopTrainer>
+
+          <TopTrainer
+            image={require('../../assets/images/girlpic.png')}
+            name="Sara"
+            field="coocking trainer"
+            nav={() => this.props.navigation.navigate('Card')}
+          ></TopTrainer>
+
+          <TopTrainer
+            image={require('../../assets/images/girlpic.png')}
+            name="Hind"
+            field="dancing trainer"
+            nav={() => this.props.navigation.navigate('Card')}
+          ></TopTrainer>
+        </ScrollView>
 
       </SafeAreaView>
     );

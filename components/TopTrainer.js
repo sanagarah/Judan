@@ -3,11 +3,11 @@ import { StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from 'rea
 
 const SCREEN_WIDTH = Dimensions.get("window").width
 
-export default class SocialNetwork extends Component {
+export default class TopTrainers extends Component {
 
     render() {
         return (
-            <TouchableOpacity style={styles.messageView}>
+            <TouchableOpacity style={styles.messageView} onPress={this.props.nav}>
                 <Image
                     style={styles.imageStyle1}
                     source={this.props.image} />

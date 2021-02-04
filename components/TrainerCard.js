@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, Image, View, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
 
 import StarBar from './StarBar';
-import Header from './TrainerHeader';
 import Interest from "./Interests";
 
-const SCREEN_WIDTH = Dimensions.get("window").width
+const SCREEN_HEIGHT = Dimensions.get("window").height
 
 export default class Progress extends Component {
     render() {
@@ -14,13 +13,12 @@ export default class Progress extends Component {
                 <ImageBackground
                     source={require('../assets/images/org4.jpg')}
                     style={styles.backgroundContainer}>
-                    <Header />
                     <View style={styles.ImageContainer} >
                         <Image
                             style={styles.Image}
                             source={require('../assets/images/profile.png')}
                         />
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={this.props.nav}>
                             <Image
                                 source={require('../assets/images/chat.png')}
                                 style={{ height: 70, width: 70, marginLeft: 250 }}
@@ -63,7 +61,7 @@ export default class Progress extends Component {
 const styles = StyleSheet.create({
     backgroundContainer: {
         width: '100%',
-        height: SCREEN_WIDTH,
+        height: SCREEN_HEIGHT,
         alignContent: 'center',
         alignItems: 'center',
     },
@@ -85,17 +83,17 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     text1: {
-        fontSize: 40,
+        fontSize: 30,
         color: '#ffffff',
         fontWeight: 'bold'
     },
     text2: {
-        fontSize: 18,
+        fontSize: 15,
         padding: 9,
         color: '#ffffff',
     },
     text3: {
-        fontSize: 22,
+        fontSize: 18,
         fontWeight: 'bold',
         color: '#ffffff',
     },
