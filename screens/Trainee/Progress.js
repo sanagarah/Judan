@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Image, ImageBackground, Dimensions, Text, ScrollView } from "react-native";
+import { StyleSheet, View, ImageBackground, Dimensions, Text, ScrollView } from "react-native";
 import Levels from "../../components/Levels"
 import Subject from "../../components/Subject"
 import Certificate from "../../components/Certificate"

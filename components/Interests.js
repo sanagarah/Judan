@@ -5,7 +5,7 @@ export default class Interests extends Component {
     render() {
         return (
             <View style={styles.background}>
-                <Text style={styles.name}>{this.props.interest}</Text>
+                <Text style={[styles.name], { color: this.props.textColor }}>{this.props.interest}</Text>
             </View>
         );
     }
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
         margin: 5
     },
     name: {
-        color: "#373737",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color: "#247ba0",
     }
 
 });

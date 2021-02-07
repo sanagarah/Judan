@@ -11,7 +11,7 @@ export default class TrainerCard extends Component {
         return (
             <View>
                 <ImageBackground
-                    source={require('../assets/images/org4.jpg')}
+                    source={require('../assets/images/LinearGradient.png')}
                     style={styles.backgroundContainer}>
                     <View style={styles.ImageContainer} >
                         <Image
@@ -48,9 +48,9 @@ export default class TrainerCard extends Component {
                     </View>
 
                     <View style={styles.text1Container}>
-                        <Interest interest="Art"></Interest>
-                        <Interest interest="Piano"></Interest>
-                        <Interest interest="Hip hop dancing"></Interest>
+                        <Interest interest="Art" textColor="white"></Interest>
+                        <Interest interest="Piano" textColor="white"></Interest>
+                        <Interest interest="Hip hop dancing" textColor="white"></Interest>
                     </View>
                 </ImageBackground>
             </View>
