@@ -15,7 +15,6 @@ export default class LoginInput extends Component {
                     </View>
                 </View>
 
-
                 <View style={styles.viewBehindThePic}>
 
 

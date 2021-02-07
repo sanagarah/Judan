@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 
 export default class TraineeTrainer extends Component {
-
     render() {
         return (
-
-
             <View style={styles.contntView}>
 
                 <View style={styles.leftRightView} />

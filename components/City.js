@@ -3,13 +3,24 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 export default class City extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            city: "City"
+        }
+    }
+    setValue(value) {
+        this.setState({ city: value });
+    }
+
     render() {
         return (
             <View style={styles.view}>
-                <Text style={styles.textStyle} >City</Text>
+                <Text style={styles.textStyle}>{this.state.city}</Text>
                 <View style={{ flex: 1, marginLeft: '80%', alignSelf: 'center' }}>
                     <RNPickerSelect
-                        onValueChange={(value) => console.log(value)}
+                        onValueChange={(value) => this.setValue(value)}
                         items={[
                             { label: 'جدة', value: 'جدة' },
                             { label: 'المدينة', value: 'المدينة' },
@@ -25,8 +36,7 @@ export default class City extends Component {
                             { label: 'العلا', value: 'العلا' },
                             { label: 'الحناكية', value: 'الحناكية' },
 
-                        ]}
-                    />
+                        ]} />
                 </View>
             </View>
         );
@@ -40,28 +50,18 @@ const styles = StyleSheet.create({
         height: 40,
         backgroundColor: '#fff',
         textAlign: 'left',
-        borderBottomColor: 'gray',
-        borderLeftColor: 'gray',
-        borderRightColor: 'gray',
-        borderTopColor: 'gray',
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
-        borderTopWidth: 1,
-        borderBottomWidth: 1,
+        borderColor: "gray",
+        borderWidth: 1,
         marginHorizontal: 10,
         margin: '1%',
         flexDirection: 'row',
-
     },
     textStyle: {
         fontSize: 15,
         color: 'gray',
         left: '35%',
         marginBottom: '2%',
-        //flex:4,
         alignSelf: 'center'
-
     }
-
 });
 
