@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import StarBar from './StarBar';
 
 export default class TopTrainers extends Component {
 
@@ -7,14 +8,17 @@ export default class TopTrainers extends Component {
         return (
             <View style={styles.container1}>
                 <Image
-                    style={styles.imageStyle1}
+                    style={styles.image}
                     source={this.props.image} />
                 <View style={styles.container2}>
-                    <Text style={styles.textinsideview}>
-                        {this.props.name}
-                    </Text>
+                    <View style={{ flexDirection: "row" }}>
+                        <Text style={styles.textinsideview}>
+                            {this.props.name}
+                        </Text>
+                        <StarBar rate={this.props.rate} />
+                    </View>
                     <Text style={styles.Seconddtextinsideview}>
-                        {this.props.field}
+                        {this.props.field} trainer
                     </Text>
                 </View>
             </View>
@@ -36,13 +40,14 @@ const styles = StyleSheet.create({
     textinsideview: {
         color: '#F25F5C',
         fontSize: 15,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginRight: 100
     },
     Seconddtextinsideview: {
         color: '#247BA0',
         fontSize: 15,
     },
-    imageStyle1: {
+    image: {
         width: 50,
         height: 60,
         borderRadius: 90

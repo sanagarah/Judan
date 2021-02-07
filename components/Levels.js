@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
     circle4: {
         height: 50,
         width: 50,
-        backgroundColor: "#70C1B3",
         borderRadius: 90,
         justifyContent: "center",
         alignItems: "center"
@@ -79,7 +78,6 @@ const styles = StyleSheet.create({
     circle6: {
         height: 30,
         width: 30,
-        backgroundColor: "#70C1B3",
         borderRadius: 90,
         justifyContent: "center",
         alignItems: "center"

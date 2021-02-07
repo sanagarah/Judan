@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
     text1: {
         fontSize: 30,
         color: '#ffffff',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginRight: 15
     },
     text2: {
         fontSize: 15,
