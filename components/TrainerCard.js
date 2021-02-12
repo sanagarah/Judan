@@ -28,7 +28,7 @@ export default class TrainerCard extends Component {
 
                     <View style={styles.text1Container}>
                         <Text style={styles.text1}>{this.props.name}</Text>
-                        <StarBar />
+                        <StarBar rate={this.props.rate}/>
                     </View>
 
                     <View style={styles.text1Container}>

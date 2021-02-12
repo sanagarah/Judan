@@ -3,7 +3,8 @@ import Interest from "../../components/Interests";
 import Post from "../../components/Posts";
 import Review from "../../components/Reviews";
 import Modal from 'react-native-modal';
-import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, TouchableOpacity, Dimensions, TextInput } from "react-native";
+import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, TouchableOpacity, Dimensions, TextInput, TouchableHighlight } from "react-native";
+import Header from "../../components/ProfileHeader";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
@@ -14,9 +15,11 @@ export default class TrainerProfile extends React.Component {
     this.state = {
       show: false,
       toggle: true,
-      image: null,
+      text: '',
+      review: []
     }
   }
+
   onShow = () => {
     if (this.state.toggle)
       this.setState({ show: true, toggle: false });
@@ -25,31 +28,28 @@ export default class TrainerProfile extends React.Component {
     }
   }
 
+  addReview = () => {
+  let name = this.state.text;
+  let component = this.state.review;
+    component.push(name);
+    this.setState({ review: component, text: '' })
+    this.onShow();
+}
+
   render() {
     return (
       <SafeAreaView>
         <ScrollView>
           {/* Header section */}
-          <View style={styles.section1}>
-            {/*Container for the first row in the header */}
-            <View style={styles.container}>
-              <View style={styles.header}>
-                <Text style={styles.label1}>100</Text>
-                <Text style={styles.label2}>Posts</Text>
-              </View>
-              <Image source={require("../../assets/images/profile.png")} style={styles.profileImage}></Image>
-              <View style={styles.header}>
-                <Text style={styles.label1}>100</Text>
-                <Text style={styles.label2}>Trainees</Text>
-              </View>
-            </View>
-            {/*The second row in the header starts here */}
-            <Text style={styles.label1}>Name</Text>
-            {/*The third row in the header starts here */}
-            <Text style={styles.label2}>field, trainer</Text>
-            {/*The fourth row in the header starts here */}
-            <Text style={styles.label3}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </Text>
-          </View>
+          <Header
+            color="#F25F5C"
+            postsNum={100}
+            traineesNum={100}
+            uri="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+            name="Sara"
+            field="Piano"
+            rate={4.5}
+            bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></Header>
           <View style={styles.section2}>
             {/* To have small left margin */}
             <View style={styles.marginContainer}>
@@ -70,7 +70,9 @@ export default class TrainerProfile extends React.Component {
             </View>
           </View>
           <View style={styles.section1}>
-            <Review text="hi"></Review>
+            {this.state.review.map((data, index) => {
+              return <Review text={data} key={index} />
+            })}
           </View>
         </ScrollView>
         {/* Write button */}
@@ -80,10 +82,13 @@ export default class TrainerProfile extends React.Component {
 
         {/* Popup page*/}
         <Modal isVisible={this.state.show}>
-          <TouchableOpacity activeOpacity={1} onPress={this.onShow}>
+          <TouchableOpacity style={styles.modal} onPress={this.onShow}>
             <View style={styles.popUp}>
-              <TextInput placeholder="Write a review" style={styles.textInput}>
+              <TextInput placeholder="Write a review" style={styles.textInput} onChangeText={(txt) => { this.setState({ text: txt })}}>
               </TextInput>
+              <TouchableOpacity style={styles.checkImage} onPress={this.addReview}>
+                <Image source={require("../../assets/images/check.png")} style={styles.checkImage}></Image>
+              </TouchableOpacity>
             </View>
           </TouchableOpacity>
         </Modal>
@@ -105,15 +110,23 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0, 0, 0, 0)",
     borderRadius: 90,
   },
+  modal: {
+    flex: 1,
+    justifyContent:"center"
+  },
   popUp: {
     backgroundColor: "white",
     borderRadius: 30,
     height: SCREEN_HEIGHT / 2,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   textInput: {
-
+    flex: 0.5,
+    width: "90%",
+    borderColor: "gray",
+    borderBottomWidth: 1,
+    fontSize: 17
   },
   section1: {
     flexDirection: "column",
@@ -133,37 +146,19 @@ const styles = StyleSheet.create({
   marginContainer: {
     marginLeft: 10,
   },
-  profileImage: {
-    height: 90,
-    width: 90,
-    borderWidth: 1,
-    borderColor: "#D4D1D1",
-    borderRadius: 90,
-    marginRight: 50,
-    marginLeft: 70
-  },
-  label1: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "gray",
-    textAlign: "center"
-  },
-  label2: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#F25F5C",
-  },
-  label3: {
-    textAlign: "center",
-    fontSize: 14,
-    fontWeight: "700",
-    color: "gray",
-    marginTop: 10
-  },
   label4: {
     fontSize: 16,
     fontWeight: "700",
     color: "#F25F5C",
     marginTop: 15
+  },
+  checkImage: {
+    height: 50,
+    width: 50,
+    alignSelf: 'flex-end',
+    borderWidth: 1,
+    borderColor: "white",
+    borderRadius: 90,
+    margin: 10
   },
 });

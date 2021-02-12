@@ -17,9 +17,9 @@ export default class Match extends React.Component {
   renderCard(item) {
     return (
       <Card key={item.id}>
-        <Card.Image style={{ height: 250 }} source={{ uri: item.uri }}></Card.Image>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableOpacity style={styles.button1}>
+        <Card.Image style={styles.card} source={{ uri: item.uri }}></Card.Image>
+        <View style={styles.container2}>
+          <TouchableOpacity style={styles.button1} >
             <MaterialIcons name="person" size={20}></MaterialIcons>
             <Text>Profile</Text>
           </TouchableOpacity>
@@ -33,14 +33,13 @@ export default class Match extends React.Component {
             <MaterialIcons name="mic" size={20}></MaterialIcons>
             <Text>Performing</Text>
           </TouchableOpacity>
-
         </View>
         <Card.FeaturedTitle style={{ color: "black" }}>{item.name}</Card.FeaturedTitle>
         <Card.FeaturedSubtitle style={{ color: "gray" }}>{item.field}</Card.FeaturedSubtitle>
         <Card.Divider />
         <Text>{item.bio}</Text>
       </Card>
-    );
+    )
   }
 
   renderNoMoreCards() {
@@ -55,7 +54,7 @@ export default class Match extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container1}>
         <Deck
           data={DATA}
           renderCard={this.renderCard}
@@ -66,9 +65,16 @@ export default class Match extends React.Component {
   }
 }
 const styles = StyleSheet.create({
-  container: {
+  container1: {
     flex: 1,
     marginTop: 20,
+  },
+  container2: {
+    flexDirection: "row",
+    justifyContent: "space-around"
+  },
+  card: {
+    height: 250
   },
   button1: {
     height: 50, width: 80,

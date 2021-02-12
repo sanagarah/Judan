@@ -7,7 +7,6 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createDrawerNavigator } from "react-navigation-drawer";
 
-import TrainerHome from "../screens/Trainer/Home";
 import TrainerProfile from "../screens/Trainer/Profile";
 import TrainerRequestList from "../screens/Trainer/RequestList";
 import TrainerAbout from "../screens/Trainer/About";
@@ -17,7 +16,6 @@ import UpdatedProgress from "../screens/Trainer/UpdateProgress";
 
 const rootNavigation = createStackNavigator(
   {
-    Home: TrainerHome,
     Profile: TrainerProfile,
     Request: TrainerRequestList,
     About: TrainerAbout,
@@ -27,7 +25,7 @@ const rootNavigation = createStackNavigator(
 
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Profile",
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: "#247ba0",
@@ -42,9 +40,9 @@ const rootNavigation = createStackNavigator(
 
 const rootDrawerNavigation = createDrawerNavigator(
   {
-    Home: rootNavigation,
-    Profile: TrainerProfile,
+    Profile: rootNavigation,
     Requested: TrainerRequestList,
+    Chat: TrainerChat,
     About: TrainerAbout,
   },
   {
@@ -52,11 +50,11 @@ const rootDrawerNavigation = createDrawerNavigator(
       drawerIcon: () => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === "Home") {
-          iconName = "home";
+        if (routeName === "Profile") {
+          iconName = "person";
         } else if (routeName === "Requested") {
           iconName = "view-list";
-        } else if (routeName === "Profile") {
+        } else if (routeName === "Chat") {
           iconName = "person";
         } else if (routeName === "About") {
           iconName = "info";
@@ -75,9 +73,9 @@ const rootDrawerNavigation = createDrawerNavigator(
 
 const rootBottomTabNavigation = createBottomTabNavigator(
   {
-    Home: rootDrawerNavigation,
-    Profile: TrainerProfile,
+    Profile: rootDrawerNavigation,
     Requested: TrainerRequestList,
+    Chat: TrainerChat,
     About: TrainerAbout,
   },
   {
@@ -85,13 +83,13 @@ const rootBottomTabNavigation = createBottomTabNavigator(
       tabBarIcon: () => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === "Home") {
-          iconName = "home";
+        if (routeName === "Profile") {
+          iconName = "person";
         } else if (routeName === "Requested") {
           iconName = "view-list";
         }
-        else if (routeName === "Profile") {
-          iconName = "person";
+        else if (routeName === "Chat") {
+          iconName = "chat";
         }
         else {
           if (routeName === "About") {

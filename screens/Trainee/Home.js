@@ -14,7 +14,7 @@ export default class Home extends React.Component {
           image1={require('../../assets/images/girlpic.png')}
           name1="Rahaf"
           field1="drawing"
-          rate1={3}
+          rate1={3.5}
 
           image2={require('../../assets/images/girlpic.png')}
           name2="Salma"

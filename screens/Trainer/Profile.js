@@ -7,6 +7,8 @@ import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, Button, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import Header from "../../components/ProfileHeader";
+import { ThemeConsumer } from "react-native-elements";
 
 export default class PopUps extends React.Component {
   constructor(props) {
@@ -16,6 +18,9 @@ export default class PopUps extends React.Component {
       show: false,
       toggle: true,
       image: null,
+      name: "Name",
+      field: "Field",
+      bio: "Please let me be your trainer"
     }
   }
   onShow = () => {
@@ -26,33 +31,31 @@ export default class PopUps extends React.Component {
     }
   }
 
+  setName(text) {
+    this.setState({ name: text });
+  }
+  setField(text) {
+    this.setState({ field: text });
+  }
+  setBio(text) {
+    this.setState({ bio: text });
+  }
+
   render() {
     let { image } = this.state;
     return (
+      
       <SafeAreaView style={styles.droidSafeArea}>
         <ScrollView>
           <Button title="Edit profile" color="#247ba0" onPress={this.onShow}></Button>
           {/* Header section */}
-          <View style={styles.section1}>
-            {/*Container for the first row in the header */}
-            <View style={styles.container}>
-              <View style={styles.header}>
-                <Text style={styles.label1}>100</Text>
-                <Text style={styles.label2}>Posts</Text>
-              </View>
-              <Image source={{ uri: image }} style={styles.profileImage}></Image>
-              <View style={styles.header}>
-                <Text style={styles.label1}>100</Text>
-                <Text style={styles.label2}>Trainees</Text>
-              </View>
-            </View>
-            {/*The second row in the header starts here */}
-            <Text style={styles.label1}>Name</Text>
-            {/*The third row in the header starts here */}
-            <Text style={styles.label2}>field, trainer</Text>
-            {/*The fourth row in the header starts here */}
-            <Text style={styles.label3}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </Text>
-          </View>
+          <Header
+            postsNum={100}
+            traineesNum={100}
+            uri={image}
+            name={this.state.name}
+            field={this.state.field}
+            bio={this.state.bio}></Header>
           <View style={styles.section2}>
             {/* To have small left margin */}
             <View style={styles.marginContainer}>
@@ -73,7 +76,7 @@ export default class PopUps extends React.Component {
             </View>
           </View>
           <View style={styles.section1}>
-            <Review text="hi"></Review>
+            <Review text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></Review>
           </View>
         </ScrollView>
         {/* Upload button */}
@@ -91,13 +94,13 @@ export default class PopUps extends React.Component {
                 </TouchableOpacity>
               </View>
               {/* To change textual information */}
-              <TextInput placeholder="Change name"></TextInput>
-              <TextInput placeholder="Change field"></TextInput>
-              <TextInput placeholder="Change bio"></TextInput>
+              <TextInput placeholder="Change name" onChangeText={(text) => this.setName(text)}></TextInput>
+              <TextInput placeholder="Change field" onChangeText={(text) => this.setField(text)}></TextInput>
+              <TextInput placeholder="Change bio" onChangeText={(text) => this.setBio(text)}></TextInput>
               <TouchableOpacity style={styles.checkImage} onPress={this.onShow}>
                 <Image source={require("../../assets/images/check.png")} style={styles.checkImage}></Image>
               </TouchableOpacity>
-            </View>
+            </View> 
           </TouchableOpacity>
         </Modal>
       </SafeAreaView >

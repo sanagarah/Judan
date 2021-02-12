@@ -1,9 +1,8 @@
-import React from "react";
+import React, { Component } from 'react';
 import { StyleSheet, View, Image, Dimensions } from "react-native";
 import Lightbox from 'react-native-lightbox-v2';
 
-export default class Certificate extends React.Component {
-
+export default class Certificate extends Component {
     render() {
         return (
             <View>
