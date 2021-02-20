@@ -19,8 +19,8 @@ const rootNavigation = createStackNavigator(
     Profile: TrainerProfile,
     Request: TrainerRequestList,
     About: TrainerAbout,
-    Chat: TrainerChat,
-    ChatList: TrainerChatList,
+    Chating: TrainerChat,
+    Chat: TrainerChatList,
     UpdatedProgress: UpdatedProgress,
 
   },
@@ -42,7 +42,7 @@ const rootDrawerNavigation = createDrawerNavigator(
   {
     Profile: rootNavigation,
     Requested: TrainerRequestList,
-    Chat: TrainerChat,
+    Chat: TrainerChatList,
     About: TrainerAbout,
   },
   {
@@ -55,7 +55,7 @@ const rootDrawerNavigation = createDrawerNavigator(
         } else if (routeName === "Requested") {
           iconName = "view-list";
         } else if (routeName === "Chat") {
-          iconName = "person";
+          iconName = "chat";
         } else if (routeName === "About") {
           iconName = "info";
         }
@@ -75,7 +75,7 @@ const rootBottomTabNavigation = createBottomTabNavigator(
   {
     Profile: rootDrawerNavigation,
     Requested: TrainerRequestList,
-    Chat: TrainerChat,
+    Chat: TrainerChatList,
     About: TrainerAbout,
   },
   {

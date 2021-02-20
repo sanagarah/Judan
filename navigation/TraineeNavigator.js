@@ -14,8 +14,10 @@ import TraineeAbout from "../screens/Trainee/About";
 import TraineeChat from "../screens/Trainee/Chat";
 import TraineeChatList from "../screens/Trainee/ChatList";
 import TraineeMatch from "../screens/Trainee/Match";
-import card from "../screens/Trainee/Card";
+import Card from "../screens/Trainee/Card";
 import profile from "../screens/Trainee/TrainerProfile";
+import Request from "../screens/Trainee/Request";
+import Thanks from "../screens/Trainee/Thanks";
 
 const rootNavigation = createStackNavigator(
   {
@@ -23,11 +25,13 @@ const rootNavigation = createStackNavigator(
     Progress: TraineeProgress,
     Competition: TraineeCompetition,
     About: TraineeAbout,
-    Chat: TraineeChat,
-    ChatList: TraineeChatList,
+    Chating: TraineeChat,
+    Chat: TraineeChatList,
     Match: TraineeMatch,
-    Card: card,
+    Card: Card,
     Profile: profile,
+    Request: Request,
+    Thanks: Thanks
   },
   {
     initialRouteName: "Home",
@@ -48,6 +52,7 @@ const rootDrawerNavigation = createDrawerNavigator(
     Home: rootNavigation,
     Progress: TraineeProgress,
     Competition: TraineeCompetition,
+    Chat: TraineeChatList,
     About: TraineeAbout,
   },
   {
@@ -61,6 +66,8 @@ const rootDrawerNavigation = createDrawerNavigator(
           iconName = "assistant-photo";
         } else if (routeName === "Progress") {
           iconName = "straighten";
+        } else if (routeName === "Chat") {
+          iconName = "chat";
         } else if (routeName === "About") {
           iconName = "info";
         }
