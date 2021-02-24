@@ -7,43 +7,36 @@ export default class SocialNetwork extends Component {
             <View style={styles.containerView}>
                 {/** text  */}
                 <View style={styles.viewBehindTheText}>
-
                     <View style={styles.textViewStyle}>
-                        <Text style={{ fontSize: 17, color: 'gray', }}> Enter via social networks  </Text>
+                        <Text style={styles.text}> Enter via social networks  </Text>
                     </View>
                 </View>
-
                 {/** pic  */}
-
                 <View style={styles.viewBehindThePic}>
-
                     <TouchableOpacity style={styles.GoogleView}>
                         <Image
                             style={styles.setImage}
                             source={require('../assets/images/google.png')} />
                     </TouchableOpacity>
-
-
                     <TouchableOpacity style={styles.FacebookView}>
                         <Image
                             style={styles.setImage}
                             source={require('../assets/images/facebook.png')} />
                     </TouchableOpacity>
-
-
                 </View>
-
             </View>
         );
     }
 }
-
-
 const styles = StyleSheet.create({
     containerView: {
-        flex: 2,
+        flex: 2.2,
         width: '100%',
         flexDirection: 'column'
+    },
+    text: {
+        fontSize: 17,
+        color: 'gray',
     },
     viewBehindTheText: {
         flex: 2,
@@ -57,13 +50,11 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row'
     },
-
     imageStyle: {
         width: '100%',
         alignSelf: 'center',
         borderBottomLeftRadius: 60,
         borderBottomRightRadius: 60,
-
     },
     BlockButton: {
         flex: 0.75,
@@ -74,20 +65,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 10,
         position: 'absolute'
-
     },
-
     setImage: {
-        width: 40, height: 40, left: '40%', position: 'absolute', top: '10%'
+        width: 40,
+        height: 40,
+        left: '40%',
+        position: 'absolute',
+        top: '10%'
     },
-
     textViewStyle: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignContent: 'center',
         top: '3%'
     },
-
     GoogleView: {
         flex: 0.75,
         margin: '3%',
@@ -100,10 +91,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: '2%',
         top: '10%'
-
-
     },
-
     FacebookView: {
         flex: 0.75,
         margin: '3%',
@@ -116,11 +104,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: '50%',
         top: '10%'
-
-
-
     },
-
 });
 
 

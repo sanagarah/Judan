@@ -5,51 +5,37 @@ export default class LoginButton extends Component {
     render() {
         return (
             <View style={styles.LoginButoonContainer}>
-
-
                 {/*Sign up buton */}
-                <TouchableOpacity style={styles.BlockButton}>
-                    <Text style={{ fontSize: 25, color: '#fff', textAlign: 'center' }}>Login</Text>
+                <TouchableOpacity style={styles.BlockButton} onPress={this.props.nav1}>
+                    <Text style={styles.text1}>Login</Text>
                 </TouchableOpacity>
-
                 {/*  Button component refer to a text button 'it can be changed to any text'*/}
                 <View style={styles.textViewStyle}>
-                    <Text style={{ fontSize: 15, color: 'gray', marginLeft: '9%' }}> Don't have an account?  </Text>
-
-                    <TouchableOpacity onPress={this.props.nav}>
-                        <Text style={{ fontSize: 15, color: '#70C1B3' }}>Sign Up</Text>
+                    <Text style={styles.text2}> Don't have an account?  </Text>
+                    <TouchableOpacity onPress={this.props.nav2}>
+                        <Text style={styles.text3}>Sign Up</Text>
                     </TouchableOpacity>
                 </View>
-
-
-
-
             </View>
         );
     }
 }
-
-
 const styles = StyleSheet.create({
-
     LoginButoonContainer: {
         flex: 2.5,
         backgroundColor: 'white',
         width: '100%',
         flexDirection: 'column'
-
     },
     BlockButton: {
-        flex: 0.75,
+        flex: 1,
         margin: '2%',
         width: "95%",
         backgroundColor: "#70C1B3",
         alignContent: 'center',
         justifyContent: 'center',
         borderRadius: 10,
-
     },
-
     textViewStyle: {
         flexDirection: 'row',
         justifyContent: 'center',
@@ -57,8 +43,20 @@ const styles = StyleSheet.create({
         marginBottom: '5%',
         marginTop: '5%',
         bottom: '5%'
+    },
+    text1: {
+        fontSize: 25,
+        color: '#fff',
+        textAlign: 'center'
+    },
+    text2: {
+        fontSize: 15,
+        color: 'gray',
+        marginLeft: '9%'
+    },
+    text3: {
+        fontSize: 15,
+        color: '#275368'
     }
-
-
 });
 
