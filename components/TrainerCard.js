@@ -48,9 +48,9 @@ export default class TrainerCard extends Component {
                     </View>
 
                     <View style={styles.text1Container}>
-                        <Interest interest="Art" textColor="white"></Interest>
-                        <Interest interest="Piano" textColor="white"></Interest>
-                        <Interest interest="Hip hop dancing" textColor="white"></Interest>
+                        <Interest interest="Art" textColor="#F25F5C"></Interest>
+                        <Interest interest="Piano" textColor="#F25F5C"></Interest>
+                        <Interest interest="Hip hop dancing" textColor="#F25F5C"></Interest>
                     </View>
                 </ImageBackground>
             </View>

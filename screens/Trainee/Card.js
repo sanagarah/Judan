@@ -9,8 +9,11 @@ export default class Card extends React.Component {
       <View>
         <Header
           proNav={() => this.props.navigation.navigate('Profile')}
+          tNav={() => this.props.navigation.navigate('Request')}
+          perNav={() => this.props.navigation.navigate('Request')}
         ></Header>
         <TrainerCard
+          nav={() => this.props.navigation.navigate('Chating')}
           name='Rahaf'
           field="drawing trainer"
           rate={2.5}
