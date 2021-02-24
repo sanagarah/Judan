@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from "react-native";
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default class Levels extends Component {
+export default class TouchableLevels extends Component {
     render() {
         return (
             <View style={styles.container}>
                 <View>
-                    <View style={styles.circle1} ></View>
+                        <View style={styles.circle1} ></View>
                     <Text style={styles.text}>Beginner</Text>
                 </View>
                 <View style={[styles.line, { backgroundColor: this.props.pColor1 }]} ></View>
-                <View style={[styles.circle2, { backgroundColor: this.props.cColor1 }]}></View>
+                <TouchableOpacity onPress={this.props.press1}>
+                    <View style={[styles.circle2, { backgroundColor: this.props.cColor1 }]}></View>
+                </TouchableOpacity>
                 <View style={[styles.line, { backgroundColor: this.props.pColor2 }]}></View>
-                <View style={[styles.circle3, { backgroundColor: this.props.cColor2 }]}></View>
+                <TouchableOpacity onPress={this.props.press2}>
+                    <View style={[styles.circle3, { backgroundColor: this.props.cColor2 }]}></View>
+                </TouchableOpacity>
                 <View style={[styles.line, { backgroundColor: this.props.pColor3 }]}></View>
                 <View>
-                    <View style={[styles.circle4, { backgroundColor: this.props.cColor3 }]}>
+                    <TouchableOpacity onPress={this.props.press3}>
+                        <View style={[styles.circle4, { backgroundColor: this.props.cColor3 }]}>
                         <View style={styles.circle5}>
                             <View style={[styles.circle6, { backgroundColor: this.props.cColor3 }]}></View>
                         </View>
-                    </View>
+                        </View>
+                    </TouchableOpacity>
                     <Text style={styles.text}>Expert</Text>
                 </View>
             </View>

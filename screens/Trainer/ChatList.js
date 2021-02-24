@@ -1,8 +1,8 @@
-import React from 'react';
-import { StyleSheet, View, ScrollView, SafeAreaView } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import ChatBox from "../../components/ChatBox"
 
-export default class ChatList extends React.Component {
+export default class ChatList extends Component {
   state = { text: "" }
   render() {
     return (

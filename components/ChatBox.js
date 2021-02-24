@@ -18,12 +18,14 @@ export default class ChaBox extends Component {
 }
 const styles = StyleSheet.create({
     chatbox: {
-        backgroundColor: '#E7E8EF',
+        backgroundColor: '#f4f4f4',
         width: '95%',
         flexDirection: "row",
         alignSelf: "center",
         justifyContent: "space-between",
         padding: '3%',
+        borderWidth: 1,
+        borderColor: "gray",
         borderRadius: 10,
         marginVertical: '2%'
     },

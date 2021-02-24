@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 import ChatDpnd from '../../components/ChatDpnd';
 import Header from "../../components/ChatHeader";
 
-export default class Chat extends React.Component {
+export default class Chat extends Component {
   state = { text: "" }
   render() {
     return (

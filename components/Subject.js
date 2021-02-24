@@ -1,6 +1,6 @@
-import RNPickerSelect from 'react-native-picker-select';
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
 
 export default class Subject extends Component {
     constructor(props) {
@@ -38,8 +38,6 @@ export default class Subject extends Component {
         );
     }
 }
-
-
 const styles = StyleSheet.create({
 
     text: {
