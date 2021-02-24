@@ -5,7 +5,6 @@ import TopTrainer from './TopTrainer'
 const SCREEN_WIDTH = Dimensions.get("window").width
 
 export default class TopTrainerList extends Component {
-
     render() {
         return (
             <ScrollView>
