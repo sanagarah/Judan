@@ -3,7 +3,7 @@ import { StyleSheet, SafeAreaView } from 'react-native';
 import SignupHeader from "../../components/SignupHeader"
 import SocialNetwork from "../../components/SocialNetwork"
 import SignInput from "../../components/SignInput"
-import SignUpButton from "../../components/SignUpButton"
+import SignUpButton from "../../components/SignupButton"
 
 export default class SignUp extends React.Component {
     render() {

@@ -15,16 +15,14 @@ export default class SignIn extends React.Component {
                 <LoginHeader nav={() => this.props.navigation.navigate('Sign')} />
                 <SocialNetwork />
                 <LoginInput />
-                <LoginButton nav={() => this.props.navigation.navigate('SignUp')} />
-
-
-
-
+                <LoginButton
+                    nav1={() => this.props.navigation.navigate('Thanks')}
+                    nav2={() => this.props.navigation.navigate('SignUp')}
+                />
             </SafeAreaView>
         );
     }
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -32,5 +30,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
 });
