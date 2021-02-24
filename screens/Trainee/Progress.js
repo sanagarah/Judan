@@ -5,7 +5,7 @@ import Subject from "../../components/Subject"
 import Certificate from "../../components/Certificate"
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
-let levelNum = 2;
+let levelNum = 3;
 
 export default class Progress extends React.Component {
   constructor(props) {
