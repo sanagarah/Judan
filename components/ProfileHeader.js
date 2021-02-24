@@ -23,20 +23,19 @@ export default class ProfileHeader extends Component {
                 {/*The third row in the header starts here */}
                 <Text style={[styles.label2, { color: this.props.color }]}>{this.props.field} trainer</Text>
                 {/*The fourth row in the header starts here */}
-                <StarBar rate={this.props.rate}/>
-                {/*The fifth row in the header starts here */}
                 <Text style={styles.label3}>{this.props.bio} </Text>
+                {/*The fifth row in the header starts here */}
+                <StarBar rate={this.props.rate} />
             </View>
         )
     }
 }
-
 const styles = StyleSheet.create({
     section1: {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#dadfe5",
+        backgroundColor: "#F0F0F0",
         paddingVertical: 10,
     },
     container: {
@@ -61,13 +60,11 @@ const styles = StyleSheet.create({
     label2: {
         fontSize: 14,
         fontWeight: "bold",
-        color: "#247ba0",
     },
     label3: {
         textAlign: "center",
         fontSize: 14,
         fontWeight: "700",
         color: "gray",
-        marginTop: 10
     },
 });

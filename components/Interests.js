@@ -13,7 +13,7 @@ export default class Interests extends Component {
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: "#247ba015",
+        backgroundColor: "#F9F9F9",
         alignSelf: 'baseline',
         paddingHorizontal: 15,
         paddingVertical: 3,
@@ -26,5 +26,4 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#247ba0",
     }
-
 });
