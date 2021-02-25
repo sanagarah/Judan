@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
 import { StyleSheet, View, Text } from "react-native";
 
+//The beginning of the class
 export default class Reviews extends Component {
     render() {
         return (
@@ -10,13 +13,13 @@ export default class Reviews extends Component {
         )
     }
 }
-
+//Declare the style
 const styles = StyleSheet.create({
     review: {
-        backgroundColor: "white",
+        backgroundColor: "#fff",
         width: "90%",
         borderWidth: 1,
-        borderColor: "gray",
+        borderColor: "#808080",
         borderRadius: 10,
         padding: 10
     }

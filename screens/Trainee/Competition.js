@@ -1,7 +1,10 @@
-import React from "react";
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
 import { StyleSheet, View, Text } from "react-native";
 
-export default class Competition extends React.Component {
+//The beginning of the class
+export default class Competition extends Component {
   render() {
     return (
       <View>
@@ -10,5 +13,5 @@ export default class Competition extends React.Component {
     );
   }
 }
-
+//Declare the style
 const styles = StyleSheet.create({});

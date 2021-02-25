@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
-import { Share, View, Button } from 'react-native';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { Share, View, Button } from "react-native";
 
-class ShareExample extends Component {
+//The beginning of the class
+export default class ShareExample extends Component {
     onShare = async () => {
         try {
             const result = await Share.share({
                 message:
-                    'Try Judan app for free!',
+                    "Try Judan app for free!",
             });
 
             if (result.action === Share.sharedAction) {
@@ -31,5 +34,3 @@ class ShareExample extends Component {
         );
     }
 }
-
-export default ShareExample;

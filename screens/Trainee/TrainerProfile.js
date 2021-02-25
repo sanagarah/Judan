@@ -1,26 +1,32 @@
-import React from "react";
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, TouchableOpacity, Dimensions, TextInput } from "react-native";
 import Interest from "../../components/Interests";
 import Post from "../../components/Posts";
 import Review from "../../components/Reviews";
-import Modal from 'react-native-modal';
-import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, TouchableOpacity, Dimensions, TextInput, TouchableHighlight } from "react-native";
+import Modal from "react-native-modal";
 import Header from "../../components/ProfileHeader";
 
+//to have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
-export default class TrainerProfile extends React.Component {
+//The beginning of the class
+export default class TrainerProfile extends Component {
   constructor(props) {
     super(props)
 
+    //Declare the initial values for states
     this.state = {
       show: false,
       toggle: true,
-      text: '',
+      text: "",
       review: []
     }
   }
 
-  onShow = () => {
+  //Function used to change the show state
+    onShow = () => {
     if (this.state.toggle)
       this.setState({ show: true, toggle: false });
     else {
@@ -28,13 +34,14 @@ export default class TrainerProfile extends React.Component {
     }
   }
 
+  //Function to push the new review into the array
   addReview = () => {
-  let name = this.state.text;
-  let component = this.state.review;
+    let name = this.state.text;
+    let component = this.state.review;
     component.push(name);
-    this.setState({ review: component, text: '' })
+    this.setState({ review: component, text: "" })
     this.onShow();
-}
+  }
 
   render() {
     return (
@@ -84,7 +91,7 @@ export default class TrainerProfile extends React.Component {
         <Modal isVisible={this.state.show}>
           <TouchableOpacity style={styles.modal} onPress={this.onShow}>
             <View style={styles.popUp}>
-              <TextInput placeholder="Write a review" style={styles.textInput} onChangeText={(txt) => { this.setState({ text: txt })}}>
+              <TextInput placeholder="Write a review" style={styles.textInput} onChangeText={(txt) => { this.setState({ text: txt }) }}>
               </TextInput>
               <TouchableOpacity style={styles.checkImage} onPress={this.addReview}>
                 <Image source={require("../../assets/images/check.png")} style={styles.checkImage}></Image>
@@ -96,6 +103,7 @@ export default class TrainerProfile extends React.Component {
     )
   }
 }
+//Declare the style
 const styles = StyleSheet.create({
   write: {
     position: "absolute",
@@ -105,17 +113,17 @@ const styles = StyleSheet.create({
   writeImage: {
     height: 60,
     width: 60,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     borderWidth: 1,
     borderColor: "rgba(0, 0, 0, 0)",
     borderRadius: 90,
   },
   modal: {
     flex: 1,
-    justifyContent:"center"
+    justifyContent: "center"
   },
   popUp: {
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     borderRadius: 30,
     height: SCREEN_HEIGHT / 2,
     justifyContent: "center",
@@ -124,7 +132,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 0.5,
     width: "90%",
-    borderColor: "gray",
+    borderColor: "#808080",
     borderBottomWidth: 1,
     fontSize: 17
   },
@@ -136,11 +144,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   section2: {
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     paddingTop: 10
   },
   container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center",
   },
   marginContainer: {
@@ -155,9 +163,9 @@ const styles = StyleSheet.create({
   checkImage: {
     height: 50,
     width: 50,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     borderWidth: 1,
-    borderColor: "white",
+    borderColor: "#fff",
     borderRadius: 90,
     margin: 10
   },

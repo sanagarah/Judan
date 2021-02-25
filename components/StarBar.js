@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
-import StarRating from 'react-native-star-rating';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import StarRating from "react-native-star-rating";
 
-class GeneralStarExample extends Component {
+//The beginning of the class
+export default class StartBar extends Component {
 
     constructor(props) {
         super(props);
+        //Declare the initial values for states
         this.state = {
             starCount: props.rate
         };
@@ -30,5 +34,3 @@ class GeneralStarExample extends Component {
         );
     }
 }
-
-export default GeneralStarExample

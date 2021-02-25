@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
-import TopTrainer from './TopTrainer'
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { StyleSheet, TouchableOpacity, ScrollView, Dimensions } from "react-native";
+import TopTrainer from "./TopTrainer"
 
+//to have the total width of the screen
 const SCREEN_WIDTH = Dimensions.get("window").width
 
+//The beginning of the class
 export default class TopTrainerList extends Component {
     render() {
         return (
@@ -53,46 +57,46 @@ export default class TopTrainerList extends Component {
         )
     }
 }
-
+//Declare the style
 const styles = StyleSheet.create({
     messageView1: {
         backgroundColor: "#70C1B3AA",
         width: SCREEN_WIDTH - 30,
         height: 90,
         flexDirection: "row",
-        alignSelf: 'center',
+        alignSelf: "center",
         padding: 10,
         borderRadius: 20,
-        marginBottom: '3%',
+        marginBottom: "3%",
     },
     messageView2: {
         backgroundColor: "#FFE066AA",
         width: SCREEN_WIDTH - 30,
         height: 90,
         flexDirection: "row",
-        alignSelf: 'center',
+        alignSelf: "center",
         padding: 10,
         borderRadius: 20,
-        marginBottom: '3%',
+        marginBottom: "3%",
     },
     messageView3: {
         backgroundColor: "#70A4BAAA",
         width: SCREEN_WIDTH - 30,
         height: 90,
         flexDirection: "row",
-        alignSelf: 'center',
+        alignSelf: "center",
         padding: 10,
         borderRadius: 20,
-        marginBottom: '3%',
+        marginBottom: "3%",
     },
     messageView4: {
         backgroundColor: "#70C1B3AA",
         width: SCREEN_WIDTH - 30,
         height: 90,
         flexDirection: "row",
-        alignSelf: 'center',
+        alignSelf: "center",
         padding: 10,
         borderRadius: 20,
-        marginBottom: '3%',
+        marginBottom: "3%",
     },
 });

@@ -1,34 +1,35 @@
-//import React in our code
-import React, { Component } from 'react';
-
+//import React in the code
+import React, { Component } from "react";
 //import all the components we are going to use
-import { SafeAreaView, StyleSheet, TextInput, View, Text, Image, TouchableOpacity } from 'react-native';
-import Constants from 'expo-constants';
-import * as ImagePicker from 'expo-image-picker';
-import Modal from 'react-native-modal';
-import BankPicker from './BankPicker';
-import Time from '../components/Time';
-import Date from '../components/Date';
+import { SafeAreaView, StyleSheet, TextInput, View, Text, Image, TouchableOpacity } from "react-native";
+import Constants from "expo-constants";
+import * as ImagePicker from "expo-image-picker";
+import Modal from "react-native-modal";
+import BankPicker from "./BankPicker";
+import Time from "../components/Time";
+import Date from "../components/Date";
 import Certificate from "../components/Certificate"
 
+//The beginning of the class
 export default class PaymentDetails extends Component {
     constructor(props) {
         super(props)
 
+        //Declare the initial values for states
         this.state = {
-            show1: false,
-            toggle1: true,
+            show: false,
+            toggle: true,
             image: null,
             images: [],
         }
     }
 
     //To show the popup page for uploading a certification
-    onShow1 = () => {
-        if (this.state.toggle1)
-            this.setState({ show1: true, toggle1: false });
+    onShow = () => {
+        if (this.state.toggle)
+            this.setState({ show: true, toggle: false });
         else {
-            this.setState({ show1: false, toggle1: true });
+            this.setState({ show: false, toggle: true });
         }
     }
 
@@ -37,11 +38,12 @@ export default class PaymentDetails extends Component {
         let name = this.state.image;
         let component = this.state.images;
         component.push(name);
-        this.setState({ array: component, text: '' })
-        this.onShow1();
+        this.setState({ array: component, text: "" })
+        this.onShow();
     }
 
     //To directly ask for permission
+    //This function will automatically run after rendering the page
     componentDidMount() {
         this.getPermissionAsync();
     }
@@ -50,15 +52,15 @@ export default class PaymentDetails extends Component {
     getPermissionAsync = async () => {
         if (Constants.platform.ios) {
             const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-            if (status !== 'granted') {
-                alert('Sorry, we need camera roll permissions to make this work!');
+            if (status !== "granted") {
+                alert("Sorry, we need camera roll permissions to make this work!");
             }
         }
     }
 
     //To show the image picker and runder it (FOR CERTIFICATIONS)
     _pickImage1 = async () => {
-        this.onShow1();
+        this.onShow();
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
@@ -132,8 +134,8 @@ export default class PaymentDetails extends Component {
                 </View>
 
                 {/* To render image picker and show the popUp page for sharing a certification */}
-                <Modal isVisible={this.state.show1}>
-                    <TouchableOpacity style={styles.modal} onPress={this.onShow1}>
+                <Modal isVisible={this.state.show}>
+                    <TouchableOpacity style={styles.modal} onPress={this.onShow}>
                         <View style={styles.popUp1}>
                             {/* To push the new image uri into an array and creat certification component using that uri */}
                             <View style={styles.certificationContainer}>
@@ -149,20 +151,21 @@ export default class PaymentDetails extends Component {
         );
     };
 }
+//Declare the style
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 30,
-        justifyContent: 'center'
+        justifyContent: "center"
     },
     textInput: {
-        width: '100%',
+        width: "100%",
         justifyContent: "center",
         height: 40,
         marginTop: 10,
         paddingHorizontal: 15,
         borderWidth: 0.5,
-        borderColor: '#F25F5C',
+        borderColor: "#F25F5C",
         borderRadius: 20
     },
     insertContainer: {
@@ -170,39 +173,39 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         paddingVertical: 12,
         paddingHorizontal: 12,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         marginTop: 10,
         marginRight: 12,
-        borderStyle: 'dashed',
+        borderStyle: "dashed",
         borderWidth: 1,
-        borderColor: '#F25F5C',
+        borderColor: "#F25F5C",
     },
     insertText: {
         fontSize: 17,
-        color: 'gray',
+        color: "#808080",
     },
     buttonContainer: {
         height: 50,
         width: 300,
-        backgroundColor: '#F9EBEA',
+        backgroundColor: "#F9EBEA",
         borderRadius: 15,
         paddingVertical: 12,
         paddingHorizontal: 12,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         marginTop: 25,
         marginLeft: 25,
     },
     buttonText: {
         fontSize: 17,
-        color: '#F25F5C',
-        fontWeight: 'bold',
+        color: "#F25F5C",
+        fontWeight: "bold",
     },
     text: {
         fontSize: 17,
         marginTop: 13,
-        color: "black"
+        color: "#000000"
     },
     modal: {
         flex: 1,
@@ -212,7 +215,7 @@ const styles = StyleSheet.create({
         height: 300,
         width: 350,
         alignSelf: "center",
-        backgroundColor: "white",
+        backgroundColor: "#fff",
         paddingLeft: 15,
         borderWidth: 1,
         borderRadius: 30,
@@ -227,9 +230,9 @@ const styles = StyleSheet.create({
     checkImage: {
         height: 50,
         width: 50,
-        alignSelf: 'flex-end',
+        alignSelf: "flex-end",
         borderWidth: 1,
-        borderColor: "white",
+        borderColor: "#fff",
         borderRadius: 90,
         margin: 10
     },

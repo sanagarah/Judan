@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Image, Dimensions, ScrollView } from "react-native";
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { StyleSheet, Image, Dimensions, ScrollView } from "react-native";
 import RequestedBox from "../../components/RequestedBox";
 
+//to have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
+//to have the total width of the screen
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
+//The beginning of the class
 export default class RequestList extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Image source={require("../../assets/images/requestHeader.png")} style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT/4}}></Image>
+        <Image source={require("../../assets/images/requestHeader.png")} style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT / 4 }}></Image>
         <RequestedBox
           name="Sara"
           type="online"
@@ -40,8 +45,9 @@ export default class RequestList extends Component {
     );
   }
 }
+//Declare the style
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white" 
+    backgroundColor: "#fff"
   }
 });

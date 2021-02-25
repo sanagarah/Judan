@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
+//The beginning of the class
 export default class CardHeader extends Component {
     render() {
         return (
@@ -24,13 +27,14 @@ export default class CardHeader extends Component {
         );
     }
 }
+//Declare the style
 const styles = StyleSheet.create({
     header: {
         height: 75,
         width: "100%",
-        backgroundColor: '#f25f5c',
+        backgroundColor: "#F25F5C",
         justifyContent: "space-around",
-        flexDirection: 'row',
+        flexDirection: "row",
         padding: 10
     },
     container: {
@@ -38,6 +42,6 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     text: {
-        color: '#ffffff',
+        color: "#fff",
     }
 });

@@ -1,16 +1,22 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity, Platform, ScrollView } from "react-native";
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 
+//The beginning of the class
 export default class RequestedBox extends Component {
     constructor(props) {
         super(props)
 
+        //Declare the initial values for states
         this.state = {
             toggle: true,
             show: false,
             border: 0
         }
     }
+
+    //Function used to change the show state
     onShow = () => {
         if (this.state.toggle)
             this.setState({ border: 1, show: true, toggle: false });
@@ -23,7 +29,7 @@ export default class RequestedBox extends Component {
             <TouchableOpacity onPress={this.onShow}
                 style={[styles.container,
                 {
-                    borderColor: this.state.border === 1 ? "#F25F5C" : "gray",
+                    borderColor: this.state.border === 1 ? "#F25F5C" : "#808080",
                     borderStyle: this.state.border === 1 ? "solid" : "dotted"
                 }]}>
                 <View style={styles.textContainer}>
@@ -47,6 +53,7 @@ export default class RequestedBox extends Component {
         );
     }
 }
+//Declare the style
 const styles = StyleSheet.create({
     container: {
         borderWidth: 2,

@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
 import { View, Animated, PanResponder, Dimensions } from "react-native";
 
+//to have the total width of the screen
 const SCREEN_WIDTH = Dimensions.get("window").width
 //To tite the swipe distance to the actual width of the screen
 const SWIP_THRESHOLD = 0.25 * SCREEN_WIDTH;
 
+//The beginning of the class
 export default class Cards extends Component {
     static defaultProps = {
         onSwipeRight: () => { },
@@ -40,6 +44,7 @@ export default class Cards extends Component {
 
         });
         //Setting both animation and PanResponder to state to call them later
+        //Declare the initial values for states
         this.state = { panResponder, position, index: 0 };
     }
 
@@ -57,7 +62,7 @@ export default class Cards extends Component {
         const { onSwipeLeft, onSwipeRight, data } = this.props;
         const item = data[this.state.index];
 
-        direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
+        direction === "right" ? onSwipeRight(item) : onSwipeLeft(item);
         //Resetting the position to the origin
         this.state.position.setValue({ x: 0, y: 0 });
         //Incrementing the index by one to have the next card
@@ -78,7 +83,7 @@ export default class Cards extends Component {
         //Interpolation is used to linearly change the rotation of the card as xd changes
         const rotate = this.state.position.x.interpolate({
             inputRange: [-SCREEN_WIDTH * 1.5, 0, SCREEN_WIDTH * 1.5],
-            outputRange: ['-120deg', '0deg', "120deg"]
+            outputRange: ["-120deg", "0deg", "120deg"]
         })
         return {
             ...this.state.position.getLayout(),
@@ -125,10 +130,9 @@ export default class Cards extends Component {
         );
     }
 }
-
 const styles = {
     cardStyle: {
-        position: 'absolute',
+        position: "absolute",
         width: SCREEN_WIDTH
     }
 };

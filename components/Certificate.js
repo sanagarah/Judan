@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
 import { StyleSheet, View, Image, Dimensions } from "react-native";
-import Lightbox from 'react-native-lightbox-v2';
+import Lightbox from "react-native-lightbox-v2";
 
+//The beginning of the class
 export default class Certificate extends Component {
     render() {
         return (
@@ -11,10 +14,10 @@ export default class Certificate extends Component {
                     activeProps={
                         {
                             style: {
-                                width: Dimensions.get('window').width,
-                                height: Dimensions.get('window').height
+                                width: Dimensions.get("window").width,
+                                height: Dimensions.get("window").height
                             },
-                            resizeMode: 'contain'
+                            resizeMode: "contain"
                         }
                     }>
                     <Image resizeMode="cover" source={this.props.img} style={styles.certification}></Image>
@@ -23,6 +26,7 @@ export default class Certificate extends Component {
         )
     }
 }
+//Declare the style
 const styles = StyleSheet.create({
     certification: {
         width: 150,

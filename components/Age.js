@@ -1,42 +1,48 @@
-import RNPickerSelect from 'react-native-picker-select';
-import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { View, StyleSheet, Text } from "react-native";
+import RNPickerSelect from "react-native-picker-select";
 
+//The beginning of the class
 export default class Age extends Component {
     constructor(props) {
         super(props)
 
+        //Declare the initial values for states
         this.state = {
             age: "Age"
         }
     }
+
+    //To make the chosen valuse appear in the box
     setValue(value) {
         this.setState({ age: value });
     }
 
     render() {
         return (
-            <View style={styles.view}>
-                <Text style={styles.textStyle} >{this.state.age}</Text>
-                <View style={{ flex: 1, marginLeft: '80%', alignSelf: 'center' }}>
+            <View style={styles.container}>
+                <Text style={styles.text} >{this.state.age}</Text>
+                <View style={styles.picker}>
                     <RNPickerSelect
                         onValueChange={(value) => this.setValue(value)}
                         items={[
-                            { label: '5-9', value: '5-9' },
-                            { label: '10-14', value: '10-14' },
-                            { label: '15-19', value: '15-19' },
-                            { label: '20-24', value: '20-24' },
-                            { label: '25-29', value: '25-29' },
-                            { label: '30-34', value: '30-34' },
-                            { label: '35-39', value: '35-39' },
-                            { label: '40-49', value: '40-49' },
-                            { label: '50-54', value: '50-54' },
-                            { label: '55-59', value: '55-59' },
-                            { label: '60-64', value: '60-64' },
-                            { label: '65-69', value: '65-69' },
-                            { label: '70-74', value: '70-74' },
-                            { label: '75-79', value: '75-79' },
-                            { label: ' > 80', value: ' > 80' },
+                            { label: "5-9", value: "5-9" },
+                            { label: "10-14", value: "10-14" },
+                            { label: "15-19", value: "15-19" },
+                            { label: "20-24", value: "20-24" },
+                            { label: "25-29", value: "25-29" },
+                            { label: "30-34", value: "30-34" },
+                            { label: "35-39", value: "35-39" },
+                            { label: "40-49", value: "40-49" },
+                            { label: "50-54", value: "50-54" },
+                            { label: "55-59", value: "55-59" },
+                            { label: "60-64", value: "60-64" },
+                            { label: "65-69", value: "65-69" },
+                            { label: "70-74", value: "70-74" },
+                            { label: "75-79", value: "75-79" },
+                            { label: " > 80", value: " > 80" },
 
                         ]} />
                 </View>
@@ -44,26 +50,28 @@ export default class Age extends Component {
         );
     }
 }
-
-
+//Declare the style
 const styles = StyleSheet.create({
-
-    view: {
-        // flex:1,
+    container: {
         height: 40,
-        backgroundColor: '#fff',
-        textAlign: 'left',
+        backgroundColor: "#fff",
+        textAlign: "left",
         borderColor: "gray",
         borderWidth: 1,
         marginHorizontal: 10,
-        margin: '1%',
-        flexDirection: 'row',
+        margin: "1%",
+        flexDirection: "row",
     },
-    textStyle: {
+    text: {
         fontSize: 15,
-        color: 'gray',
-        left: '35%',
-        marginBottom: '2%',
-        alignSelf: 'center'
+        color: "gray",
+        left: "35%",
+        marginBottom: "2%",
+        alignSelf: "center"
+    },
+    picker: {
+        flex: 1,
+        marginLeft: "80%",
+        alignSelf: "center"
     }
 });

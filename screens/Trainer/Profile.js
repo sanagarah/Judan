@@ -1,19 +1,21 @@
-import React from "react";
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { StyleSheet, View, Text, Image, TextInput, SafeAreaView, ScrollView, Button, TouchableOpacity } from "react-native";
 import Interest from "../../components/Interests";
 import Post from "../../components/Posts";
 import Review from "../../components/Reviews";
-import Modal from 'react-native-modal';
-import * as ImagePicker from 'expo-image-picker';
-import Constants from 'expo-constants';
-import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, Button, TouchableOpacity } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
+import Modal from "react-native-modal";
+import * as ImagePicker from "expo-image-picker";
+import Constants from "expo-constants";
 import Header from "../../components/ProfileHeader";
 
-export default class PopUps extends React.Component {
+//The beginning of the class
+export default class Profile extends Component {
   constructor(props) {
     super(props)
-    
-    //Declaring the states
+
+    //Declare the initial values for states
     this.state = {
       show: false,
       show1: false,
@@ -33,7 +35,7 @@ export default class PopUps extends React.Component {
   }
 
   //To show the popup page for adding interest
-  onShow = () => {
+    onShow = () => {
     if (this.state.toggle)
       this.setState({ show: true, toggle: false });
     else {
@@ -64,7 +66,7 @@ export default class PopUps extends React.Component {
     let name = this.state.text;
     let component = this.state.interests;
     component.push(name);
-    this.setState({ review: component, text: '' })
+    this.setState({ review: component, text: "" })
     this.onShow();
   }
 
@@ -73,7 +75,7 @@ export default class PopUps extends React.Component {
     let name = this.state.image;
     let component = this.state.images;
     component.push(name);
-    this.setState({ array: component, text: '' })
+    this.setState({ array: component, text: "" })
     this.onShow1();
   }
 
@@ -92,17 +94,18 @@ export default class PopUps extends React.Component {
     this.setState({ bio: text });
   }
 
-   //To directly ask for permission
+  //To directly ask for permission
+  //This function will automatically run after rendering the page
   componentDidMount() {
     this.getPermissionAsync();
   }
 
-  //To have the permission needed for access the camera roll
+  //To have the permission needed to access the camera roll
   getPermissionAsync = async () => {
     if (Constants.platform.ios) {
       const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-      if (status !== 'granted') {
-        alert('Sorry, we need camera roll permissions to make this work!');
+      if (status !== "granted") {
+        alert("Sorry, we need camera roll permissions to make this work!");
       }
     }
   }
@@ -131,7 +134,7 @@ export default class PopUps extends React.Component {
       aspect: [4, 3],
       quality: 1
     });
-    
+
     console.log(result);
     if (!result.cancelled) {
       {/*Saving the uri of the selected photo*/ }
@@ -141,9 +144,9 @@ export default class PopUps extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.droidSafeArea}>
+      <SafeAreaView style={styles.safeArea}>
         <ScrollView>
-          <Button title="Edit profile" color="#247ba0" onPress={this.onShow2}></Button>
+          <Button title="Edit profile" color="#247BA0" onPress={this.onShow2}></Button>
           {/* Header section */}
           <Header
             rate={5}
@@ -152,7 +155,7 @@ export default class PopUps extends React.Component {
             uri={this.state.image2}
             name={this.state.name}
             field={this.state.field}
-            color="#247ba0"
+            color="#247BA0"
             bio={this.state.bio}></Header>
           <View style={styles.section2}>
             {/* To have small left margin */}
@@ -161,7 +164,7 @@ export default class PopUps extends React.Component {
               {/* Inserted posts section */}
               <ScrollView horizontal={true}>
                 <TouchableOpacity onPress={this._pickImage1}>
-                  <Image style={styles.post}source={require("../../assets/images/post.png")}></Image>
+                  <Image style={styles.post} source={require("../../assets/images/post.png")}></Image>
                 </TouchableOpacity>
                 {this.state.images.map((data, index) => {
                   return <Post imgPath={{ uri: data }} key={index}></Post>
@@ -170,7 +173,7 @@ export default class PopUps extends React.Component {
               {/* Interests section */}
               <Text style={styles.label}>Interests</Text>
               <View style={styles.container}>
-                <TouchableOpacity style={styles.write} onPress={this.onShow}>
+                <TouchableOpacity onPress={this.onShow}>
                   <View style={styles.background}>
                     <Image source={require("../../assets/images/plus.png")} style={styles.plusImage} ></Image>
                   </View>
@@ -240,11 +243,11 @@ export default class PopUps extends React.Component {
     )
   }
 }
-
+//Declare the style
 const styles = StyleSheet.create({
-  droidSafeArea: {
+  safeArea: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#fff",
   },
   background: {
     backgroundColor: "#F9F9F9",
@@ -252,22 +255,17 @@ const styles = StyleSheet.create({
     height: 30,
     alignItems: "center",
     justifyContent: "center",
-    alignSelf: 'baseline',
+    alignSelf: "baseline",
     paddingHorizontal: 15,
     paddingVertical: 3,
     borderWidth: 1,
     borderRadius: 40,
-    borderColor: "white",
+    borderColor: "#fff",
     margin: 5
   },
   plusImage: {
     width: 15,
     height: 15
-  },
-  upload: {
-    position: "absolute",
-    bottom: 10,
-    right: 10,
   },
   mediaImage: {
     height: 60,
@@ -277,20 +275,12 @@ const styles = StyleSheet.create({
     borderColor: "#D4D1D1",
     borderRadius: 90,
   },
-  uploadImage: {
-    height: 60,
-    width: 60,
-    alignSelf: 'flex-end',
-    borderWidth: 1,
-    borderColor: "rgba(0, 0, 0, 0)",
-    borderRadius: 90,
-  },
   checkImage: {
     height: 50,
     width: 50,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     borderWidth: 1,
-    borderColor: "white",
+    borderColor: "#fff",
     borderRadius: 90,
     margin: 10
   },
@@ -298,7 +288,7 @@ const styles = StyleSheet.create({
     height: 150,
     width: 350,
     alignSelf: "center",
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     paddingLeft: 15,
     borderWidth: 1,
     borderRadius: 30,
@@ -307,7 +297,7 @@ const styles = StyleSheet.create({
     height: 300,
     width: 350,
     alignSelf: "center",
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     paddingLeft: 15,
     borderWidth: 1,
     borderRadius: 30,
@@ -316,7 +306,7 @@ const styles = StyleSheet.create({
   textInput: {
     flexWrap: "wrap",
     width: "90%",
-    borderColor: "gray",
+    borderColor: "#808080",
     borderBottomWidth: 0.5,
     paddingTop: 50,
     fontSize: 15
@@ -339,11 +329,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   section2: {
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     paddingTop: 10
   },
   container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center",
   },
   marginContainer: {
@@ -352,7 +342,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     fontWeight: "700",
-    color: "#247ba0",
+    color: "#247BA0",
     marginTop: 15
   },
   post: {

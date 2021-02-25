@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 
+//to have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height
+//to have the total width of the screen
 const SCREEN_WIDTH = Dimensions.get("window").width
 
+//The beginning of the class
 export default class Thanks extends Component {
     render() {
         return (
             <View style={styles.container}>
                 <Image
-                    source={require('../../assets/images/thanks.png')}
+                    source={require("../../assets/images/thanks.png")}
                     style={styles.image}>
                 </Image>
                 <Text style={styles.title}>Booked Successfuly</Text>
@@ -17,10 +22,11 @@ export default class Thanks extends Component {
         );
     }
 }
+//Declare the style
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "white"
+        backgroundColor: "#fff"
     },
     image: {
         width: SCREEN_WIDTH,

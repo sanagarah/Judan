@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { StyleSheet } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 
+//The beginning of the class
 export default class Map extends Component {
     state = {
         markerData: {
@@ -33,18 +36,19 @@ export default class Map extends Component {
                     coordinate={this.state.markerData}
                     title="Your location"
                     onDragEnd={e => {
-                        console.log('dragEnd', e.nativeEvent.coordinate);
+                        console.log("dragEnd", e.nativeEvent.coordinate);
                     }}
                 />
             </MapView>
         );
     }
 }
+//Declare the style
 const styles = StyleSheet.create({
     container: {
         ...StyleSheet.absoluteFillObject,
-        justifyContent: 'flex-end',
-        alignItems: 'center',
+        justifyContent: "flex-end",
+        alignItems: "center",
     },
     map: {
         ...StyleSheet.absoluteFillObject,

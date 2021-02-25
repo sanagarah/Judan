@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
 import { StyleSheet, View, Text } from "react-native";
 
+//The beginning of the class
 export default class Levels extends Component {
     render() {
         return (
@@ -26,6 +29,7 @@ export default class Levels extends Component {
         );
     }
 }
+//Declare the style
 const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
@@ -41,7 +45,7 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         borderWidth: 0.5,
-        borderColor: "gray",
+        borderColor: "#808080",
         borderRadius: 90,
         backgroundColor: "#F25F5C"
     },
@@ -49,14 +53,14 @@ const styles = StyleSheet.create({
         height: 40,
         width: 40,
         borderWidth: 0.5,
-        borderColor: "gray",
+        borderColor: "#808080",
         borderRadius: 90,
     },
     circle3: {
         height: 40,
         width: 40,
         borderWidth: 0.5,
-        borderColor: "gray",
+        borderColor: "#808080",
         borderRadius: 90,
     },
     circle4: {
@@ -83,6 +87,6 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: "center",
-        color: "gray"
+        color: "#808080"
     }
 });

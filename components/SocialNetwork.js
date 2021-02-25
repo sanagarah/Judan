@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 
+//The beginning of the class
 export default class SocialNetwork extends Component {
     render() {
         return (
@@ -16,94 +19,95 @@ export default class SocialNetwork extends Component {
                     <TouchableOpacity style={styles.GoogleView}>
                         <Image
                             style={styles.setImage}
-                            source={require('../assets/images/google.png')} />
+                            source={require("../assets/images/google.png")} />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.FacebookView}>
                         <Image
                             style={styles.setImage}
-                            source={require('../assets/images/facebook.png')} />
+                            source={require("../assets/images/facebook.png")} />
                     </TouchableOpacity>
                 </View>
             </View>
         );
     }
 }
+//Declare the style
 const styles = StyleSheet.create({
     containerView: {
         flex: 2.2,
-        width: '100%',
-        flexDirection: 'column'
+        width: "100%",
+        flexDirection: "column"
     },
     text: {
         fontSize: 17,
-        color: 'gray',
+        color: "#808080",
     },
     viewBehindTheText: {
         flex: 2,
-        backgroundColor: 'white',
-        width: '100%',
-        flexDirection: 'column'
+        backgroundColor: "#fff",
+        width: "100%",
+        flexDirection: "column"
     },
     viewBehindThePic: {
         flex: 4,
-        backgroundColor: 'white',
-        width: '100%',
-        flexDirection: 'row'
+        backgroundColor: "#fff",
+        width: "100%",
+        flexDirection: "row"
     },
     imageStyle: {
-        width: '100%',
-        alignSelf: 'center',
+        width: "100%",
+        alignSelf: "center",
         borderBottomLeftRadius: 60,
         borderBottomRightRadius: 60,
     },
     BlockButton: {
         flex: 0.75,
-        margin: '3%',
+        margin: "3%",
         width: "8%",
-        backgroundColor: '#b3e5d1',
-        alignContent: 'center',
-        justifyContent: 'center',
+        backgroundColor: "#b3e5d1",
+        alignContent: "center",
+        justifyContent: "center",
         borderRadius: 10,
-        position: 'absolute'
+        position: "absolute"
     },
     setImage: {
         width: 40,
         height: 40,
-        left: '40%',
-        position: 'absolute',
-        top: '10%'
+        left: "40%",
+        position: "absolute",
+        top: "10%"
     },
     textViewStyle: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignContent: 'center',
-        top: '3%'
+        flexDirection: "row",
+        justifyContent: "center",
+        alignContent: "center",
+        top: "3%"
     },
     GoogleView: {
         flex: 0.75,
-        margin: '3%',
+        margin: "3%",
         width: "40%",
         height: 35,
-        backgroundColor: '#FFE066',
-        alignContent: 'center',
-        justifyContent: 'center',
+        backgroundColor: "#FFE066",
+        alignContent: "center",
+        justifyContent: "center",
         borderRadius: 10,
-        position: 'absolute',
-        left: '2%',
-        top: '10%'
+        position: "absolute",
+        left: "2%",
+        top: "10%"
     },
     FacebookView: {
         flex: 0.75,
-        margin: '3%',
+        margin: "3%",
         width: "40%",
         height: 35,
-        backgroundColor: '#4267B2',
-        alignContent: 'center',
-        justifyContent: 'center',
+        backgroundColor: "#4267B2",
+        alignContent: "center",
+        justifyContent: "center",
         borderRadius: 10,
-        position: 'absolute',
-        left: '50%',
-        top: '10%'
+        position: "absolute",
+        left: "50%",
+        top: "10%"
     },
 });
 

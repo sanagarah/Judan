@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
 import { StyleSheet, View, Text } from "react-native";
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from "react-native-gesture-handler";
 
+//The beginning of the class
 export default class TouchableLevels extends Component {
     render() {
         return (
             <View style={styles.container}>
                 <View>
-                        <View style={styles.circle1} ></View>
+                    <View style={styles.circle1} ></View>
                     <Text style={styles.text}>Beginner</Text>
                 </View>
                 <View style={[styles.line, { backgroundColor: this.props.pColor1 }]} ></View>
@@ -22,9 +25,9 @@ export default class TouchableLevels extends Component {
                 <View>
                     <TouchableOpacity onPress={this.props.press3}>
                         <View style={[styles.circle4, { backgroundColor: this.props.cColor3 }]}>
-                        <View style={styles.circle5}>
-                            <View style={[styles.circle6, { backgroundColor: this.props.cColor3 }]}></View>
-                        </View>
+                            <View style={styles.circle5}>
+                                <View style={[styles.circle6, { backgroundColor: this.props.cColor3 }]}></View>
+                            </View>
                         </View>
                     </TouchableOpacity>
                     <Text style={styles.text}>Expert</Text>
@@ -33,6 +36,7 @@ export default class TouchableLevels extends Component {
         );
     }
 }
+//Declare the style
 const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         borderWidth: 0.5,
-        borderColor: "gray",
+        borderColor: "#808080",
         borderRadius: 90,
         backgroundColor: "#F25F5C"
     },
@@ -56,14 +60,14 @@ const styles = StyleSheet.create({
         height: 40,
         width: 40,
         borderWidth: 0.5,
-        borderColor: "gray",
+        borderColor: "#808080",
         borderRadius: 90,
     },
     circle3: {
         height: 40,
         width: 40,
         borderWidth: 0.5,
-        borderColor: "gray",
+        borderColor: "#808080",
         borderRadius: 90,
     },
     circle4: {
@@ -90,6 +94,6 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: "center",
-        color: "gray"
+        color: "#808080"
     }
 });

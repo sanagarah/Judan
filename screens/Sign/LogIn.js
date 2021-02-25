@@ -1,33 +1,34 @@
-import React, { Component } from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { StyleSheet, SafeAreaView } from "react-native";
 import SocialNetwork from "../../components/SocialNetwork"
 import LoginHeader from "../../components/LoginHeader"
 import LoginInput from "../../components/LoginInput"
 import LoginButton from "../../components/LoginButton"
 
-
+//The beginning of the class
 export default class SignIn extends Component {
     render() {
         return (
-
             <SafeAreaView style={styles.container}>
-
-                <LoginHeader nav={() => this.props.navigation.navigate('Sign')} />
+                <LoginHeader nav={() => this.props.navigation.navigate("Sign")} />
                 <SocialNetwork />
                 <LoginInput />
                 <LoginButton
-                    nav1={() => this.props.navigation.navigate('Thanks')}
-                    nav2={() => this.props.navigation.navigate('SignUp')}
+                    nav1={() => this.props.navigation.navigate("Thanks")}
+                    nav2={() => this.props.navigation.navigate("SignUp")}
                 />
             </SafeAreaView>
         );
     }
 }
+//Declare the style
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
     },
 });

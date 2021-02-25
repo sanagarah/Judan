@@ -1,11 +1,15 @@
+//import React in the code
 import React, { Component } from "react";
+//import all the components we are going to use
 import { GiftedChat } from "react-native-gifted-chat";
 
+//The beginning of the class
 export default class ChatDpnd extends Component {
     state = {
         messages: []
     };
 
+    //This function will automatically run after rendering the page
     componentDidMount() {
         this.setState({
             messages: [

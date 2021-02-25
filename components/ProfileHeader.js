@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
 import { StyleSheet, View, Text, Image } from "react-native";
-import StarBar from './StarBar';
+import StarBar from "./StarBar";
 
+//The beginning of the class
 export default class ProfileHeader extends Component {
     render() {
         return (
@@ -10,7 +13,7 @@ export default class ProfileHeader extends Component {
                 <View style={styles.container}>
                     <View style={styles.header}>
                         <Text style={styles.label1}>{this.props.postsNum}</Text>
-                        <Text style={[styles.label2, {color:this.props.color}]}>Posts</Text>
+                        <Text style={[styles.label2, { color: this.props.color }]}>Posts</Text>
                     </View>
                     <Image source={{ uri: this.props.uri }} style={styles.profileImage}></Image>
                     <View style={styles.header}>
@@ -30,6 +33,7 @@ export default class ProfileHeader extends Component {
         )
     }
 }
+//Declare the style
 const styles = StyleSheet.create({
     section1: {
         flexDirection: "column",
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
     },
     container: {
-        flexDirection: 'row',
+        flexDirection: "row",
         alignItems: "center",
     },
     profileImage: {
@@ -54,7 +58,7 @@ const styles = StyleSheet.create({
     label1: {
         fontSize: 20,
         fontWeight: "bold",
-        color: "gray",
+        color: "#808080",
         textAlign: "center"
     },
     label2: {
@@ -65,6 +69,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: 14,
         fontWeight: "700",
-        color: "gray",
+        color: "#808080",
     },
 });

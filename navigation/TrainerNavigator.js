@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
 import { StyleSheet, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -28,9 +30,9 @@ const rootNavigation = createStackNavigator(
     initialRouteName: "Profile",
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: "#247ba0",
+        backgroundColor: "#247BA0",
       },
-      headerTintColor: "white",
+      headerTintColor: "#fff",
       headerTitleStyle: {
         fontWeight: "bold",
       },
@@ -63,10 +65,10 @@ const rootDrawerNavigation = createDrawerNavigator(
       },
     }),
     drawerType: "back",
-    drawerBackgroundColor: "white",
+    drawerBackgroundColor: "#fff",
     contentOptions: {
       activeTintColor: "#000000",
-      activeBackgroundColor: "white",
+      activeBackgroundColor: "#fff",
     },
   }
 );
@@ -101,18 +103,19 @@ const rootBottomTabNavigation = createBottomTabNavigator(
       },
     }),
     tabBarOptions: {
-      activeTintColor: "white",
+      activeTintColor: "#fff",
       style: {
-        backgroundColor: "#247ba0",
+        backgroundColor: "#247BA0",
       },
-      inactiveTintColor: "black",
-      inactiveBackgroundColor: "white",
+      inactiveTintColor: "#000000",
+      inactiveBackgroundColor: "#fff",
     },
   }
 );
 
 const AppProject = createAppContainer(rootBottomTabNavigation);
 
+//The beginning of the class
 export default class app extends Component {
   render() {
     return (
@@ -122,6 +125,7 @@ export default class app extends Component {
     );
   }
 }
+//Declare the style
 const styles = StyleSheet.create({
   container: {
     flex: 1,

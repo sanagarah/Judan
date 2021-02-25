@@ -1,20 +1,25 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import Place from '../../components/Place';
-import Time from '../../components/Time';
-import Date from '../../components/Date';
-import Map from '../../components/Map'
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
+import Place from "../../components/Place";
+import Time from "../../components/Time";
+import Date from "../../components/Date";
+import Map from "../../components/Map"
 
+//The beginning of the class
 export default class Request extends Component {
     constructor(props) {
         super(props)
 
+        //Declare the initial values for states
         this.state = {
             toggle: true,
             show: false,
             border: 0
         }
     }
+    //Function used to change the show state
     onShow = () => {
         if (this.state.toggle)
             this.setState({ border: 1, show: true, toggle: false });
@@ -32,24 +37,24 @@ export default class Request extends Component {
                             onPress={this.onShow}
                             style={[styles.onlinePersonal,
                             {
-                                borderColor: this.state.border === 0 ? "#F25F5C" : "gray",
+                                borderColor: this.state.border === 0 ? "#F25F5C" : "#808080",
                                 borderStyle: this.state.border === 0 ? "solid" : "dotted"
                             }]}>
                             <Text style={styles.text1}>Online</Text>
                             <Image
-                                source={require('../../assets/images/online.png')}
+                                source={require("../../assets/images/online.png")}
                                 style={styles.image1} />
                         </TouchableOpacity>
                         <TouchableOpacity
                             onPress={this.onShow}
                             style={[styles.onlinePersonal,
                             {
-                                borderColor: this.state.border === 1 ? "#F25F5C" : "gray",
+                                borderColor: this.state.border === 1 ? "#F25F5C" : "#808080",
                                 borderStyle: this.state.border === 1 ? "solid" : "dotted"
                             }]}>
                             <Text style={styles.text1}>Personal</Text>
                             <Image
-                                source={require('../../assets/images/personal.png')}
+                                source={require("../../assets/images/personal.png")}
                                 style={styles.image2} />
                         </TouchableOpacity>
                     </View>
@@ -58,7 +63,7 @@ export default class Request extends Component {
                     {this.state.show ?
                         <View style={styles.mapView}>
                             <Map />
-                        </View> : null} 
+                        </View> : null}
                     <Text style={styles.label}>Time </Text>
                     <View style={styles.timeDateContainer}>
                         <Time />
@@ -75,6 +80,7 @@ export default class Request extends Component {
         );
     }
 }
+//Declare the style
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -83,7 +89,7 @@ const styles = StyleSheet.create({
         padding: 7,
         marginHorizontal: 40,
         borderWidth: 0.5,
-        borderColor: 'gray'
+        borderColor: "#808080"
     },
     image: {
         margin: 40,
@@ -92,19 +98,19 @@ const styles = StyleSheet.create({
         marginLeft: 9
     },
     textRequest: {
-        color: '#ffffff',
+        color: "#fff",
         margin: 55,
         fontSize: 30,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         marginLeft: 9
     },
     onlinePersonalContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
+        flexDirection: "row",
+        justifyContent: "space-around",
     },
     onlinePersonal: {
-        flexDirection: 'row',
-        justifyContent: 'center',
+        flexDirection: "row",
+        justifyContent: "center",
         alignItems: "center",
         width: 170,
         height: 110,
@@ -122,14 +128,14 @@ const styles = StyleSheet.create({
     },
     text1: {
         fontSize: 22,
-        fontWeight: 'bold',
-        color: '#70C1B3',
+        fontWeight: "bold",
+        color: "#70C1B3",
         marginHorizontal: 5
     },
     text2: {
         fontSize: 22,
-        fontWeight: 'bold',
-        color: 'white',
+        fontWeight: "bold",
+        color: "#fff",
         margin: 5
     },
     label: {
@@ -137,20 +143,20 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginBottom: 5,
         marginLeft: 10,
-        color: 'gray'
+        color: "#808080"
     },
     paymentButton: {
         width: 300,
         height: 50,
-        backgroundColor: '#F25F5C',
+        backgroundColor: "#F25F5C",
         borderRadius: 30,
-        justifyContent: 'center',
+        justifyContent: "center",
         alignItems: "center",
         alignSelf: "center",
         marginVertical: 30
     },
     mapView: {
-        width: '90%',
+        width: "90%",
         height: 200,
         alignSelf: "center"
     }

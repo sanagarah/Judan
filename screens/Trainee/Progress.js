@@ -1,25 +1,31 @@
-import React from "react";
+//import React in the code
+import React, { Component } from "react";
+//import all the components we are going to use
 import { StyleSheet, View, ImageBackground, Dimensions, Text, ScrollView } from "react-native";
 import Levels from "../../components/Levels"
 import Subject from "../../components/Subject"
 import Certificate from "../../components/Certificate"
 
+//to have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 let levelNum = 3;
 
-export default class Progress extends React.Component {
+//The beginning of the class
+export default class Progress extends Component {
   constructor(props) {
     super(props)
-
+    //Declare the initial values for states
     this.state = {
-      progressColor1: "white",
-      progressColor2: "white",
-      progressColor3: "white",
-      circleColor1: "gray",
-      circleColor2: "gray",
-      circleColor3: "gray",
+      progressColor1: "#fff",
+      progressColor2: "#fff",
+      progressColor3: "#fff",
+      circleColor1: "#808080",
+      circleColor2: "#808080",
+      circleColor3: "#808080",
     }
   }
+
+  //This function will automatically run after rendering the page
   componentDidMount() {
     if (levelNum == 1)
       this.setState({ progressColor1: "#FFE066", circleColor1: "#FFE066" });
@@ -32,13 +38,13 @@ export default class Progress extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ImageBackground source={require('../../assets/images/header1.png')} style={styles.header}>
+        <ImageBackground source={require("../../assets/images/header1.png")} style={styles.header}>
           <View>
             <Text style={styles.text}>Certification</Text>
             <ScrollView horizontal={true} >
-              <Certificate img={require('../../assets/images/certificate.png')}></Certificate>
-              <Certificate img={require('../../assets/images/certificate.png')}></Certificate>
-              <Certificate img={require('../../assets/images/certificate.png')}></Certificate>
+              <Certificate img={require("../../assets/images/certificate.png")}></Certificate>
+              <Certificate img={require("../../assets/images/certificate.png")}></Certificate>
+              <Certificate img={require("../../assets/images/certificate.png")}></Certificate>
             </ScrollView>
           </View>
         </ImageBackground>
@@ -54,7 +60,7 @@ export default class Progress extends React.Component {
     );
   }
 }
-
+//Declare the style
 const styles = StyleSheet.create({
   container: {
     height: SCREEN_HEIGHT,
@@ -66,7 +72,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginLeft: 10,
-    color: "white",
+    color: "#fff",
     fontWeight: "bold",
     fontSize: 17,
     marginBottom: 15,
