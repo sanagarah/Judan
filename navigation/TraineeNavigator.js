@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from 'react';
 import { StyleSheet, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -15,8 +15,10 @@ import TraineeChat from "../screens/Trainee/Chat";
 import TraineeChatList from "../screens/Trainee/ChatList";
 import TraineeMatch from "../screens/Trainee/Match";
 import Card from "../screens/Trainee/Card";
-import profile from "../screens/Trainee/TrainerProfile";
+import Profile from "../screens/Trainee/TrainerProfile";
 import Request from "../screens/Trainee/Request";
+import Payment from "../screens/Trainee/Payment";
+import PayDetails from "../screens/Trainee/PayDetails";
 import Thanks from "../screens/Trainee/Thanks";
 
 const rootNavigation = createStackNavigator(
@@ -29,8 +31,10 @@ const rootNavigation = createStackNavigator(
     Chat: TraineeChatList,
     Match: TraineeMatch,
     Card: Card,
-    Profile: profile,
+    Profile: Profile,
     Request: Request,
+    Payment: Payment,
+    PayDetails: PayDetails,
     Thanks: Thanks
   },
   {
@@ -125,7 +129,7 @@ const rootBottomTabNavigation = createBottomTabNavigator(
 
 const AppProject = createAppContainer(rootBottomTabNavigation);
 
-export default class app extends React.Component {
+export default class app extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -134,7 +138,6 @@ export default class app extends React.Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

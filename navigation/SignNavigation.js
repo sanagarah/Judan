@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from 'react';
 import { StyleSheet, View } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
@@ -23,10 +23,9 @@ const rootNavigation = createStackNavigator(
     }
 );
 
-
 const AppProject = createAppContainer(rootNavigation);
 
-export default class app extends React.Component {
+export default class app extends Component {
     render() {
         return (
             <View style={styles.container}>
@@ -35,7 +34,6 @@ export default class app extends React.Component {
         );
     }
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

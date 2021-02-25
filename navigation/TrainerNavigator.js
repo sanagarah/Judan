@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from 'react';
 import { StyleSheet, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -21,7 +21,7 @@ const rootNavigation = createStackNavigator(
     About: TrainerAbout,
     Chating: TrainerChat,
     Chat: TrainerChatList,
-    UpdatedProgress: UpdatedProgress,
+    Progress: UpdatedProgress,
 
   },
   {
@@ -113,7 +113,7 @@ const rootBottomTabNavigation = createBottomTabNavigator(
 
 const AppProject = createAppContainer(rootBottomTabNavigation);
 
-export default class app extends React.Component {
+export default class app extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -122,7 +122,6 @@ export default class app extends React.Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
