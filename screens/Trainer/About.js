@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, SafeAreaView,Linking, ScrollView} from 'react-native';
 import Settinglist from "../../components/Settinglist"
 
-export default class About extends React.Component {
+export default class About extends Component {
 
   state = { text: "" }
 

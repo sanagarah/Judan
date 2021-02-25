@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, SafeAreaView, Linking, ScrollView } from 'react-native';
 import Settinglist from "../../components/Settinglist"
 
-export default class About extends React.Component {
+export default class About extends Component {
 
   state = { text: "" }
 
   makeCall = () => {
-
     let phoneNumber = '';
-
     if (Platform.OS === 'android') {
       phoneNumber = 'tel:${0539136880}';
     } else {
       phoneNumber = 'telprompt:${0539136880}';
     }
-
     Linking.openURL(phoneNumber);
   };
 
