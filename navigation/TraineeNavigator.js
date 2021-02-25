@@ -18,7 +18,7 @@ import Card from "../screens/Trainee/Card";
 import Profile from "../screens/Trainee/TrainerProfile";
 import Request from "../screens/Trainee/Request";
 import Payment from "../screens/Trainee/Payment";
-import PayDetails from "../screens/Trainee/PayDetails";
+import BankCard from "../screens/Trainee/BankCard";
 import Thanks from "../screens/Trainee/Thanks";
 
 const rootNavigation = createStackNavigator(
@@ -34,7 +34,7 @@ const rootNavigation = createStackNavigator(
     Profile: Profile,
     Request: Request,
     Payment: Payment,
-    PayDetails: PayDetails,
+    BankCard: BankCard,
     Thanks: Thanks
   },
   {
