@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import Button from "../../components/Button"
+import Button from "../../components/ShareButton"
 import TraineeTrainer from "../../components/Trainee-trainer"
 
-export default class Sign extends React.Component {
+export default class Sign extends Component {
     render() {
         return (
             <View style={styles.container}>
@@ -41,7 +41,6 @@ export default class Sign extends React.Component {
         );
     }
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

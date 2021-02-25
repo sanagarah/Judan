@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import SignupHeader from "../../components/SignupHeader"
 import SocialNetwork from "../../components/SocialNetwork"
 import SignInput from "../../components/SignInput"
 import SignUpButton from "../../components/SignupButton"
 
-export default class SignUp extends React.Component {
+export default class SignUp extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
@@ -18,7 +18,6 @@ export default class SignUp extends React.Component {
         );
     }
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
