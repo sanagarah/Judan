@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { Share, View, Button } from "react-native";
 
 //The beginning of the class
-export default class ShareExample extends Component {
+export default class FriendsShare extends Component {
     onShare = async () => {
         try {
             const result = await Share.share({

@@ -1,0 +1,38 @@
+[
+    {
+        "userId": 1,
+        "id": 1,
+        "title": "Sana",
+        "body": "Piano trainer"
+    },
+    {
+        "userId": 1,
+        "id": 2,
+        "title": "Salwa",
+        "body": "Drawing trainer"
+    },
+    {
+        "userId": 1,
+        "id": 3,
+        "title": "Rahaf",
+        "body": "Magic tricks trainer"
+    },
+    {
+        "userId": 1,
+        "id": 4,
+        "title": "Ahmed",
+        "body": "Sining trainer"
+    },
+    {
+        "userId": 1,
+        "id": 5,
+        "title": "Ameera",
+        "body": "Sport trainer"
+    },
+    {
+        "userId": 1,
+        "id": 6,
+        "title": "Khaled",
+        "body": "Acting trainer"
+    }
+]

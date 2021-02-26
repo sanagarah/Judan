@@ -5,7 +5,7 @@ import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 //The beginning of the class
-export default class Date extends Component {
+export default class Time extends Component {
     constructor(props) {
         super(props)
 

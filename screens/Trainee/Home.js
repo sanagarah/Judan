@@ -10,8 +10,9 @@ export default class Home extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-
-        <FindTrainer nav={() => this.props.navigation.navigate("Match")} />
+        <FindTrainer
+          nav1={() => this.props.navigation.navigate("Match")}
+          nav2={() => this.props.navigation.navigate("Search")}/>
         <Text style={styles.label}>Top trainers</Text>
         <TopTrainer
           image1={require("../../assets/images/girlpic.png")}

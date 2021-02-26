@@ -5,7 +5,7 @@ import { View, StyleSheet, Text } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 
 //The beginning of the class
-export default class City extends Component {
+export default class BankPicker extends Component {
     constructor(props) {
         super(props)
 

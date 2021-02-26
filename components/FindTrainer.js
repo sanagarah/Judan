@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from "react-native";
-import { Searchbar } from "react-native-paper";
+import { MaterialIcons } from "@expo/vector-icons";
 
 //to have the total width of the screen
 const SCREEN_WIDTH = Dimensions.get("window").width
@@ -11,11 +11,7 @@ const SCREEN_HEIGHT = Dimensions.get("window").height
 
 //The beginning of the class
 export default class FindTrainer extends Component {
-    state = {
-        firstQuery: "",
-    };
     render() {
-        const { firstQuery } = this.state;
         return (
             <View style={styles.container}>
                 <Image
@@ -24,7 +20,7 @@ export default class FindTrainer extends Component {
                 <Image
                     style={styles.imageboxStyle}
                     source={require("../assets/images/matchme.png")} />
-                <TouchableOpacity style={styles.matchMeView} onPress={this.props.nav}>
+                <TouchableOpacity style={styles.matchMeView} onPress={this.props.nav1}>
                     <Text style={styles.text}> Match me </Text>
                     <Image
                         style={styles.setImage}
@@ -32,10 +28,11 @@ export default class FindTrainer extends Component {
                 </TouchableOpacity>
                 <View style={styles.flex}>
                     <View style={styles.searchbarView}>
-                        <Searchbar
-                            placeholder=" "
-                            onChangeText={query => { this.setState({ firstQuery: query }); }}
-                            value={firstQuery} />
+                        <TouchableOpacity onPress={this.props.nav2}>
+                            <View style={styles.searchbar}>
+                                <MaterialIcons name="search" size={30} color="#808080"></MaterialIcons>
+                           </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
@@ -58,6 +55,18 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginHorizontal: SCREEN_WIDTH / 10,
         top: SCREEN_HEIGHT / 4,
+        shadowColor: "#000000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        elevation: 5
+    },
+    searchbar: {
+        width: "100%",
+        height: SCREEN_HEIGHT / 14,
+        justifyContent: "center",
+        padding: 10
     },
     imageboxStyle: {
         width: SCREEN_WIDTH / 1.2,

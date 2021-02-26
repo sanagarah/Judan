@@ -116,7 +116,7 @@ const rootBottomTabNavigation = createBottomTabNavigator(
 const AppProject = createAppContainer(rootBottomTabNavigation);
 
 //The beginning of the class
-export default class app extends Component {
+export default class TrainerNavigator extends Component {
   render() {
     return (
       <View style={styles.container}>

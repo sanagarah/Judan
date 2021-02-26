@@ -22,6 +22,7 @@ import Request from "../screens/Trainee/Request";
 import Payment from "../screens/Trainee/Payment";
 import BankCard from "../screens/Trainee/BankCard";
 import Thanks from "../screens/Trainee/Thanks";
+import Search from "../screens/Trainee/Search";
 
 const rootNavigation = createStackNavigator(
   {
@@ -37,7 +38,8 @@ const rootNavigation = createStackNavigator(
     Request: Request,
     Payment: Payment,
     BankCard: BankCard,
-    Thanks: Thanks
+    Thanks: Thanks,
+    Search: Search 
   },
   {
     initialRouteName: "Home",
@@ -132,7 +134,7 @@ const rootBottomTabNavigation = createBottomTabNavigator(
 const AppProject = createAppContainer(rootBottomTabNavigation);
 
 //The beginning of the class
-export default class app extends Component {
+export default class TraineeNavigator extends Component {
   render() {
     return (
       <View style={styles.container}>

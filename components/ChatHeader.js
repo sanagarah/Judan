@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 //The beginning of the class
-export default class Chat extends Component {
+export default class ChatHeader extends Component {
     state = { text: "" }
     render() {
         return (

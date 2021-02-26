@@ -5,7 +5,6 @@ import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 
 //The beginning of the class
 export default class Settinglist extends Component {
-
     render() {
         return (
             <TouchableOpacity style={styles.settingBlockContainer} onPress={this.props.nav}>

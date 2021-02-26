@@ -29,7 +29,7 @@ const rootNavigation = createStackNavigator(
 const AppProject = createAppContainer(rootNavigation);
 
 //The beginning of the class
-export default class app extends Component {
+export default class SignNavigation extends Component {
     render() {
         return (
             <View style={styles.container}>
