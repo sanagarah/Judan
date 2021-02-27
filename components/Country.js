@@ -6,27 +6,13 @@ import RNPickerSelect from "react-native-picker-select";
 
 //The beginning of the class
 export default class Country extends Component {
-    constructor(props) {
-        super(props)
-
-        //Declare the initial values for states
-        this.state = {
-            country: "Country"
-        }
-    }
-    
-    //To make the chosen valuse appear in the box
-    setValue(value) {
-        this.setState({ country: value });
-    }
-
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text} >{this.state.country}</Text>
+                <Text style={styles.text} >{this.props.country}</Text>
                 <View style={styles.picker}>
                     <RNPickerSelect
-                        onValueChange={(value) => this.setValue(value)}
+                        onValueChange={this.props.setCountry}
                         items={[
                             { label: "السعودية", value: "السعودية" },
 
@@ -40,7 +26,7 @@ export default class Country extends Component {
 const styles = StyleSheet.create({
     container: {
         height: 40,
-        backgroundColor: "#fff",
+        backgroundColor: "#FFF",
         textAlign: "left",
         borderColor: "#808080",
         borderWidth: 1,

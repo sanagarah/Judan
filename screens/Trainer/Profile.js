@@ -122,7 +122,6 @@ export default class Profile extends Component {
     if (!result.cancelled) {
       // Saving the uri of the selected photo*/ 
       this.setState({ image: result.uri });
-      console.log(result);
     }
   };
 
@@ -134,8 +133,6 @@ export default class Profile extends Component {
       aspect: [4, 3],
       quality: 1
     });
-
-    console.log(result);
     if (!result.cancelled) {
       {/*Saving the uri of the selected photo*/ }
       this.setState({ image2: result.uri });
@@ -167,7 +164,7 @@ export default class Profile extends Component {
                   <Image style={styles.post} source={require("../../assets/images/post.png")}></Image>
                 </TouchableOpacity>
                 {this.state.images.map((data, index) => {
-                  return <Post imgPath={{ uri: data }} key={index}></Post>
+                  return <Post image={{ uri: data }} key={index}></Post>
                 })}
               </ScrollView>
               {/* Interests section */}
@@ -210,7 +207,7 @@ export default class Profile extends Component {
             <View style={styles.popUp1}>
               {/* To push the new image uri into an array and creat post component using that uri */}
               <View style={styles.postContainer}>
-                <Post imgPath={{ uri: this.state.image }}></Post>
+                <Post image={{ uri: this.state.image }}></Post>
               </View>
               <TouchableOpacity style={styles.checkImage} onPress={this.addPost}>
                 <Image source={require("../../assets/images/check.png")} style={styles.checkImage}></Image>
@@ -247,7 +244,7 @@ export default class Profile extends Component {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#FFF",
   },
   background: {
     backgroundColor: "#F9F9F9",
@@ -260,7 +257,7 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
     borderWidth: 1,
     borderRadius: 40,
-    borderColor: "#fff",
+    borderColor: "#FFF",
     margin: 5
   },
   plusImage: {
@@ -280,7 +277,7 @@ const styles = StyleSheet.create({
     width: 50,
     alignSelf: "flex-end",
     borderWidth: 1,
-    borderColor: "#fff",
+    borderColor: "#FFF",
     borderRadius: 90,
     margin: 10
   },
@@ -288,7 +285,7 @@ const styles = StyleSheet.create({
     height: 150,
     width: 350,
     alignSelf: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#FFF",
     paddingLeft: 15,
     borderWidth: 1,
     borderRadius: 30,
@@ -297,7 +294,7 @@ const styles = StyleSheet.create({
     height: 300,
     width: 350,
     alignSelf: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#FFF",
     paddingLeft: 15,
     borderWidth: 1,
     borderRadius: 30,
@@ -329,7 +326,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   section2: {
-    backgroundColor: "#fff",
+    backgroundColor: "#FFF",
     paddingTop: 10
   },
   container: {

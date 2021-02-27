@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity, ScrollView, Dimensions } from "react-native";
 import TopTrainer from "./TopTrainer"
 
-//to have the total width of the screen
+//To have the total width of the screen
 const SCREEN_WIDTH = Dimensions.get("window").width
 
 //The beginning of the class

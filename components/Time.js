@@ -12,7 +12,6 @@ export default class Time extends Component {
         //Declare the initial values for states
         this.state = {
             show: false,
-            name: "Choose a time"
         }
     }
 
@@ -25,12 +24,6 @@ export default class Time extends Component {
     onHide = () => {
         this.setState({ show: false });
     }
-    
-    //Function used to set the choesn value in the box after chaning it to String and ignore unnecessary text
-    setTime = (time) => {
-        var stringTime = time.toLocaleString().substring(10, 16);
-        this.setState({ name: stringTime })
-    };
 
     render() {
         return (
@@ -42,12 +35,12 @@ export default class Time extends Component {
                         source={require("../assets/images/time.png")}
                         style={styles.image}
                     />
-                    <Text style={styles.text}>{this.state.name}</Text>
+                    <Text style={styles.text}>{this.props.time}</Text>
                 </TouchableOpacity>
                 <DateTimePickerModal
                     mode="time"
                     isVisible={this.state.show}
-                    onConfirm={this.setTime}
+                    onConfirm={this.props.setTime}
                     onCancel={this.onHide}
                 />
             </View>

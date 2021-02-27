@@ -16,9 +16,13 @@ export default class Request extends Component {
         this.state = {
             toggle: true,
             show: false,
-            border: 0
+            border: 0,
+            place: " ",
+            time: "Choose a time",
+            date: "Choose a date"
         }
     }
+
     //Function used to change the show state
     onShow = () => {
         if (this.state.toggle)
@@ -27,6 +31,45 @@ export default class Request extends Component {
             this.setState({ border: 0, show: false, toggle: true });
         }
     }
+
+     //Function used to set the choesn value in the box
+    setPlace= (value) => {
+        this.setState({ place: value });
+    }
+
+    //Function used to set the choesn value in the box after chaning it to String and ignore unnecessary text
+    setDate = (date) => {
+        var stringDate = date.toLocaleString().substring(0, 10);
+        this.setState({ date: stringDate })
+    };
+
+    //Function used to set the choesn value in the box after chaning it to String and ignore unnecessary text
+    setTime = (time) => {
+        var stringTime = time.toLocaleString().substring(10, 16);
+        this.setState({ time: stringTime })
+    };
+
+    //To validate TextInputs
+    checkTextInput = () => {
+        //Check for the place TextInput
+        if (this.state.place == " " && this.state.border == 0) {
+            alert("Please choose a place");
+            return;
+        }
+        //Check for the time TextInput
+        if (this.state.time == "Choose a time") {
+            alert("Please choose a time");
+            return;
+        }
+        //Check for the date TextInput
+        if (this.state.date == "Choose a date") {
+            alert("Please choose a date");
+            return;
+        }
+        //Checked successfully
+        this.props.navigation.navigate("Payment")
+    };
+
     render() {
         return (
             <View style={styles.container}>
@@ -59,20 +102,20 @@ export default class Request extends Component {
                         </TouchableOpacity>
                     </View>
                     <Text style={styles.label}>Place</Text>
-                    {this.state.show ? null : <Place />}
+                    {this.state.show ? null : <Place place={this.state.place} setPlace={this.setPlace} />}
                     {this.state.show ?
                         <View style={styles.mapView}>
                             <Map />
                         </View> : null}
                     <Text style={styles.label}>Time </Text>
                     <View style={styles.timeDateContainer}>
-                        <Time />
+                        <Time time={this.state.time} setTime={this.setTime}/>
                     </View>
                     <Text style={styles.label}>Date </Text>
                     <View style={styles.timeDateContainer}>
-                        <Date />
+                        <Date date={this.state.date} setDate={this.setDate}/>
                     </View>
-                    <TouchableOpacity style={styles.paymentButton} onPress={() => this.props.navigation.navigate("Payment")}>
+                    <TouchableOpacity style={styles.paymentButton} onPress={this.checkTextInput}>
                         <Text style={styles.text2}>Continue To Payment</Text>
                     </TouchableOpacity>
                 </ScrollView>
@@ -98,7 +141,7 @@ const styles = StyleSheet.create({
         marginLeft: 9
     },
     textRequest: {
-        color: "#fff",
+        color: "#FFF",
         margin: 55,
         fontSize: 30,
         fontWeight: "bold",
@@ -135,7 +178,7 @@ const styles = StyleSheet.create({
     text2: {
         fontSize: 22,
         fontWeight: "bold",
-        color: "#fff",
+        color: "#FFF",
         margin: 5
     },
     label: {

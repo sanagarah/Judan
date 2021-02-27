@@ -1,45 +1,68 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import Button from "../../components/ShareButton"
-import TraineeTrainer from "../../components/Trainee-trainer"
+import { StyleSheet, Text, View, Image, Dimensions} from "react-native";
+import TraineeTrainer from "../../components/TraineeTrainer"
+import SignUpButton from "../../components/SignButton"
+
+//To have the total height of the screen
+const SCREEN_HEIGHT = Dimensions.get("window").height
 
 //The beginning of the class
 export default class Sign extends Component {
+    constructor(props) {
+        super(props)
+
+        //Declare the initial values for states
+        this.state = {
+            opacity: 0
+        }
+    }
+
+    //To change the opacity of the chosen choice
+    changeOpacity1 = () => {
+        this.setState({ opacity: 1 })
+    }
+
+    changeOpacity2 = () => {
+        this.setState({ opacity: 2 })
+    }
+
+    //To validate
+    check = () => {
+        //Check if an option has been chosen
+        if (this.state.opacity == 0) {
+            alert("Please choose what you would like to be");
+            return;
+        }
+        //Choosed successfully
+        this.props.navigation.navigate("SignUp")
+    };
+
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.Secondview}>
 
-                    {/*contain a header pic*/}
-                    <View style={styles.header}>
-                        <Image
-                            style={styles.image}
-                            source={require("../../assets/images/header.jpg")} />
-                    </View>
-
-                    <View style={styles.textView}>
-                        <Text style={styles.text1}> Choose what you like to be  </Text>
-                    </View>
-
-                    {/*component for the views below "Choose what you like to be" text */}
-                    <TraineeTrainer />
-
-                    {/*Sign up buton */}
-                    <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("SignUp")}>
-                        <Text style={styles.text2}>Sign Up</Text>
-                    </TouchableOpacity>
-
-                    {/*  Button component refer to a text button "it can be changed to any text"*/}
-                    <View style={styles.textView}>
-                        <Text style={styles.text3}> Don"t have an account?  </Text>
-                        <Button
-                            name="Login"
-                            color="#FFC0CB"
-                            nav={() => this.props.navigation.navigate("LogIn")} />
-                    </View>
+                {/*contain a header pic*/}
+                <View style={styles.header}>
+                    <Image
+                        style={styles.image}
+                        source={require("../../assets/images/header.jpg")} />
                 </View>
+
+                <Text style={styles.text}> Choose what you like to be </Text>
+                
+                {/* component for showing the choices */}
+                <TraineeTrainer opacity={this.state.opacity} changeOpacity1={this.changeOpacity1} changeOpacity2={this.changeOpacity2} />
+
+                {/* Button component refer to a text button "it can be changed to any text" */}
+                <SignUpButton
+                    nav1={this.check}
+                    nav2={() => this.props.navigation.navigate("LogIn")}
+                    color="#F25F5C"
+                    text1="Sign Up"
+                    text2="Have an account?"
+                    text3=" Login" />
             </View>
         );
     }
@@ -48,49 +71,24 @@ export default class Sign extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "#FFF"
     },
     header: {
-        flex: 6,
+        height: SCREEN_HEIGHT /1.8,
         width: "100%",
+        alignItems: "center",
         justifyContent: "center",
-    },
-    button: {
-        flex: 0.75,
-        margin: "3%",
-        width: "95%",
-        backgroundColor: "#f47373",
-        alignContent: "center",
-        justifyContent: "center",
-        borderRadius: 10,
+        marginBottom: 10,
     },
     image: {
         width: "100%",
         height: 300,
-        alignSelf: "center",
     },
-    Secondview: {
-        flex: 1,
-        backgroundColor: "#fff"
-    },
-    textView: {
-        flexDirection: "row",
-        justifyContent: "center",
-        marginVertical: "5%",
-        bottom: "5%"
-    },
-    text1: {
+    text: {
         fontSize: 17,
         color: "#808080",
-        bottom: "5%"
+        bottom: "6%",
+        marginBottom: 10,
+        alignSelf: "center"
     },
-    text2: {
-        fontSize: 25,
-        color: "#fff",
-        textAlign: "center"
-    },
-    text3: {
-        fontSize: 15,
-        color: "#808080",
-        marginLeft: "9%"
-    }
 });

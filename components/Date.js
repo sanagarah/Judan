@@ -12,7 +12,6 @@ export default class Date extends Component {
         //Declare the initial values for states
         this.state = {
             show: false,
-            name: "Choose a date"
         }
     }
 
@@ -26,13 +25,6 @@ export default class Date extends Component {
         this.setState({ show: false });
     }
 
-    //Function used to set the choesn value in the box after chaning it to String and ignore unnecessary text
-    setDate = (date) => {
-        var stringDate = date.toLocaleString().substring(0, 10);
-        this.setState({ name: stringDate })
-    };
-
-
     render() {
         return (
             <View>
@@ -43,12 +35,12 @@ export default class Date extends Component {
                         source={require("../assets/images/calender.png")}
                         style={styles.image}
                     />
-                    <Text style={styles.text}>{this.state.name}</Text>
+                    <Text style={styles.text}>{this.props.date}</Text>
                 </TouchableOpacity>
                 <DateTimePickerModal
                     mode="date"
                     isVisible={this.state.show}
-                    onConfirm={this.setDate}
+                    onConfirm={this.props.setDate}
                     onCancel={this.onHide}
                 />
             </View>

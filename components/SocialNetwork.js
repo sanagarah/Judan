@@ -3,27 +3,23 @@ import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 
-//The beginning of the class
 export default class SocialNetwork extends Component {
     render() {
         return (
-            <View style={styles.containerView}>
+            <View style={styles.container}>
                 {/** text  */}
-                <View style={styles.viewBehindTheText}>
-                    <View style={styles.textViewStyle}>
-                        <Text style={styles.text}> Enter via social networks  </Text>
-                    </View>
-                </View>
+                 <Text style={styles.text}> Enter via social networks  </Text>
+
                 {/** pic  */}
                 <View style={styles.viewBehindThePic}>
                     <TouchableOpacity style={styles.GoogleView}>
                         <Image
-                            style={styles.setImage}
+                            style={styles.image}
                             source={require("../assets/images/google.png")} />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.FacebookView}>
                         <Image
-                            style={styles.setImage}
+                            style={styles.image}
                             source={require("../assets/images/facebook.png")} />
                     </TouchableOpacity>
                 </View>
@@ -33,81 +29,40 @@ export default class SocialNetwork extends Component {
 }
 //Declare the style
 const styles = StyleSheet.create({
-    containerView: {
-        flex: 2.2,
+    container: {
         width: "100%",
-        flexDirection: "column"
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    viewBehindThePic: {
+        flexDirection: "row"
     },
     text: {
         fontSize: 17,
         color: "#808080",
+        marginVertical: 5
     },
-    viewBehindTheText: {
-        flex: 2,
-        backgroundColor: "#fff",
-        width: "100%",
-        flexDirection: "column"
-    },
-    viewBehindThePic: {
-        flex: 4,
-        backgroundColor: "#fff",
-        width: "100%",
-        flexDirection: "row"
-    },
-    imageStyle: {
-        width: "100%",
-        alignSelf: "center",
-        borderBottomLeftRadius: 60,
-        borderBottomRightRadius: 60,
-    },
-    BlockButton: {
-        flex: 0.75,
-        margin: "3%",
-        width: "8%",
-        backgroundColor: "#b3e5d1",
-        alignContent: "center",
-        justifyContent: "center",
-        borderRadius: 10,
-        position: "absolute"
-    },
-    setImage: {
+    image: {
         width: 40,
-        height: 40,
-        left: "40%",
-        position: "absolute",
-        top: "10%"
-    },
-    textViewStyle: {
-        flexDirection: "row",
-        justifyContent: "center",
-        alignContent: "center",
-        top: "3%"
+        height: 40
     },
     GoogleView: {
-        flex: 0.75,
-        margin: "3%",
+        marginHorizontal: "3%",
         width: "40%",
-        height: 35,
+        height: 50,
         backgroundColor: "#FFE066",
-        alignContent: "center",
+        alignItems: "center",
         justifyContent: "center",
         borderRadius: 10,
-        position: "absolute",
-        left: "2%",
-        top: "10%"
     },
     FacebookView: {
-        flex: 0.75,
-        margin: "3%",
+        marginHorizontal: "3%",
         width: "40%",
-        height: 35,
+        height: 50,
         backgroundColor: "#4267B2",
-        alignContent: "center",
+        alignItems: "center",
         justifyContent: "center",
         borderRadius: 10,
-        position: "absolute",
-        left: "50%",
-        top: "10%"
     },
 });
 

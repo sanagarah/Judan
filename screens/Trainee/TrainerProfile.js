@@ -8,7 +8,7 @@ import Review from "../../components/Reviews";
 import Modal from "react-native-modal";
 import Header from "../../components/ProfileHeader";
 
-//to have the total height of the screen
+//To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 //The beginning of the class
@@ -62,10 +62,10 @@ export default class TrainerProfile extends Component {
             <View style={styles.marginContainer}>
               {/* Inserted media section */}
               <ScrollView horizontal={true}>
-                <Post imgPath={require("../../assets/images/post1.jpg")}></Post>
-                <Post imgPath={require("../../assets/images/post2.jpg")}></Post>
-                <Post imgPath={require("../../assets/images/post3.png")}></Post>
-                <Post imgPath={require("../../assets/images/post1.jpg")}></Post>
+                <Post image={require("../../assets/images/post1.jpg")}></Post>
+                <Post image={require("../../assets/images/post2.jpg")}></Post>
+                <Post image={require("../../assets/images/post3.png")}></Post>
+                <Post image={require("../../assets/images/post1.jpg")}></Post>
               </ScrollView>
               {/* Interests section */}
               <Text style={styles.label4}>Interests</Text>
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   popUp: {
-    backgroundColor: "#fff",
+    backgroundColor: "#FFF",
     borderRadius: 30,
     height: SCREEN_HEIGHT / 2,
     justifyContent: "center",
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   section2: {
-    backgroundColor: "#fff",
+    backgroundColor: "#FFF",
     paddingTop: 10
   },
   container: {
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     width: 50,
     alignSelf: "flex-end",
     borderWidth: 1,
-    borderColor: "#fff",
+    borderColor: "#FFF",
     borderRadius: 90,
     margin: 10
   },

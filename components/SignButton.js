@@ -1,22 +1,24 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Dimensions } from "react-native";
 
 //The beginning of the class
-export default class LoginButton extends Component {
+export default class SignButton extends Component {
     render() {
         return (
-            <View style={styles.LoginButoonContainer}>
+            <View style={styles.container}>
                 {/*Sign up buton */}
-                <TouchableOpacity style={styles.BlockButton} onPress={this.props.nav1}>
-                    <Text style={styles.text1}>Login</Text>
+                <TouchableOpacity
+                    style={[styles.BlockButton, { backgroundColor: this.props.color }]}
+                    onPress={this.props.nav1}>
+                    <Text style={styles.text1}>{this.props.text1}</Text>
                 </TouchableOpacity>
                 {/*  Button component refer to a text button "it can be changed to any text"*/}
-                <View style={styles.textViewStyle}>
-                    <Text style={styles.text2}> Don"t have an account?  </Text>
+                <View style={styles.textView}>
+                    <Text style={styles.text2}>{this.props.text2}</Text>
                     <TouchableOpacity onPress={this.props.nav2}>
-                        <Text style={styles.text3}>Sign Up</Text>
+                        <Text style={[styles.text3, { color: this.props.color }]}>{this.props.text3}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -25,32 +27,24 @@ export default class LoginButton extends Component {
 }
 //Declare the style
 const styles = StyleSheet.create({
-    LoginButoonContainer: {
-        flex: 2.5,
-        backgroundColor: "#fff",
-        width: "100%",
-        flexDirection: "column"
+    container: {
+        flex: 1,
+        width: "95%",
+        alignSelf: "center",
     },
     BlockButton: {
-        flex: 1,
-        margin: "2%",
-        width: "95%",
-        backgroundColor: "#70C1B3",
-        alignContent: "center",
+        height: 60,
+        alignItems: "center",
         justifyContent: "center",
         borderRadius: 10,
     },
-    textViewStyle: {
+    textView: {
         flexDirection: "row",
         justifyContent: "center",
-        alignContent: "center",
-        marginBottom: "5%",
-        marginTop: "5%",
-        bottom: "5%"
     },
     text1: {
         fontSize: 25,
-        color: "#fff",
+        color: "#FFF",
         textAlign: "center"
     },
     text2: {
@@ -60,7 +54,7 @@ const styles = StyleSheet.create({
     },
     text3: {
         fontSize: 15,
-        color: "#275368"
+        marginBottom: 10
     }
 });
 

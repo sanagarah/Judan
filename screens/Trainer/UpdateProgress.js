@@ -9,7 +9,7 @@ import Levels from "../../components/TouchableLevels"
 import Subject from "../../components/Subject"
 import Certificate from "../../components/Certificate"
 
-//to have the total height of the screen
+//To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 //The beginning of the class
@@ -19,9 +19,9 @@ export default class UpdatedProgress extends Component {
 
     //Declare the initial values for states
     this.state = {
-      progressColor1: "#fff",
-      progressColor2: "#fff",
-      progressColor3: "#fff",
+      progressColor1: "#FFF",
+      progressColor2: "#FFF",
+      progressColor3: "#FFF",
       circleColor1: "#808080",
       circleColor2: "#808080",
       circleColor3: "#808080",
@@ -79,7 +79,6 @@ export default class UpdatedProgress extends Component {
     if (!result.cancelled) {
       // Saving the uri of the selected photo*/ 
       this.setState({ image: result.uri });
-      console.log(result);
     }
   };
 
@@ -104,7 +103,7 @@ export default class UpdatedProgress extends Component {
               <Image source={require("../../assets/images/post.png")} style={styles.certification}></Image>
             </TouchableOpacity>
             {this.state.images.map((data, index) => {
-              return <Certificate img={{ uri: data }} key={index}></Certificate>
+              return <Certificate image={{ uri: data }} key={index}></Certificate>
             })}
           </ScrollView>
         </ImageBackground>
@@ -132,7 +131,7 @@ export default class UpdatedProgress extends Component {
             <View style={styles.popUp1}>
               {/* To push the new image uri into an array and creat certification component using that uri */}
               <View style={styles.certificationContainer}>
-                <Certificate img={{ uri: this.state.image }}></Certificate>
+                <Certificate image={{ uri: this.state.image }}></Certificate>
               </View>
               <TouchableOpacity style={styles.checkImage} onPress={this.addCertification}>
                 <Image source={require("../../assets/images/check.png")} style={styles.checkImage}></Image>
@@ -155,14 +154,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   text1: {
-    color: "#fff",
+    color: "#FFF",
     fontWeight: "bold",
     textDecorationLine: "underline",
     fontSize: 17,
     margin: 10
   },
   text2: {
-    color: "#fff",
+    color: "#FFF",
     fontWeight: "bold",
     fontSize: 17,
     marginLeft: 10,
@@ -182,7 +181,7 @@ const styles = StyleSheet.create({
     height: 300,
     width: 350,
     alignSelf: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#FFF",
     paddingLeft: 15,
     borderWidth: 1,
     borderRadius: 30,
@@ -199,7 +198,7 @@ const styles = StyleSheet.create({
     width: 50,
     alignSelf: "flex-end",
     borderWidth: 1,
-    borderColor: "#fff",
+    borderColor: "#FFF",
     borderRadius: 90,
     margin: 10
   },

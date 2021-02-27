@@ -6,26 +6,13 @@ import RNPickerSelect from "react-native-picker-select";
 
 //The beginning of the class
 export default class BankPicker extends Component {
-    constructor(props) {
-        super(props)
-
-        //Declare the initial values for states
-        this.state = {
-            bank: " "
-        }
-    }
-    //To make the chosen valuse appear in the box
-    setValue(value) {
-        this.setState({ bank: value });
-    }
-
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>{this.state.bank}</Text>
+                <Text style={styles.text}>{this.props.bank}</Text>
                 <RNPickerSelect
-                    placeholder={{ label: "Choose a bank", value: "", color: "#fff" }}
-                    onValueChange={(value) => this.setValue(value)}
+                    placeholder={{ label: "Choose a bank", value: "", color: "#FFF" }}
+                    onValueChange={this.props.setBank}
                     items={[
                         { label: "البنك العربي الوطني", value: "البنك العربي الوطني" },
                         { label: "البنك السعودي الفرنسي", value: "البنك السعودي الفرنسي" },

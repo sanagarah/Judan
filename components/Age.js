@@ -6,27 +6,13 @@ import RNPickerSelect from "react-native-picker-select";
 
 //The beginning of the class
 export default class Age extends Component {
-    constructor(props) {
-        super(props)
-
-        //Declare the initial values for states
-        this.state = {
-            age: "Age"
-        }
-    }
-
-    //To make the chosen valuse appear in the box
-    setValue(value) {
-        this.setState({ age: value });
-    }
-
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text} >{this.state.age}</Text>
+                <Text style={styles.text} >{this.props.age}</Text>
                 <View style={styles.picker}>
                     <RNPickerSelect
-                        onValueChange={(value) => this.setValue(value)}
+                        onValueChange={this.props.setAge}
                         items={[
                             { label: "5-9", value: "5-9" },
                             { label: "10-14", value: "10-14" },
@@ -54,7 +40,7 @@ export default class Age extends Component {
 const styles = StyleSheet.create({
     container: {
         height: 40,
-        backgroundColor: "#fff",
+        backgroundColor: "#FFF",
         textAlign: "left",
         borderColor: "gray",
         borderWidth: 1,

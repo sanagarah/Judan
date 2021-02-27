@@ -3,9 +3,9 @@ import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 
-//to have the total height of the screen
+//To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height
-//to have the total width of the screen
+//To have the total width of the screen
 const SCREEN_WIDTH = Dimensions.get("window").width
 
 //The beginning of the class
@@ -26,7 +26,7 @@ export default class Thanks extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff"
+        backgroundColor: "#FFF"
     },
     image: {
         width: SCREEN_WIDTH,

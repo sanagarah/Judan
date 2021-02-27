@@ -2,8 +2,6 @@
 import React, { Component } from "react";
 //import all the components we are going to use
 import { SafeAreaView, StyleSheet, TextInput, View, Text, Image, TouchableOpacity } from "react-native";
-import Constants from "expo-constants";
-import * as ImagePicker from "expo-image-picker";
 import Modal from "react-native-modal";
 import BankPicker from "./BankPicker";
 import Time from "../components/Time";
@@ -12,68 +10,6 @@ import Certificate from "../components/Certificate"
 
 //The beginning of the class
 export default class PaymentDetails extends Component {
-    constructor(props) {
-        super(props)
-
-        //Declare the initial values for states
-        this.state = {
-            show: false,
-            toggle: true,
-            image: null,
-            images: [],
-        }
-    }
-
-    //To show the popup page for uploading a certification
-    onShow = () => {
-        if (this.state.toggle)
-            this.setState({ show: true, toggle: false });
-        else {
-            this.setState({ show: false, toggle: true });
-        }
-    }
-
-    //To push the new image uri into an array and creat certification component using that uri
-    addCertification = () => {
-        let name = this.state.image;
-        let component = this.state.images;
-        component.push(name);
-        this.setState({ array: component, text: "" })
-        this.onShow();
-    }
-
-    //To directly ask for permission
-    //This function will automatically run after rendering the page
-    componentDidMount() {
-        this.getPermissionAsync();
-    }
-
-    //To have the permission needed to access the camera roll
-    getPermissionAsync = async () => {
-        if (Constants.platform.ios) {
-            const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-            if (status !== "granted") {
-                alert("Sorry, we need camera roll permissions to make this work!");
-            }
-        }
-    }
-
-    //To show the image picker and runder it (FOR CERTIFICATIONS)
-    _pickImage1 = async () => {
-        this.onShow();
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            aspect: [4, 3],
-            quality: 1
-        });
-        if (!result.cancelled) {
-            // Saving the uri of the selected photo*/ 
-            this.setState({ image: result.uri });
-            console.log(result);
-        }
-    };
-
     render() {
         return (
             <SafeAreaView style={{ flex: 1 }}>
@@ -83,25 +19,21 @@ export default class PaymentDetails extends Component {
                     <TextInput
                         placeholder="Enter Card Owner Name"
                         placeholderTextColor="#c7c7c7"
+                        onChangeText={this.props.setName}
                         fontSize={16}
-                        onChangeText={
-                            (value) => setTextInputName(value)
-                        }
                         underlineColorAndroid="transparent"
                         style={styles.textInput}
                     />
 
                     <Text style={styles.text}>Bank name</Text>
-                    <BankPicker />
+                    <BankPicker bank={this.props.bank} setBank={this.props.setBank} />
 
                     <Text style={styles.text}>ِAccount number</Text>
                     <TextInput
                         placeholder="Last Four digits"
                         placeholderTextColor="#c7c7c7"
+                        onChangeText={this.props.setNumber}
                         fontSize={16}
-                        onChangeText={
-                            (value) => settextInpuCCD(value)
-                        }
                         underlineColorAndroid="transparent"
                         style={styles.textInput}
                     />
@@ -109,39 +41,33 @@ export default class PaymentDetails extends Component {
                     <View >
                         <Text style={styles.text}>Date And Time</Text>
                         <View style={styles.textInput}>
-                            <Date />
+                            <Date date={this.props.date} setDate={this.props.setDate} />
                         </View>
                         <View style={styles.textInput}>
-                            <Time />
+                            <Time time={this.props.time} setTime={this.props.setTime} />
                         </View>
                     </View>
 
                     <Text style={styles.text}>Insert</Text>
                     <TouchableOpacity
-                        onPress={this._pickImage1}
+                        onPress={this.props._pickImage}
                         style={styles.insertContainer}>
                         <Text style={styles.insertText}>Press here to upload the receipt </Text>
-                        {this.state.images.map((data, index) => {
-                            return <Certificate img={{ uri: data }} key={index}></Certificate>
+                        {this.props.images.map((data, index) => {
+                            return <Certificate image={{ uri: data }} key={index}></Certificate>
                         })}
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        onPress={this.props.nav}
-                        style={styles.buttonContainer}>
-                        <Text style={styles.buttonText}>Continue </Text>
                     </TouchableOpacity>
                 </View>
 
                 {/* To render image picker and show the popUp page for sharing a certification */}
-                <Modal isVisible={this.state.show}>
-                    <TouchableOpacity style={styles.modal} onPress={this.onShow}>
+                <Modal isVisible={this.props.show}>
+                    <TouchableOpacity style={styles.modal} onPress={this.props.onShow}>
                         <View style={styles.popUp1}>
                             {/* To push the new image uri into an array and creat certification component using that uri */}
                             <View style={styles.certificationContainer}>
-                                <Certificate img={{ uri: this.state.image }}></Certificate>
+                                <Certificate image={{ uri: this.props.image }}></Certificate>
                             </View>
-                            <TouchableOpacity style={styles.checkImage} onPress={this.addCertification}>
+                            <TouchableOpacity style={styles.checkImage} onPress={this.props.addCertification}>
                                 <Image source={require("../assets/images/check.png")} style={styles.checkImage}></Image>
                             </TouchableOpacity>
                         </View>
@@ -185,23 +111,6 @@ const styles = StyleSheet.create({
         fontSize: 17,
         color: "#808080",
     },
-    buttonContainer: {
-        height: 50,
-        width: 300,
-        backgroundColor: "#F9EBEA",
-        borderRadius: 15,
-        paddingVertical: 12,
-        paddingHorizontal: 12,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 25,
-        marginLeft: 25,
-    },
-    buttonText: {
-        fontSize: 17,
-        color: "#F25F5C",
-        fontWeight: "bold",
-    },
     text: {
         fontSize: 17,
         marginTop: 13,
@@ -215,7 +124,7 @@ const styles = StyleSheet.create({
         height: 300,
         width: 350,
         alignSelf: "center",
-        backgroundColor: "#fff",
+        backgroundColor: "#FFF",
         paddingLeft: 15,
         borderWidth: 1,
         borderRadius: 30,
@@ -232,7 +141,7 @@ const styles = StyleSheet.create({
         width: 50,
         alignSelf: "flex-end",
         borderWidth: 1,
-        borderColor: "#fff",
+        borderColor: "#FFF",
         borderRadius: 90,
         margin: 10
     },

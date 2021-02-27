@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     text: {
-        color: "#fff",
+        color: "#FFF",
         fontSize: 15,
     },
     LeftImagechat: {
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     ChatLabelName: {
         fontSize: 30,
         fontWeight: "bold",
-        color: "#fff",
+        color: "#FFF",
         textAlign: "center",
     },
 });

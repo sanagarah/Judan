@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     container: {
         marginVertical: 20,
         borderRadius: 30,
-        backgroundColor: "#fff",
+        backgroundColor: "#FFF",
         width: 220,
         marginLeft: 10,
         alignItems: "stretch"

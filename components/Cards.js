@@ -3,7 +3,7 @@ import React, { Component } from "react";
 //import all the components we are going to use
 import { View, Animated, PanResponder, Dimensions } from "react-native";
 
-//to have the total width of the screen
+//To have the total width of the screen
 const SCREEN_WIDTH = Dimensions.get("window").width
 //To tite the swipe distance to the actual width of the screen
 const SWIP_THRESHOLD = 0.25 * SCREEN_WIDTH;
@@ -104,8 +104,8 @@ export default class Cards extends Component {
                     <Animated.View
                         key={item.id}
                         style={[this.cardStyle(), styles.cardStyle, { zIndex: 99 }]}
-                        {...this.state.panResponder.panHandlers}
-                    >{/*Puts each individual card as a parameter in renderCard*/}
+                        {...this.state.panResponder.panHandlers}>
+                        {/*Puts each individual card as a parameter in renderCard*/}
                         {this.props.renderCard(item)}
                     </Animated.View>
                 )

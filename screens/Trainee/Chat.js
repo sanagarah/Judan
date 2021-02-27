@@ -43,8 +43,7 @@ const styles = StyleSheet.create({
     flex: 5,
     backgroundColor: "#E7E8EF",
     width: "100%",
-    justifyContent: "center",
-    alignContent: "center",
+    justifyContent: "center"
   },
 });
 

@@ -16,7 +16,7 @@ export default class Reviews extends Component {
 //Declare the style
 const styles = StyleSheet.create({
     review: {
-        backgroundColor: "#fff",
+        backgroundColor: "#FFF",
         width: "90%",
         borderWidth: 1,
         borderColor: "#808080",

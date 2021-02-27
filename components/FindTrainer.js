@@ -4,9 +4,9 @@ import React, { Component } from "react";
 import { StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
-//to have the total width of the screen
+//To have the total width of the screen
 const SCREEN_WIDTH = Dimensions.get("window").width
-//to have the total height of the screen
+//To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height
 
 //The beginning of the class
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         position: "absolute"
     },
     searchbarView: {
-        backgroundColor: "#fff",
+        backgroundColor: "#FFF",
         width: SCREEN_WIDTH / 1.3,
         alignSelf: "center",
         marginHorizontal: SCREEN_WIDTH / 10,
@@ -87,14 +87,13 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 15,
-        color: "#fff",
+        color: "#FFF",
         alignSelf: "center"
     },
     matchMeView: {
         width: 150,
         height: 30,
         backgroundColor: "#247BA0",
-        alignContent: "center",
         justifyContent: "center",
         borderRadius: 10,
         position: "absolute",

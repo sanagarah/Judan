@@ -6,7 +6,7 @@ import Levels from "../../components/Levels"
 import Subject from "../../components/Subject"
 import Certificate from "../../components/Certificate"
 
-//to have the total height of the screen
+//To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 let levelNum = 3;
 
@@ -16,9 +16,9 @@ export default class Progress extends Component {
     super(props)
     //Declare the initial values for states
     this.state = {
-      progressColor1: "#fff",
-      progressColor2: "#fff",
-      progressColor3: "#fff",
+      progressColor1: "#FFF",
+      progressColor2: "#FFF",
+      progressColor3: "#FFF",
       circleColor1: "#808080",
       circleColor2: "#808080",
       circleColor3: "#808080",
@@ -42,9 +42,9 @@ export default class Progress extends Component {
           <View>
             <Text style={styles.text}>Certification</Text>
             <ScrollView horizontal={true} >
-              <Certificate img={require("../../assets/images/certificate.png")}></Certificate>
-              <Certificate img={require("../../assets/images/certificate.png")}></Certificate>
-              <Certificate img={require("../../assets/images/certificate.png")}></Certificate>
+              <Certificate image={require("../../assets/images/certificate.png")}></Certificate>
+              <Certificate image={require("../../assets/images/certificate.png")}></Certificate>
+              <Certificate image={require("../../assets/images/certificate.png")}></Certificate>
             </ScrollView>
           </View>
         </ImageBackground>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginLeft: 10,
-    color: "#fff",
+    color: "#FFF",
     fontWeight: "bold",
     fontSize: 17,
     marginBottom: 15,

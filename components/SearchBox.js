@@ -1,11 +1,11 @@
 // import React in our code
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import all the components we are going to use
-import { Text, StyleSheet, View, FlatList, ScrollView } from 'react-native';
-import { SearchBar } from 'react-native-elements';
-import jsonData from '../trainersInfo.json';
-import { LogBox } from 'react-native';
-LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+import { Text, StyleSheet, View, FlatList, ScrollView } from "react-native";
+import { SearchBar } from "react-native-elements";
+import jsonData from "../trainersInfo.json";
+import { LogBox } from "react-native";
+LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
 
 //The beginning of the class
 export default class SearchBox extends Component {
@@ -58,7 +58,7 @@ export default class SearchBox extends Component {
                     containerStyle={styles.container}
                     inputStyle={styles.container}
                     inputContainerStyle={styles.container}
-                    backgroundColor="#fff"
+                    backgroundColor="#FFF"
                     onChangeText={(text) => this.searchFilterFunction(text)}
                     onClear={(text) => this.searchFilterFunction('')}
                     placeholder="Type here"
@@ -86,7 +86,7 @@ export default class SearchBox extends Component {
 //Declare the style
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#fff",
+        backgroundColor: "#FFF",
     },
     itemStyle: {
         padding: 19,

@@ -47,7 +47,7 @@ const rootNavigation = createStackNavigator(
       headerStyle: {
         backgroundColor: "#F25F5C",
       },
-      headerTintColor: "#fff",
+      headerTintColor: "#FFF",
       headerTitleStyle: {
         fontWeight: "bold",
       },
@@ -83,10 +83,10 @@ const rootDrawerNavigation = createDrawerNavigator(
       },
     }),
     drawerType: "back",
-    drawerBackgroundColor: "#fff",
+    drawerBackgroundColor: "#FFF",
     contentOptions: {
       activeTintColor: "#000000",
-      activeBackgroundColor: "#fff",
+      activeBackgroundColor: "#FFF",
     },
   }
 );
@@ -121,12 +121,12 @@ const rootBottomTabNavigation = createBottomTabNavigator(
       },
     }),
     tabBarOptions: {
-      activeTintColor: "#fff",
+      activeTintColor: "#FFF",
       style: {
         backgroundColor: "#F25F5C",
       },
       inactiveTintColor: "#000000",
-      inactiveBackgroundColor: "#fff",
+      inactiveBackgroundColor: "#FFF",
     },
   }
 );

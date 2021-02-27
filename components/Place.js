@@ -6,26 +6,13 @@ import RNPickerSelect from "react-native-picker-select";
 
 //The beginning of the class
 export default class Place extends Component {
-    constructor(props) {
-        super(props)
-
-        //Declare the initial values for states
-        this.state = {
-            place: ""
-        }
-    }
-    //To make the chosen valuse appear in the box
-    setValue(value) {
-        this.setState({ place: value });
-    }
-
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>{this.state.place}</Text>
+                <Text style={styles.text}>{this.props.place}</Text>
                 <RNPickerSelect
-                    placeholder={{ label: "Choose a platform", value: " ", color: "#fff" }}
-                    onValueChange={(value) => this.setValue(value)}
+                    placeholder={{ label: "Choose a platform", value: "", color: "#FFF" }}
+                    onValueChange={this.props.setPlace}
                     items={[
                         { label: "Zoom", value: "Zoom" },
                         { label: "Teams", value: "Teams" },

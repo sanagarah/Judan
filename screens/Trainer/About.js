@@ -48,7 +48,7 @@ export default class About extends Component {
                 right={require("../../assets/images/rightS.png")} />
 
               <Settinglist
-                icon={require("../../assets/images/Help.png")}
+                icon={require("../../assets/images/help.png")}
                 name="Help Center"
                 right={require("../../assets/images/rightS.png")}
                 nav={this.makeCall} />
@@ -64,7 +64,7 @@ export default class About extends Component {
                 right={require("../../assets/images/rightS.png")} />
 
               <Settinglist
-                icon={require("../../assets/images/Logout.png")}
+                icon={require("../../assets/images/logout.png")}
                 name="Logout"
                 right={require("../../assets/images/rightS.png")} />
             </View>

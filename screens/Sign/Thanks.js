@@ -12,7 +12,7 @@ export default class Thanks extends Component {
                 <View style={styles.Container}>
                     <View style={styles.sliderContainer}>
                         <Swiper autoplay
-                            activeDotColor="#fff">
+                            activeDotColor="#FFF">
                             <View style={styles.slide}>
                                 <Image
                                     source={require("../../assets/images/1.jpg")}
@@ -107,6 +107,6 @@ const styles = StyleSheet.create({
     appButtonText: {
         fontSize: 25,
         fontWeight: "bold",
-        color: "#fff"
+        color: "#FFF"
     }
 });

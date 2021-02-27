@@ -8,66 +8,42 @@ import { TextInput } from "react-native-paper";
 export default class LoginInput extends Component {
     render() {
         return (
-            <View style={styles.inputcontainer}>
+            <View style={styles.container}>
                 {/** text  */}
-                <View style={styles.viewBehindTheText}>
-                    <View style={styles.textViewStyle}>
-                        <Text style={styles.text}> or login with email  </Text>
-                    </View>
-                </View>
-
-                <View style={styles.viewBehindThePic}>
-                    <TextInput
-                        placeholder="Email"
-                        style={styles.textinput}></TextInput>
-
-                    <TextInput
-                        placeholder="Password"
-                        style={styles.textinput}></TextInput>
-                </View>
-                <View style={styles.viewBehindTheText}>
-                </View>
+                <Text style={styles.text}> or login with email  </Text>
+                <TextInput
+                    placeholder="Email"
+                    onChangeText={this.props.setEmail}
+                    style={styles.textinput}>
+                </TextInput>
+                <TextInput
+                    placeholder="Password"
+                    onChangeText={this.props.setPassword}
+                    style={styles.textinput}>
+                </TextInput>
             </View>
         );
     }
 }
 //Declare the style
 const styles = StyleSheet.create({
-    inputcontainer: {
-        flex: 5,
-        backgroundColor: "#FFC0CB",
+    container: {
+        backgroundColor: "#FFF",
         width: "100%",
-        flexDirection: "column"
-    },
-    viewBehindThePic: {
-        flex: 4,
-        backgroundColor: "#fff",
-        width: "100%",
-        flexDirection: "column"
-    },
-    viewBehindTheText: {
-        flex: 1,
-        backgroundColor: "#fff",
-        width: "100%",
-        flexDirection: "column"
-    },
-    textViewStyle: {
-        flexDirection: "row",
-        justifyContent: "center",
-        alignContent: "center",
-        top: "3%"
+        marginVertical: 20,
     },
     textinput: {
         textAlign: "left",
         borderColor: "#808080",
         borderWidth: 1,
         marginHorizontal: 10,
-        backgroundColor: "#fff",
+        backgroundColor: "#FFF",
         margin: "2%"
     },
     text: {
         fontSize: 17,
         color: "#808080",
+        alignSelf: "center",
     }
 });
 

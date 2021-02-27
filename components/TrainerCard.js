@@ -5,7 +5,7 @@ import { StyleSheet, Text, Image, View, ImageBackground, TouchableOpacity, Dimen
 import StarBar from "./StarBar";
 import Interest from "./Interests";
 
-//to have the total height of the screen
+//To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height
 
 //The beginning of the class
@@ -14,7 +14,7 @@ export default class TrainerCard extends Component {
         return (
             <View>
                 <ImageBackground
-                    source={require("../assets/images/LinearGradient.png")}
+                    source={require("../assets/images/linearGradient.png")}
                     style={styles.backgroundContainer}>
                     <View style={styles.ImageContainer} >
                         <Image
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     backgroundContainer: {
         width: "100%",
         height: SCREEN_HEIGHT,
-        alignContent: "center",
         alignItems: "center",
     },
     ImageContainer: {
@@ -86,19 +85,19 @@ const styles = StyleSheet.create({
     },
     text1: {
         fontSize: 30,
-        color: "#fff",
+        color: "#FFF",
         fontWeight: "bold",
         marginRight: 15
     },
     text2: {
         fontSize: 15,
         padding: 9,
-        color: "#fff",
+        color: "#FFF",
     },
     text3: {
         fontSize: 18,
         fontWeight: "bold",
-        color: "#fff",
+        color: "#FFF",
     },
     scrollViewContainer: {
         alignItems: "center",
@@ -113,7 +112,7 @@ const styles = StyleSheet.create({
 
     },
     scrollText: {
-        color: "#fff",
+        color: "#FFF",
         fontSize: 18,
 
     }
