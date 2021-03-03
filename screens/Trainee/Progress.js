@@ -8,7 +8,7 @@ import Certificate from "../../components/Certificate"
 
 //To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
-let levelNum = 3;
+let levelNum = 1;
 
 //The beginning of the class
 export default class Progress extends Component {

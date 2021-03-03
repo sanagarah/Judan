@@ -17,7 +17,7 @@ export default class Thanks extends Component {
                     source={require("../../assets/images/thanks.png")}
                     style={styles.image}>
                 </Image>
-                <Text style={styles.title}>Booked Successfuly</Text>
+                <Text style={styles.title}>Please wait for receiving a confirmation email for your registration</Text>
             </View>
         );
     }
@@ -34,9 +34,9 @@ const styles = StyleSheet.create({
         alignSelf: "center"
     },
     title: {
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: "bold",
-        alignSelf: "center",
+        textAlign: "center",
         marginTop: 20,
         color: "#70C1B3"
     },

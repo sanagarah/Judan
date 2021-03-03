@@ -120,12 +120,12 @@ export default class BankCard extends Component {
         }
         //Check for the bank card number length
         if (this.state.number.length !== 4) {
-            alert("Please enter the last 4 digits of you card");
+            alert("Please enter the last 4 digits of your bank card number");
             return;
         }
         //Check it the bank card number contains other characters than digits
         if (this.state.number.match(/[^0-9]/)) {
-            alert("Please enter digit characters");
+            alert("Please enter digit numbers for bank card number");
             return;
         }
         //Check for the date TextInput

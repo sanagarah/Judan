@@ -62,7 +62,7 @@ export default class Payment extends Component {
                                 <Text style={styles.descrition}>Pay for each hour</Text>
                             </View>
                             <View>
-                                <Text style={styles.price}>5$</Text>
+                                <Text style={styles.price}>20 Riyal</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -74,10 +74,10 @@ export default class Payment extends Component {
                         }]}>
                             <View style={styles.secondView}>
                                 <Text style={styles.title}>Monthly Payment</Text>
-                                <Text style={styles.descrition}>5 hours/mo</Text>
+                                <Text style={styles.descrition}>up to 8 hours/mo</Text>
                             </View>
                             <View>
-                                <Text style={styles.price}>15$</Text>
+                                <Text style={styles.price}>80 Riyal</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -89,10 +89,10 @@ export default class Payment extends Component {
                         }]}>
                             <View style={styles.secondView}>
                                 <Text style={styles.title}>Yearly Payment</Text>
-                                <Text style={styles.descrition}>10 hours/mo</Text>
+                                <Text style={styles.descrition}>limitless hours/year</Text>
                             </View>
                             <View>
-                                <Text style={styles.price}>25$</Text>
+                                <Text style={styles.price}>800 Riyal</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     },
     price: {
         color: "#70C1B3",
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: "bold",
         marginVertical: 10,
         marginLeft: 10

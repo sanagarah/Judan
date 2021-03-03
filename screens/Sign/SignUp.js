@@ -5,7 +5,7 @@ import { StyleSheet, SafeAreaView } from "react-native";
 import SignupHeader from "../../components/SignHeader"
 import SocialNetwork from "../../components/SocialNetwork"
 import SignInput from "../../components/SignInput"
-import SignUpButton from "../../components/SignButton"
+import SignUpButton from "../../components/SignButton";
 
 //The beginning of the class
 export default class SignUp extends Component {
