@@ -1,7 +1,7 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, View, Text, Image, TextInput, SafeAreaView, ScrollView, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Image, TextInput, ScrollView, Button, TouchableOpacity } from "react-native";
 import Interest from "../../components/Interests";
 import Post from "../../components/Posts";
 import Review from "../../components/Reviews";
@@ -141,7 +141,7 @@ export default class Profile extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.safeArea}>
+      <View style={styles.safeArea}>
         <ScrollView>
           <Button title="Edit profile" color="#247BA0" onPress={this.onShow2}></Button>
           {/* Header section */}
@@ -236,7 +236,7 @@ export default class Profile extends Component {
             </View>
           </TouchableOpacity>
         </Modal>
-      </SafeAreaView >
+      </View>
     )
   }
 }

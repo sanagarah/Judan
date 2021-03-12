@@ -1,15 +1,15 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, Text, SafeAreaView } from "react-native";
-import FindTrainer from "../../components/FindTrainer"
-import TopTrainer from "../../components/TopTrainerList"
+import { StyleSheet, Text, View } from "react-native";
+import FindTrainer from "../../components/FindTrainer";
+import TopTrainer from "../../components/TopTrainerList";
 
 //The beginning of the class
 export default class Home extends Component {
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <FindTrainer
           nav1={() => this.props.navigation.navigate("Match")}
           nav2={() => this.props.navigation.navigate("Search")}/>
@@ -36,7 +36,7 @@ export default class Home extends Component {
           rate4={3.5}
 
           nav={() => this.props.navigation.navigate("Card")}></TopTrainer>
-      </SafeAreaView>
+      </View>
     );
   }
 }

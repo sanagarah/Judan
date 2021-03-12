@@ -1,7 +1,7 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, View, SafeAreaView } from "react-native";
+import { StyleSheet, View } from "react-native";
 import ChatDpnd from "../../components/ChatDpnd";
 import Header from "../../components/ChatHeader";
 
@@ -10,7 +10,7 @@ export default class Chat extends Component {
   state = { text: "" }
   render() {
     return (
-      <SafeAreaView style={styles.container1}>
+      <View style={styles.container1}>
         {/*view for header box*/}
         <View style={styles.container2}>
           <Header name="Sara" subname="Rigesterd" nav={() => this.props.navigation.navigate("Chat")}>
@@ -21,7 +21,7 @@ export default class Chat extends Component {
         <View style={styles.container3}>
           <ChatDpnd />
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 }

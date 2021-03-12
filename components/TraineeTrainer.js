@@ -1,7 +1,7 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, TouchableOpacity, View, Image, Text} from "react-native";
+import { StyleSheet, TouchableOpacity, View, Image } from "react-native";
 
 //The beginning of the class
 export default class TraineeTrainer extends Component {

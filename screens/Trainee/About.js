@@ -1,8 +1,8 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, View, SafeAreaView, Linking, ScrollView } from "react-native";
-import Settinglist from "../../components/Settinglist"
+import { StyleSheet, View, Linking, ScrollView } from "react-native";
+import Settinglist from "../../components/Settinglist";
 
 //The beginning of the class
 export default class About extends Component {
@@ -22,7 +22,7 @@ export default class About extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
 
         {/*View for header box*/}
         <View style={styles.header}>
@@ -70,7 +70,7 @@ export default class About extends Component {
             </View>
           </ScrollView>
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 }

@@ -1,20 +1,20 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { SafeAreaView, StyleSheet, TextInput, View, Text, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, TextInput, View, Text, Image, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
 import BankPicker from "./BankPicker";
 import Time from "../components/Time";
 import Date from "../components/Date";
-import Certificate from "../components/Certificate"
+import Certificate from "../components/Certificate";
 
 //The beginning of the class
 export default class PaymentDetails extends Component {
     render() {
         return (
-            <SafeAreaView style={{ flex: 1 }}>
+            <View>
                 <View style={styles.container}>
-
+                    <Text style={styles.iban}>Iban: SA45769248475893</Text>
                     <Text style={styles.text}>Card owner Name</Text>
                     <TextInput
                         placeholder="Enter Card Owner Name"
@@ -73,7 +73,7 @@ export default class PaymentDetails extends Component {
                         </View>
                     </TouchableOpacity>
                 </Modal>
-            </SafeAreaView>
+            </View>
         );
     };
 }
@@ -110,6 +110,10 @@ const styles = StyleSheet.create({
     insertText: {
         fontSize: 17,
         color: "#808080",
+    },
+    iban: {
+        fontSize: 17,
+        color: "#000000"
     },
     text: {
         fontSize: 17,

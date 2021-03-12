@@ -1,7 +1,7 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, TouchableOpacity, Dimensions, TextInput } from "react-native";
+import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity, Dimensions, TextInput } from "react-native";
 import Interest from "../../components/Interests";
 import Post from "../../components/Posts";
 import Review from "../../components/Reviews";
@@ -45,7 +45,7 @@ export default class TrainerProfile extends Component {
 
   render() {
     return (
-      <SafeAreaView>
+      <View>
         <ScrollView>
           {/* Header section */}
           <Header
@@ -99,7 +99,7 @@ export default class TrainerProfile extends Component {
             </View>
           </TouchableOpacity>
         </Modal>
-      </SafeAreaView >
+      </View >
     )
   }
 }

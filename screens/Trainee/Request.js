@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from "rea
 import Place from "../../components/Place";
 import Time from "../../components/Time";
 import Date from "../../components/Date";
-import Map from "../../components/Map"
+import Map from "../../components/Map";
 
 //The beginning of the class
 export default class Request extends Component {

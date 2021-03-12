@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 //import all the components we are going to use
 import { View } from "react-native";
-import TrainerCard from "../../components/TrainerCard"
+import TrainerCard from "../../components/TrainerCard";
 import Header from "../../components/CardHeader";
 
 //The beginning of the class

@@ -3,9 +3,9 @@ import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, View } from "react-native";
 import { connect } from "react-redux";
-import * as actions from "../../actions"
-import SignupHeader from "../../components/SignHeader"
-import SocialNetwork from "../../components/SocialNetwork"
+import * as actions from "../../actions";
+import SignupHeader from "../../components/SignHeader";
+import SocialNetwork from "../../components/SocialNetwork";
 
 //The beginning of the class
 class SignUp extends Component {

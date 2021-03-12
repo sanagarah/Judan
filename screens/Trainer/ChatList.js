@@ -1,15 +1,15 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, ScrollView, SafeAreaView } from "react-native";
-import ChatBox from "../../components/ChatBox"
+import { StyleSheet, ScrollView, View } from "react-native";
+import ChatBox from "../../components/ChatBox";
 
 //The beginning of the class
 export default class ChatList extends Component {
   state = { text: "" }
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         {/*View for ppl's msg*/}
         <ScrollView>
           <ChatBox
@@ -31,7 +31,7 @@ export default class ChatList extends Component {
             time="15 m">
           </ChatBox>
         </ScrollView>
-      </SafeAreaView>
+      </View>
     );
   }
 }

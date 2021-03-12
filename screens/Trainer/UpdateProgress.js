@@ -5,9 +5,9 @@ import { StyleSheet, View, ImageBackground, Dimensions, Text, Image, ScrollView,
 import Constants from "expo-constants";
 import * as ImagePicker from "expo-image-picker";
 import Modal from "react-native-modal";
-import Levels from "../../components/TouchableLevels"
-import Subject from "../../components/Subject"
-import Certificate from "../../components/Certificate"
+import Levels from "../../components/TouchableLevels";
+import Subject from "../../components/Subject";
+import Certificate from "../../components/Certificate";
 
 //To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;

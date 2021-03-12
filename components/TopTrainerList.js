@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, TouchableOpacity, ScrollView, Dimensions } from "react-native";
-import TopTrainer from "./TopTrainer"
+import TopTrainer from "./TopTrainer";
 
 //To have the total width of the screen
 const SCREEN_WIDTH = Dimensions.get("window").width

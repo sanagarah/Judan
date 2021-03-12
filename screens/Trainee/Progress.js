@@ -2,9 +2,9 @@
 import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, View, ImageBackground, Dimensions, Text, ScrollView } from "react-native";
-import Levels from "../../components/Levels"
-import Subject from "../../components/Subject"
-import Certificate from "../../components/Certificate"
+import Levels from "../../components/Levels";
+import Subject from "../../components/Subject";
+import Certificate from "../../components/Certificate";
 
 //To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
