@@ -1,9 +1,10 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, Text, View, Image, Dimensions} from "react-native";
-import TraineeTrainer from "../../components/TraineeTrainer"
-import SignUpButton from "../../components/SignButton"
+import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import TraineeTrainer from "../../components/TraineeTrainer";
+import SignUpButton from "../../components/SignButton";
 
 //To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height
@@ -20,12 +21,14 @@ export default class Sign extends Component {
     }
 
     //To change the opacity of the chosen choice
-    changeOpacity1 = () => {
+    changeOpacity1 = async () => {
         this.setState({ opacity: 1 })
+        await AsyncStorage.setItem("user", "trainee");
     }
 
-    changeOpacity2 = () => {
+    changeOpacity2 = async () => {
         this.setState({ opacity: 2 })
+        await AsyncStorage.setItem("user", "trainer");
     }
 
     //To validate
@@ -59,10 +62,7 @@ export default class Sign extends Component {
                 <SignUpButton
                     nav1={this.check}
                     nav2={() => this.props.navigation.navigate("LogIn")}
-                    color="#F25F5C"
-                    text1="Sign Up"
-                    text2="Have an account?"
-                    text3=" Login" />
+                />
             </View>
         );
     }

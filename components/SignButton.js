@@ -10,15 +10,15 @@ export default class SignButton extends Component {
             <View style={styles.container}>
                 {/*Sign up buton */}
                 <TouchableOpacity
-                    style={[styles.BlockButton, { backgroundColor: this.props.color }]}
+                    style={styles.BlockButton}
                     onPress={this.props.nav1}>
-                    <Text style={styles.text1}>{this.props.text1}</Text>
+                    <Text style={styles.text1}>Sign Up</Text>
                 </TouchableOpacity>
                 {/*  Button component refer to a text button "it can be changed to any text"*/}
                 <View style={styles.textView}>
-                    <Text style={styles.text2}>{this.props.text2}</Text>
+                    <Text style={styles.text2}>Have an account?</Text>
                     <TouchableOpacity onPress={this.props.nav2}>
-                        <Text style={[styles.text3, { color: this.props.color }]}>{this.props.text3}</Text>
+                        <Text style={styles.text3}>Login</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         height: 60,
         alignItems: "center",
         justifyContent: "center",
+        backgroundColor: "#F26D6A",
         borderRadius: 10,
     },
     textView: {
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
     },
     text3: {
         fontSize: 15,
+        color: "#F26D6A",
         marginBottom: 10
     }
 });

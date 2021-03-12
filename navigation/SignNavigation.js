@@ -6,23 +6,27 @@ import { StyleSheet, View } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
-import sign from "../screens/Sign/Sign"
-import logIn from "../screens/Sign/LogIn"
-import signUp from "../screens/Sign/SignUp"
-import thanks from "../screens/Sign/Thanks"
+import welcome from "../screens/Sign/Welcome";
+import sign from "../screens/Sign/Sign";
+import signUp from "../screens/Sign/SignUp";
+import thanks from "../screens/Sign/Thanks";
+
 
 const rootNavigation = createStackNavigator(
     {
+        Welcome: welcome,
         Sign: sign,
-        LogIn: logIn,
         SignUp: signUp,
         Thanks: thanks
     },
     {
-        initialRouteName: "Sign",
+        initialRouteName: "Welcome",
         defaultNavigationOptions: {
             headerShown: false
         },
+    },
+    {
+        lazy: true
     }
 );
 

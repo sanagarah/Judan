@@ -8,21 +8,19 @@ export default class SocialNetwork extends Component {
         return (
             <View style={styles.container}>
                 {/** text  */}
-                 <Text style={styles.text}> Enter via social networks  </Text>
+                <Text style={styles.text}> Sign up easily via your favorite social network </Text>
 
                 {/** pic  */}
-                <View style={styles.viewBehindThePic}>
                     <TouchableOpacity style={styles.GoogleView}>
                         <Image
                             style={styles.image}
                             source={require("../assets/images/google.png")} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.FacebookView}>
+                    <TouchableOpacity style={styles.FacebookView} onPress={this.props.nav2}>
                         <Image
                             style={styles.image}
                             source={require("../assets/images/facebook.png")} />
                     </TouchableOpacity>
-                </View>
             </View>
         );
     }
@@ -30,17 +28,15 @@ export default class SocialNetwork extends Component {
 //Declare the style
 const styles = StyleSheet.create({
     container: {
+        flex: 2.5,
         width: "100%",
-        justifyContent: "center",
         alignItems: "center"
-    },
-    viewBehindThePic: {
-        flexDirection: "row"
     },
     text: {
         fontSize: 17,
         color: "#808080",
-        marginVertical: 5
+        marginBottom: 10,
+        marginTop: 5
     },
     image: {
         width: 40,
@@ -48,7 +44,8 @@ const styles = StyleSheet.create({
     },
     GoogleView: {
         marginHorizontal: "3%",
-        width: "40%",
+        marginVertical: 10,
+        width: "70%",
         height: 50,
         backgroundColor: "#FFE066",
         alignItems: "center",
@@ -57,7 +54,7 @@ const styles = StyleSheet.create({
     },
     FacebookView: {
         marginHorizontal: "3%",
-        width: "40%",
+        width: "70%",
         height: 50,
         backgroundColor: "#4267B2",
         alignItems: "center",
