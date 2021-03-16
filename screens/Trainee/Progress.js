@@ -45,17 +45,16 @@ export default class Progress extends Component {
         <ImageBackground source={require("../../assets/images/header1.png")} style={styles.header}>
           <View>
             <Text style={styles.text}>{AorE.A == true ? LangAr.Certification : LangEn.Certification}</Text>
-            <ScrollView horizontal={true} >
-              <Certificate image={require("../../assets/images/certificate.png")}></Certificate>
+            <ScrollView horizontal={true} style={AorE.A == true ? { alignSelf: "flex-end", marginRight: 10 } : { alignSelf: "flex-start", marginLeft: 10 }}>
               <Certificate image={require("../../assets/images/certificate.png")}></Certificate>
               <Certificate image={require("../../assets/images/certificate.png")}></Certificate>
             </ScrollView>
           </View>
         </ImageBackground>
-        <View>
+        <View style={AorE.A == true ? { alignSelf: "flex-end", marginRight: 10 } : { alignSelf: "flex-start", marginLeft: 10 }}>
           <Subject></Subject>
         </View>
-        <View >
+        <View>
           {this.setValue}
         </View>
         <Levels cColor1={this.state.circleColor1} cColor2={this.state.circleColor2} cColor3={this.state.circleColor3}

@@ -16,19 +16,19 @@ export default class ChatList extends Component {
             nav={() => this.props.navigation.navigate("Chating")}
             name="Sana"
             lastMassage="hi"
-            time="15 m">
+            time="15">
           </ChatBox>
           <ChatBox
             nav={() => this.props.navigation.navigate("Chating")}
             name="Salwa"
             lastMassage="hi, whats up"
-            time="15 m">
+            time="15">
           </ChatBox>
           <ChatBox
             nav={() => this.props.navigation.navigate("Chating")}
             name="Aseel"
             lastMassage="hi, whats up"
-            time="15 m">
+            time="15">
           </ChatBox>
         </ScrollView>
       </View>

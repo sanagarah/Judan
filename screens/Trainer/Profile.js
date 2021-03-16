@@ -32,9 +32,9 @@ export default class Profile extends Component {
       images: [],
       interests: [],
       text: "",
-      name: "Name",
-      field: "Field",
-      bio: "Please let me be your trainer",
+      name:  AorE.A == true ? LangAr.Name : LangEn.Name,
+      field: AorE.A == true ? LangAr.Field : LangEn.Field,
+      bio: " ",
     }
   }
 
@@ -147,7 +147,7 @@ export default class Profile extends Component {
     return (
       <View style={styles.safeArea}>
         <ScrollView>
-          <Button title="Edit profile" color="#247BA0" onPress={this.onShow2}></Button>
+          <Button title={AorE.A == true ? LangAr.Edit : LangEn.Edit} color="#247BA0" onPress={this.onShow2}></Button>
           {/* Header section */}
           <Header
             rate={5}
@@ -163,7 +163,7 @@ export default class Profile extends Component {
             <View style={styles.marginContainer}>
 
               {/* Inserted posts section */}
-              <ScrollView horizontal={true}>
+              <ScrollView horizontal={true} style={AorE.A == true ? { alignSelf: "flex-end" } : { alignSelf: "flex-start" }}>
                 <TouchableOpacity onPress={this._pickImage1}>
                   <Image style={styles.post} source={require("../../assets/images/post.png")}></Image>
                 </TouchableOpacity>
@@ -172,8 +172,8 @@ export default class Profile extends Component {
                 })}
               </ScrollView>
               {/* Interests section */}
-              <Text style={styles.label}>Interests</Text>
-              <View style={styles.container}>
+              <Text style={styles.label}>{AorE.A == true ? LangAr.Interests : LangEn.Interests}</Text>
+              <View style={[styles.container],  AorE.A == true ? { alignSelf: "flex-end" } : { alignSelf: "flex-start" }}>
                 <TouchableOpacity onPress={this.onShow}>
                   <View style={styles.background}>
                     <Image source={require("../../assets/images/plus.png")} style={styles.plusImage} ></Image>
@@ -184,7 +184,7 @@ export default class Profile extends Component {
                 })}
               </View>
               {/* Reviews section */}
-              <Text style={styles.label}>Reviews</Text>
+              <Text style={styles.label}>{AorE.A == true ? LangAr.Reviews : LangEn.Reviews}</Text>
             </View>
           </View>
           <View style={styles.section1}>
@@ -344,7 +344,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "700",
     color: "#247BA0",
-    marginTop: 15
+    marginTop: 15,
+    marginHorizontal: 10
   },
   post: {
     height: 150,

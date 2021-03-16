@@ -3,6 +3,10 @@ import React, { Component } from "react";
 //import all the components we are going to use
 import { View, StyleSheet, Text } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
+//import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
+import AorE from "../lang/AorE";
 
 //The beginning of the class
 export default class Country extends Component {
@@ -13,8 +17,9 @@ export default class Country extends Component {
                 <View style={styles.picker}>
                     <RNPickerSelect
                         onValueChange={this.props.setCountry}
+                        placeholder={{ label: "", value: null }}
                         items={[
-                            { label: "السعودية", value: "السعودية" },
+                            { label: AorE.A == true ? LangAr.Saudi : LangEn.Saudi, value: AorE.A == true ? LangAr.Saudi : LangEn.Saudi },
 
                         ]} />
                 </View>
@@ -43,7 +48,7 @@ const styles = StyleSheet.create({
     },
     picker: {
         flex: 1,
-        marginLeft: "70%",
+        marginLeft: "80%",
         alignSelf: "center"
     }
 });

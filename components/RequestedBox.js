@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+//import language files for translation
+import AorE from "../lang/AorE";
 
 //The beginning of the class
 export default class RequestedBox extends Component {
@@ -42,10 +44,12 @@ export default class RequestedBox extends Component {
                 </View>
                 <View style={styles.imageContainer}>
                     {this.state.show ? <TouchableOpacity onPress={this.props.nav1}>
-                        <Image source={require("../assets/images/chatButton.png")} style={styles.image1}></Image>
+                        <Image source={AorE.A == true ? require("../assets/images/chatButtonA.png") : require("../assets/images/chatButton.png")}
+                            style={styles.image2} />
                     </TouchableOpacity> : null}
                     {this.state.show ? <TouchableOpacity onPress={this.props.nav2}>
-                        <Image source={require("../assets/images/progressButton.png")} style={styles.image2}></Image>
+                        <Image source={AorE.A == true ? require("../assets/images/progressButtonA.png") : require("../assets/images/progressButton.png")}
+                            style={styles.image2} />
                     </TouchableOpacity> : null}
                 </View>
             </TouchableOpacity>
@@ -77,7 +81,8 @@ const styles = StyleSheet.create({
     },
     text2: {
         color: "#F25F5C",
-        fontSize: 15
+        fontSize: 15,
+        alignSelf: "flex-start"
     },
     text3: {
         color: "#70C1B3",
@@ -85,11 +90,11 @@ const styles = StyleSheet.create({
         fontSize: 17
     },
     image1: {
-        width: 100,
+        width: 104,
         height: 40
     },
     image2: {
-        width: 106,
+        width: 108,
         height: 40
     }
 });

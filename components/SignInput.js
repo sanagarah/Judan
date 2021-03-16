@@ -19,14 +19,14 @@ export default class SignInput extends Component {
         return (
             <View style={styles.container}>
                 {/** text  */}
-                <Text style={styles.label}>Kindly, fill the fields to enhance your experience</Text>
+                <Text style={styles.label}>{AorE.A == true ? LangAr.Fill : LangEn.Fill}</Text>
                 <TextInput
-                    placeholder="Full name"
+                    placeholder={AorE.A == true ? LangAr.Name : LangEn.Name}
                     onChangeText={this.props.setName}
                     style={styles.textinput}>
                 </TextInput>
                 <TextInput
-                    placeholder="Email"
+                    placeholder={AorE.A == true ? LangAr.Email : LangEn.Email}
                     onChangeText={this.props.setEmail}
                     style={styles.textinput}>
                 </TextInput>

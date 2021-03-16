@@ -3,6 +3,10 @@ import React, { Component } from "react";
 //import all the components we are going to use
 import { View, StyleSheet, Text } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
+//import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
+import AorE from "../lang/AorE";
 
 //The beginning of the class
 export default class City extends Component {
@@ -13,21 +17,20 @@ export default class City extends Component {
                 <View style={styles.picker}>
                     <RNPickerSelect
                         onValueChange={this.props.setCity}
+                        placeholder={{ label: "", value: null }}
                         items={[
-                            { label: "جدة", value: "جدة" },
-                            { label: "المدينة", value: "المدينة" },
-                            { label: "مكة", value: "مكة" },
-                            { label: "الطائف", value: "الطائف" },
-                            { label: "ينبع", value: "ينبع" },
-                            { label: "القنفذة", value: "القنفذة" },
-                            { label: "رابغ", value: "رابغ" },
-                            { label: "الليث", value: "الليث" },
-                            { label: "خليص", value: "خليص" },
-                            { label: "الخرمة", value: "الخرمة" },
-                            { label: "رنية", value: "رنية" },
-                            { label: "العلا", value: "العلا" },
-                            { label: "الحناكية", value: "الحناكية" },
-
+                            { label: AorE.A == true ? LangAr.Jeddah : LangEn.Jeddah, value: AorE.A == true ? LangAr.Jeddah : LangEn.Jeddah },
+                            { label: AorE.A == true ? LangAr.Madinah : LangEn.Madinah, value: AorE.A == true ? LangAr.Madinah : LangEn.Madinah },
+                            { label: AorE.A == true ? LangAr.Makkah : LangEn.Makkah, value: AorE.A == true ? LangAr.Makkah : LangEn.Makkah },
+                            { label: AorE.A == true ? LangAr.Taif : LangEn.Taif, value: AorE.A == true ? LangAr.Taif : LangEn.Taif },
+                            { label: AorE.A == true ? LangAr.Yanbu : LangEn.Yanbu, value: AorE.A == true ? LangAr.Yanbu : LangEn.Yanbu },
+                            { label: AorE.A == true ? LangAr.Qunfudhah : LangEn.Qunfudhah, value: AorE.A == true ? LangAr.Qunfudhah : LangEn.Qunfudhah },
+                            { label: AorE.A == true ? LangAr.Laith : LangEn.Laith, value: AorE.A == true ? LangAr.Laith : LangEn.Laith },
+                            { label: AorE.A == true ? LangAr.Khulays : LangEn.Khulays, value: AorE.A == true ? LangAr.Khulays : LangEn.Khulays },
+                            { label: AorE.A == true ? LangAr.Khurmah : LangEn.Khurmah, value: AorE.A == true ? LangAr.Khurmah : LangEn.Khurmah },
+                            { label: AorE.A == true ? LangAr.Ranyah : LangEn.Ranyah, value: AorE.A == true ? LangAr.Ranyah : LangEn.Ranyah },
+                            { label: AorE.A == true ? LangAr.Alula : LangEn.Alula, value: AorE.A == true ? LangAr.Alula : LangEn.Alula  },
+                            { label: AorE.A == true ? LangAr.Hinakiyah : LangEn.Hinakiyah, value: AorE.A == true ? LangAr.Hinakiyah : LangEn.Hinakiyah },
                         ]} />
                 </View>
             </View>

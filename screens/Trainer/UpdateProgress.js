@@ -101,9 +101,9 @@ export default class UpdatedProgress extends Component {
     return (
       <View style={styles.container}>
         <ImageBackground source={require("../../assets/images/header2.png")} style={styles.header}>
-          <Text style={styles.text1}>The trainee Salma</Text>
-          <Text style={styles.text2}>Certification</Text>
-          <ScrollView horizontal={true}>
+          <Text style={styles.text1}>Salma</Text>
+          <Text style={styles.text2}>{AorE.A == true ? LangAr.Certification : LangEn.Certification}</Text>
+          <ScrollView horizontal={true} style={AorE.A == true ? { alignSelf: "flex-end", marginRight: 10 } : { alignSelf: "flex-start", marginLeft: 10}}>
             <TouchableOpacity onPress={this._pickImage1}>
               <Image source={require("../../assets/images/post.png")} style={styles.certification}></Image>
             </TouchableOpacity>
@@ -112,7 +112,7 @@ export default class UpdatedProgress extends Component {
             })}
           </ScrollView>
         </ImageBackground>
-        <View>
+        <View style={AorE.A == true ? { alignSelf: "flex-end", marginRight: 10 } : { alignSelf: "flex-start", marginLeft: 10 }}>
           <Subject></Subject>
         </View>
         <View >

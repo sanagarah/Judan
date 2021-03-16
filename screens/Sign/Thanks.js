@@ -1,8 +1,12 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import Swiper from "react-native-swiper";
+//import language files for translation
+import LangAr from "../../lang/ar.json";
+import LangEn from "../../lang/en.json";
+import AorE from "../../lang/AorE";
 
 //The beginning of the class
 export default class Thanks extends Component {
@@ -37,10 +41,10 @@ export default class Thanks extends Component {
                         </Swiper>
                     </View>
                     <View style={styles.titleWrapper}>
-                        <Text style={styles.title}>Thank You!</Text>
+                        <Text style={styles.title}>{AorE.A == true ? LangAr.Thanks : LangEn.Thanks}</Text>
                     </View>
                     <View style={styles.descriptionWrapper}>
-                        <Text style={styles.description}>Refresh the app to begin your journey</Text>
+                        <Text style={styles.description}>{AorE.A == true ? LangAr.Refresh : LangEn.Refresh}</Text>
                     </View>
                 </View>
             </View>

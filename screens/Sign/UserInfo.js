@@ -18,10 +18,10 @@ export default class UserInfo extends Component {
         this.state = {
             name: "",
             email: "",
-            age: "Age",
-            country: "Country",
-            city: "City",
-            field: "Interest"
+            age: AorE.A == true ? LangAr.Age : LangEn.Age,
+            country: AorE.A == true ? LangAr.Country : LangEn.Country,
+            city: AorE.A == true ? LangAr.City : LangEn.City,
+            field: AorE.A == true ? LangAr.Interest : LangEn.Interest
         }
     }
 
@@ -124,7 +124,7 @@ export default class UserInfo extends Component {
                 />
                 <SignButton
                     color="#F26D6A"
-                    text="Continue"
+                    text={AorE.A == true ? LangAr.Continue : LangEn.Continue}
                     nav={this.checkTextInput}
                 />
             </View>
