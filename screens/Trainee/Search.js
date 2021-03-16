@@ -9,9 +9,7 @@ export default class Competition extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <SearchBox
-                    nav={() => this.props.navigation.navigate("Card")}
-                />
+                <SearchBox  nav={() => this.props.navigation.navigate("Card")}/>
             </View>
         );
     }

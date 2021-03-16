@@ -7,6 +7,10 @@ import BankPicker from "./BankPicker";
 import Time from "../components/Time";
 import Date from "../components/Date";
 import Certificate from "../components/Certificate";
+//import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
+import AorE from "../lang/AorE";
 
 //The beginning of the class
 export default class PaymentDetails extends Component {
@@ -14,10 +18,10 @@ export default class PaymentDetails extends Component {
         return (
             <View>
                 <View style={styles.container}>
-                    <Text style={styles.iban}>Iban: SA45769248475893</Text>
-                    <Text style={styles.text}>Card owner Name</Text>
+                    <Text style={styles.iban}>{AorE.A == true ? LangAr.Iban : LangEn.Iban} SA45769248475893</Text>
+                    <Text style={styles.text}>{AorE.A == true ? LangAr.CardName : LangEn.CardName}</Text>
                     <TextInput
-                        placeholder="Enter Card Owner Name"
+                        placeholder={AorE.A == true ? LangAr.CardNameBlank : LangEn.CardNameBlank}
                         placeholderTextColor="#c7c7c7"
                         onChangeText={this.props.setName}
                         fontSize={16}
@@ -25,12 +29,12 @@ export default class PaymentDetails extends Component {
                         style={styles.textInput}
                     />
 
-                    <Text style={styles.text}>Bank name</Text>
+                    <Text style={styles.text}>{AorE.A == true ? LangAr.BankName : LangEn.BankName}</Text>
                     <BankPicker bank={this.props.bank} setBank={this.props.setBank} />
 
-                    <Text style={styles.text}>ِAccount number</Text>
+                    <Text style={styles.text}>ِ{AorE.A == true ? LangAr.AccountNumber : LangEn.AccountNumber}</Text>
                     <TextInput
-                        placeholder="Last Four digits"
+                        placeholder={AorE.A == true ? LangAr.AccountNumberBlank: LangEn.AccountNumberBlank}
                         placeholderTextColor="#c7c7c7"
                         onChangeText={this.props.setNumber}
                         fontSize={16}
@@ -39,7 +43,7 @@ export default class PaymentDetails extends Component {
                     />
 
                     <View >
-                        <Text style={styles.text}>Date And Time</Text>
+                        <Text style={styles.text}>{AorE.A == true ? LangAr.DateTime : LangEn.DateTime}</Text>
                         <View style={styles.textInput}>
                             <Date date={this.props.date} setDate={this.props.setDate} />
                         </View>
@@ -48,11 +52,11 @@ export default class PaymentDetails extends Component {
                         </View>
                     </View>
 
-                    <Text style={styles.text}>Insert</Text>
+                    <Text style={styles.text}>{AorE.A == true ? LangAr.Insert : LangEn.Insert}</Text>
                     <TouchableOpacity
                         onPress={this.props._pickImage}
                         style={styles.insertContainer}>
-                        <Text style={styles.insertText}>Press here to upload the receipt </Text>
+                        <Text style={styles.insertText}>{AorE.A == true ? LangAr.InsertBlank : LangEn.InsertBlank}</Text>
                         {this.props.images.map((data, index) => {
                             return <Certificate image={{ uri: data }} key={index}></Certificate>
                         })}

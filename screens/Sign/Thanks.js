@@ -40,11 +40,8 @@ export default class Thanks extends Component {
                         <Text style={styles.title}>Thank You!</Text>
                     </View>
                     <View style={styles.descriptionWrapper}>
-                        <Text style={styles.description}>Verify your email to begin your journey</Text>
+                        <Text style={styles.description}>Refresh the app to begin your journey</Text>
                     </View>
-                    <TouchableOpacity style={styles.appButtonContainer}>
-                        <Text style={styles.appButtonText}> Let"s go </Text>
-                    </TouchableOpacity>
                 </View>
             </View>
         );

@@ -4,6 +4,10 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import FindTrainer from "../../components/FindTrainer";
 import TopTrainer from "../../components/TopTrainerList";
+//import language files for translation
+import LangAr from "../../lang/ar.json";
+import LangEn from "../../lang/en.json";
+import AorE from "../../lang/AorE";
 
 //The beginning of the class
 export default class Home extends Component {
@@ -13,7 +17,7 @@ export default class Home extends Component {
         <FindTrainer
           nav1={() => this.props.navigation.navigate("Match")}
           nav2={() => this.props.navigation.navigate("Search")}/>
-        <Text style={styles.label}>Top trainers</Text>
+        <Text style={styles.label}>{AorE.A == true ? LangAr.Top : LangEn.Top}</Text>
         <TopTrainer
           image1={require("../../assets/images/girlpic.png")}
           name1="Rahaf"
@@ -47,7 +51,7 @@ const styles = StyleSheet.create({
   },
   label: {
     marginTop: 5,
-    marginLeft: 10,
+    marginHorizontal: 10,
     fontSize: 18,
     fontWeight: "bold",
     color: "#F25F5F"

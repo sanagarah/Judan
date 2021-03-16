@@ -6,6 +6,10 @@ import Place from "../../components/Place";
 import Time from "../../components/Time";
 import Date from "../../components/Date";
 import Map from "../../components/Map";
+//import language files for translation
+import LangAr from "../../lang/ar.json";
+import LangEn from "../../lang/en.json";
+import AorE from "../../lang/AorE";
 
 //The beginning of the class
 export default class Request extends Component {
@@ -18,8 +22,8 @@ export default class Request extends Component {
             show: false,
             border: 0,
             place: " ",
-            time: "Choose a time",
-            date: "Choose a date"
+            time: AorE.A == true ? LangAr.TimeBlank : LangEn.TimeBlank,
+            date: AorE.A == true ? LangAr.DateBlank : LangEn.DateBlank
         }
     }
 
@@ -53,17 +57,17 @@ export default class Request extends Component {
     checkTextInput = () => {
         //Check for the place TextInput
         if (this.state.place == " " && this.state.border == 0) {
-            alert("Please choose a place");
+            alert(AorE.A == true ? LangAr.AlertPlace : LangEn.AlertAlertPlace);
             return;
         }
         //Check for the time TextInput
-        if (this.state.time == "Choose a time") {
-            alert("Please choose a time");
+        if (this.state.time == AorE.A == true ? LangAr.TimeBlank : LangEn.TimeBlank) {
+            alert(AorE.A == true ? LangAr.AlertTime : LangEn.AlertTime);
             return;
         }
         //Check for the date TextInput
-        if (this.state.date == "Choose a date") {
-            alert("Please choose a date");
+        if (this.state.date == AorE.A == true ? LangAr.DateBlank : LangEn.DateBlank) {
+            alert(AorE.A == true ? LangAr.AlertDate : LangEn.AlertDate);
             return;
         }
         //Checked successfully
@@ -74,7 +78,7 @@ export default class Request extends Component {
         return (
             <View style={styles.container}>
                 <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                    <Text style={styles.label}>Type</Text>
+                    <Text style={styles.label}>{AorE.A == true ? LangAr.Type : LangEn.Type}</Text>
                     <View style={styles.onlinePersonalContainer}>
                         <TouchableOpacity
                             onPress={this.onShow}
@@ -83,7 +87,7 @@ export default class Request extends Component {
                                 borderColor: this.state.border === 0 ? "#F25F5C" : "#808080",
                                 borderStyle: this.state.border === 0 ? "solid" : "dotted"
                             }]}>
-                            <Text style={styles.text1}>Online</Text>
+                            <Text style={styles.text1}> {AorE.A == true ? LangAr.Online : LangEn.Online}</Text>
                             <Image
                                 source={require("../../assets/images/online.png")}
                                 style={styles.image1} />
@@ -95,28 +99,28 @@ export default class Request extends Component {
                                 borderColor: this.state.border === 1 ? "#F25F5C" : "#808080",
                                 borderStyle: this.state.border === 1 ? "solid" : "dotted"
                             }]}>
-                            <Text style={styles.text1}>Personal</Text>
+                            <Text style={styles.text1}>{AorE.A == true ? LangAr.Personal : LangEn.Personal}</Text>
                             <Image
                                 source={require("../../assets/images/personal.png")}
                                 style={styles.image2} />
                         </TouchableOpacity>
                     </View>
-                    <Text style={styles.label}>Place</Text>
+                    <Text style={styles.label}>{AorE.A == true ? LangAr.Place : LangEn.Place}</Text>
                     {this.state.show ? null : <Place place={this.state.place} setPlace={this.setPlace} />}
                     {this.state.show ?
                         <View style={styles.mapView}>
                             <Map />
                         </View> : null}
-                    <Text style={styles.label}>Time </Text>
+                    <Text style={styles.label}>{AorE.A == true ? LangAr.Time : LangEn.Time}</Text>
                     <View style={styles.timeDateContainer}>
                         <Time time={this.state.time} setTime={this.setTime}/>
                     </View>
-                    <Text style={styles.label}>Date </Text>
+                    <Text style={styles.label}>{AorE.A == true ? LangAr.Date : LangEn.Date}</Text>
                     <View style={styles.timeDateContainer}>
                         <Date date={this.state.date} setDate={this.setDate}/>
                     </View>
                     <TouchableOpacity style={styles.paymentButton} onPress={this.checkTextInput}>
-                        <Text style={styles.text2}>Continue To Payment</Text>
+                        <Text style={styles.text2}>{AorE.A == true ? LangAr.ToPayment : LangEn.ToPayment}</Text>
                     </TouchableOpacity>
                 </ScrollView>
             </View>
@@ -164,6 +168,7 @@ const styles = StyleSheet.create({
     image1: {
         width: 50,
         height: 50,
+        marginRight: 10
     },
     image2: {
         width: 66,
@@ -185,7 +190,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginTop: 15,
         marginBottom: 5,
-        marginLeft: 10,
+        marginHorizontal: 10,
         color: "#808080"
     },
     paymentButton: {

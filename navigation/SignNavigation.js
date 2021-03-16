@@ -10,13 +10,14 @@ import welcome from "../screens/Sign/Welcome";
 import sign from "../screens/Sign/Sign";
 import signUp from "../screens/Sign/SignUp";
 import thanks from "../screens/Sign/Thanks";
-
+import userInfo from "../screens/Sign/UserInfo";
 
 const rootNavigation = createStackNavigator(
     {
         Welcome: welcome,
         Sign: sign,
         SignUp: signUp,
+        UserInfo: userInfo,
         Thanks: thanks
     },
     {

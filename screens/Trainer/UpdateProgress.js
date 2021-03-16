@@ -8,6 +8,11 @@ import Modal from "react-native-modal";
 import Levels from "../../components/TouchableLevels";
 import Subject from "../../components/Subject";
 import Certificate from "../../components/Certificate";
+//import language files for translation
+import LangAr from "../../lang/ar.json";
+import LangEn from "../../lang/en.json";
+import AorE from "../../lang/AorE";
+
 
 //To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -62,7 +67,7 @@ export default class UpdatedProgress extends Component {
     if (Constants.platform.ios) {
       const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
       if (status !== "granted") {
-        alert("Sorry, we need camera roll permissions to make this work!");
+        alert(AorE.A == true ? LangAr.AlertCamera : LangEn.AlertCamera);
       }
     }
   }

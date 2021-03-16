@@ -1,7 +1,12 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, Text, TouchableOpacity, ScrollView, View} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, ScrollView, View } from "react-native";
+//import language files for translation
+import LangAr from "../../lang/ar.json";
+import LangEn from "../../lang/en.json";
+import AorE from "../../lang/AorE";
+
 
 //The beginning of the class
 export default class Payment extends Component {
@@ -29,7 +34,7 @@ export default class Payment extends Component {
     check1 = () => {
         //Check if plan has beed chosen
         if (this.state.border==0) {
-            alert("Choose a plan");
+            alert(AorE.A == true ? LangAr.AlertPlan : LangEn.AlertPlan);
             return;
         }
         //Choosed successfully
@@ -40,7 +45,7 @@ export default class Payment extends Component {
     check2 = () => {
         //Check if plan has beed chosen
         if (this.state.border == 0) {
-            alert("Choose a plan");
+            alert(AorE.A == true ? LangAr.AlertPlan : LangEn.AlertPlan);
             return;
         }
         //Choosed successfully
@@ -58,11 +63,11 @@ export default class Payment extends Component {
                             borderStyle: this.state.border === 1 ? "solid" : "dotted"
                         }]}>
                             <View style={styles.secondView}>
-                                <Text style={styles.title}>Hourly Payment</Text>
-                                <Text style={styles.descrition}>Pay for each hour</Text>
+                                <Text style={styles.title}>{AorE.A == true ? LangAr.Hourly : LangEn.Hourly}</Text>
+                                <Text style={styles.descrition}>{AorE.A == true ? LangAr.HourlyDes : LangEn.HourlyDes}</Text>
                             </View>
                             <View>
-                                <Text style={styles.price}>20 Riyal</Text>
+                                <Text style={styles.price}>{AorE.A == true ? LangAr.HourlyPrice : LangEn.HourlyPrice}</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -73,11 +78,11 @@ export default class Payment extends Component {
                             borderStyle: this.state.border === 2 ? "solid" : "dotted"
                         }]}>
                             <View style={styles.secondView}>
-                                <Text style={styles.title}>Monthly Payment</Text>
-                                <Text style={styles.descrition}>up to 8 hours/mo</Text>
+                                <Text style={styles.title}>{AorE.A == true ? LangAr.Monthly : LangEn.Monthly}</Text>
+                                <Text style={styles.descrition}>{AorE.A == true ? LangAr.MonthlyDes : LangEn.MonthlyDes}</Text>
                             </View>
                             <View>
-                                <Text style={styles.price}>80 Riyal</Text>
+                                <Text style={styles.price}>{AorE.A == true ? LangAr.MonthlyPrice : LangEn.MonthlyPrice}</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -88,24 +93,24 @@ export default class Payment extends Component {
                             borderStyle: this.state.border === 3 ? "solid" : "dotted"
                         }]}>
                             <View style={styles.secondView}>
-                                <Text style={styles.title}>Yearly Payment</Text>
-                                <Text style={styles.descrition}>limitless hours/year</Text>
+                                <Text style={styles.title}>{AorE.A == true ? LangAr.Yearly : LangEn.Yearly}</Text>
+                                <Text style={styles.descrition}>{AorE.A == true ? LangAr.YearlyDes : LangEn.YearlyDes}</Text>
                             </View>
                             <View>
-                                <Text style={styles.price}>800 Riyal</Text>
+                                <Text style={styles.price}>{AorE.A == true ? LangAr.YearlyPrice : LangEn.YearlyPrice }</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity
-                    style={styles.ButtonContainer}
+                    style={styles.ButtonContainer} 
                     onPress={this.check1}>
-                    <Text style={styles.ButtonText}> Continue to payment detail</Text>
+                    <Text style={styles.ButtonText}>{AorE.A == true ? LangAr.ToPaymentDetails : LangEn.ToPaymentDetails}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.ButtonContainer}
                     onPress={this.check2}>
-                    <Text style={styles.ButtonText}>Skip for later cash payment </Text>
+                    <Text style={styles.ButtonText}>{AorE.A == true ? LangAr.Skip : LangEn.Skip}</Text>
                 </TouchableOpacity>
             </ScrollView>
         );

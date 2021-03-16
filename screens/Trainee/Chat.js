@@ -4,6 +4,10 @@ import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import ChatDpnd from "../../components/ChatDpnd";
 import Header from "../../components/ChatHeader";
+//import language files for translation
+import LangAr from "../../lang/ar.json";
+import LangEn from "../../lang/en.json";
+import AorE from "../../lang/AorE";
 
 //The beginning of the class
 export default class Chat extends Component {
@@ -14,7 +18,7 @@ export default class Chat extends Component {
 
         {/*view for header box*/}
         <View style={styles.container2}>
-          <Header name="Sara" subname="Rigesterd" nav={() => this.props.navigation.navigate("Chat")}>
+          <Header name="Sara" subname={AorE.A == true ? LangAr.Requested : LangEn.Requested}nav={() => this.props.navigation.navigate("Chat")}>
           </Header>
         </View>
 

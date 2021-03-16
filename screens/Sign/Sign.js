@@ -5,6 +5,10 @@ import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import TraineeTrainer from "../../components/TraineeTrainer";
 import SignUpButton from "../../components/SignButton";
+//import language files for translation
+import LangAr from "../../lang/ar.json";
+import LangEn from "../../lang/en.json";
+import AorE from "../../lang/AorE";
 
 //To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height
@@ -35,7 +39,7 @@ export default class Sign extends Component {
     check = () => {
         //Check if an option has been chosen
         if (this.state.opacity == 0) {
-            alert("Please choose what you would like to be");
+            alert(AorE.A == true ? LangAr.AlertSign : LangEn.AlertSign );
             return;
         }
         //Choosed successfully
@@ -53,15 +57,16 @@ export default class Sign extends Component {
                         source={require("../../assets/images/header.jpg")} />
                 </View>
 
-                <Text style={styles.text}> Choose what you like to be </Text>
+                <Text style={styles.text}>{AorE.A == true ? LangAr.ChooseWhatToBe : LangEn.ChooseWhatToBe}</Text>
                 
                 {/* component for showing the choices */}
                 <TraineeTrainer opacity={this.state.opacity} changeOpacity1={this.changeOpacity1} changeOpacity2={this.changeOpacity2} />
 
                 {/* Button component refer to a text button "it can be changed to any text" */}
                 <SignUpButton
-                    nav1={this.check}
-                    nav2={() => this.props.navigation.navigate("LogIn")}
+                    color="#F26D6A"
+                    text={AorE.A == true ? LangAr.SignUp : LangEn.SignUp}
+                    nav={this.check}
                 />
             </View>
         );
@@ -88,7 +93,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         color: "#808080",
         bottom: "6%",
-        marginBottom: 10,
+        marginVertical: 20,
         alignSelf: "center"
     },
 });

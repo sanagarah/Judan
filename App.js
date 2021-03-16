@@ -44,20 +44,20 @@ export default class app extends React.Component {
   render() {
     if (this.state.token && this.state.user == "trainee") {
       return (
-         //Return the navigation stack of the trainee
+        //Return the navigation stack of the trainee
         <Provider store={store}>
           <TraineeNav />
         </Provider >)
     } else if (this.state.token && this.state.user == "trainer") {
       return (
-            //Return the navigation stack of the trainer
+        //Return the navigation stack of the trainer
         <Provider store={store}>
           <TrainerNav />
         </Provider >)
     }
     else {
       return (
-            //Return the navigation stack of signing
+        //Return the navigation stack of signing
         <Provider store={store}>
           <SignNav />
         </Provider>)

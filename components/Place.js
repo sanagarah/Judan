@@ -3,6 +3,10 @@ import React, { Component } from "react";
 //import all the components we are going to use
 import { View, StyleSheet, Text } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
+//import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
+import AorE from "../lang/AorE";
 
 //The beginning of the class
 export default class Place extends Component {
@@ -11,7 +15,7 @@ export default class Place extends Component {
             <View style={styles.container}>
                 <Text style={styles.text}>{this.props.place}</Text>
                 <RNPickerSelect
-                    placeholder={{ label: "Choose a platform", value: "", color: "#FFF" }}
+                    placeholder={{ label: AorE.A == true ? LangAr.PlaceBlank : LangEn.PlaceBlank , value: "", color: "#FFF" }}
                     onValueChange={this.props.setPlace}
                     items={[
                         { label: "Zoom", value: "Zoom" },

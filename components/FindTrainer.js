@@ -3,6 +3,11 @@ import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+//import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
+import AorE from "../lang/AorE";
+
 
 //To have the total width of the screen
 const SCREEN_WIDTH = Dimensions.get("window").width
@@ -16,12 +21,12 @@ export default class FindTrainer extends Component {
             <View style={styles.container}>
                 <Image
                     style={styles.imageStyle}
-                    source={require("../assets/images/findTrainer.png")} />
+                    source={AorE.A == true ? require("../assets/images/findTrainerA.jpg") : require("../assets/images/findTrainer.png")} />
                 <Image
                     style={styles.imageboxStyle}
-                    source={require("../assets/images/matchme.png")} />
+                    source={AorE.A == true ? require("../assets/images/matchmeA.png") : require("../assets/images/matchme.png")} />
                 <TouchableOpacity style={styles.matchMeView} onPress={this.props.nav1}>
-                    <Text style={styles.text}> Match me </Text>
+                    <Text style={styles.text}>{AorE.A == true ? LangAr.Match : LangEn.Match}</Text>
                     <Image
                         style={styles.setImage}
                         source={require("../assets/images/right.png")} />

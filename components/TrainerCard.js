@@ -4,6 +4,10 @@ import React, { Component } from "react";
 import { StyleSheet, Text, Image, View, ImageBackground, TouchableOpacity, Dimensions } from "react-native";
 import StarBar from "./StarBar";
 import Interest from "./Interests";
+//import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
+import AorE from "../lang/AorE";
 
 //To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height
@@ -39,7 +43,7 @@ export default class TrainerCard extends Component {
                     </View>
 
                     <View style={styles.text1Container}>
-                        <Text style={styles.text3}>About me</Text>
+                        <Text style={styles.text3}>{AorE.A == true ? LangAr.About : LangEn.About}</Text>
                     </View>
 
                     <View style={styles.text1Container}>
@@ -47,7 +51,7 @@ export default class TrainerCard extends Component {
                     </View>
 
                     <View style={styles.text1Container}>
-                        <Text style={styles.text3}>Interests</Text>
+                        <Text style={styles.text3}>{AorE.A == true ? LangAr.Interests : LangEn.Interests}</Text>
                     </View>
 
                     <View style={styles.text1Container}>

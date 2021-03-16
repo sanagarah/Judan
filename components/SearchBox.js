@@ -6,6 +6,10 @@ import { SearchBar } from "react-native-elements";
 import jsonData from "../trainersInfo.json";
 import { LogBox } from "react-native";
 LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
+//import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
+import AorE from "../lang/AorE";
 
 //The beginning of the class
 export default class SearchBox extends Component {
@@ -61,7 +65,7 @@ export default class SearchBox extends Component {
                     backgroundColor="#FFF"
                     onChangeText={(text) => this.searchFilterFunction(text)}
                     onClear={(text) => this.searchFilterFunction('')}
-                    placeholder="Type here"
+                    placeholder={AorE.A == true ? LangAr.TypeHere : LangEn.TypeHere}
                     value={this.state.search}
                 />
                     <FlatList

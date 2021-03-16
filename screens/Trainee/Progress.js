@@ -5,6 +5,10 @@ import { StyleSheet, View, ImageBackground, Dimensions, Text, ScrollView } from 
 import Levels from "../../components/Levels";
 import Subject from "../../components/Subject";
 import Certificate from "../../components/Certificate";
+//import language files for translation
+import LangAr from "../../lang/ar.json";
+import LangEn from "../../lang/en.json";
+import AorE from "../../lang/AorE";
 
 //To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -40,7 +44,7 @@ export default class Progress extends Component {
       <View style={styles.container}>
         <ImageBackground source={require("../../assets/images/header1.png")} style={styles.header}>
           <View>
-            <Text style={styles.text}>Certification</Text>
+            <Text style={styles.text}>{AorE.A == true ? LangAr.Certification : LangEn.Certification}</Text>
             <ScrollView horizontal={true} >
               <Certificate image={require("../../assets/images/certificate.png")}></Certificate>
               <Certificate image={require("../../assets/images/certificate.png")}></Certificate>
@@ -71,7 +75,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   text: {
-    marginLeft: 10,
+    marginHorizontal: 10,
     color: "#FFF",
     fontWeight: "bold",
     fontSize: 17,

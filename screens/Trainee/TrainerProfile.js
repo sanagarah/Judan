@@ -7,6 +7,10 @@ import Post from "../../components/Posts";
 import Review from "../../components/Reviews";
 import Modal from "react-native-modal";
 import Header from "../../components/ProfileHeader";
+//import language files for translation
+import LangAr from "../../lang/ar.json";
+import LangEn from "../../lang/en.json";
+import AorE from "../../lang/AorE";
 
 //To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -68,12 +72,12 @@ export default class TrainerProfile extends Component {
                 <Post image={require("../../assets/images/post1.jpg")}></Post>
               </ScrollView>
               {/* Interests section */}
-              <Text style={styles.label4}>Interests</Text>
-              <View style={styles.container}>
+              <Text style={styles.label}>{AorE.A == true ? LangAr.Interests : LangEn.Interests}</Text>
+              <View style={[styles.container], AorE.A == true ? { alignSelf: "flex-end" } : { alignSelf: "flex-start"}}>
                 <Interest interest="piano"></Interest>
               </View>
               {/* Reviews section */}
-              <Text style={styles.label4}>Reviews</Text>
+              <Text style={styles.label}>{AorE.A == true ? LangAr.Reviews : LangEn.Reviews}</Text>
             </View>
           </View>
           <View style={styles.section1}>
@@ -83,7 +87,7 @@ export default class TrainerProfile extends Component {
           </View>
         </ScrollView>
         {/* Write button */}
-        <TouchableOpacity style={styles.write} onPress={this.onShow}>
+        <TouchableOpacity style={[styles.write, AorE.A == true ? { left: 5 } : { right: 5 } ]} onPress={this.onShow}>
           <Image source={require("../../assets/images/write.png")} style={styles.writeImage} ></Image>
         </TouchableOpacity>
 
@@ -91,7 +95,7 @@ export default class TrainerProfile extends Component {
         <Modal isVisible={this.state.show}>
           <TouchableOpacity style={styles.modal} onPress={this.onShow}>
             <View style={styles.popUp}>
-              <TextInput placeholder="Write a review" style={styles.textInput} onChangeText={(txt) => { this.setState({ text: txt }) }}>
+              <TextInput placeholder={AorE.A == true ? LangAr.WriteReview : LangEn.WriteReview} style={styles.textInput} onChangeText={(txt) => { this.setState({ text: txt }) }}>
               </TextInput>
               <TouchableOpacity style={styles.checkImage} onPress={this.addReview}>
                 <Image source={require("../../assets/images/check.png")} style={styles.checkImage}></Image>
@@ -108,12 +112,10 @@ const styles = StyleSheet.create({
   write: {
     position: "absolute",
     bottom: 5,
-    right: 5,
   },
   writeImage: {
     height: 60,
     width: 60,
-    alignSelf: "flex-end",
     borderWidth: 1,
     borderColor: "rgba(0, 0, 0, 0)",
     borderRadius: 90,
@@ -154,11 +156,12 @@ const styles = StyleSheet.create({
   marginContainer: {
     marginLeft: 10,
   },
-  label4: {
+  label: {
     fontSize: 16,
     fontWeight: "700",
     color: "#F25F5C",
-    marginTop: 15
+    marginTop: 15,
+    marginHorizontal: 5
   },
   checkImage: {
     height: 50,
@@ -167,6 +170,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#FFF",
     borderRadius: 90,
-    margin: 10
+    margin: 10,
   },
 });

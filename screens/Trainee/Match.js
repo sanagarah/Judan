@@ -5,6 +5,11 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Card } from "react-native-elements";
 import Deck from "../../components/Cards";
+//import language files for translation
+import LangAr from "../../lang/ar.json";
+import LangEn from "../../lang/en.json";
+import AorE from "../../lang/AorE";
+
 
 //The data to disply on cards
 const DATA = [
@@ -26,17 +31,17 @@ export default class Match extends Component {
         <View style={styles.container2}>
           <TouchableOpacity style={styles.button1} >
             <MaterialIcons name="person" size={20}></MaterialIcons>
-            <Text>Profile</Text>
+            <Text style={styles.center}>{AorE.A == true ? LangAr.Profile : LangEn.Profile}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.button2}>
             <MaterialIcons name="school" size={20}></MaterialIcons>
-            <Text>Training</Text>
+            <Text>{AorE.A == true ? LangAr.Training : LangEn.Training}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.button3}>
             <MaterialIcons name="mic" size={20}></MaterialIcons>
-            <Text>Performing</Text>
+            <Text>{AorE.A == true ? LangAr.Performing : LangEn.Performing}</Text>
           </TouchableOpacity>
         </View>
         <Card.FeaturedTitle style={{ color: "#000000" }}>{item.name}</Card.FeaturedTitle>
@@ -82,8 +87,12 @@ const styles = StyleSheet.create({
   card: {
     height: 250
   },
+  center: {
+    textAlign: "center"
+  },
   button1: {
-    height: 50, width: 80,
+    height: 60,
+    width: 80,
     backgroundColor: "#F25F5C",
     justifyContent: "center",
     alignItems: "center",
@@ -92,7 +101,8 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10
   },
   button2: {
-    height: 50, width: 80,
+    height: 60,
+    width: 80,
     backgroundColor: "#70C1B3",
     justifyContent: "center",
     alignItems: "center",
@@ -101,7 +111,8 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10
   },
   button3: {
-    height: 50, width: 80,
+    height: 60,
+    width: 80,
     backgroundColor: "#FFE066",
     justifyContent: "center",
     alignItems: "center",

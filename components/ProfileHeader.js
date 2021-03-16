@@ -3,6 +3,10 @@ import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, View, Text, Image } from "react-native";
 import StarBar from "./StarBar";
+//import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
+import AorE from "../lang/AorE";
 
 //The beginning of the class
 export default class ProfileHeader extends Component {
@@ -13,12 +17,12 @@ export default class ProfileHeader extends Component {
                 <View style={styles.container}>
                     <View style={styles.header}>
                         <Text style={styles.label1}>{this.props.postsNum}</Text>
-                        <Text style={[styles.label2, { color: this.props.color }]}>Posts</Text>
-                    </View>
-                    <Image source={{ uri: this.props.uri }} style={styles.profileImage}></Image>
+                        <Text style={[styles.label2, { color: this.props.color }]}>{AorE.A == true ? LangAr.Posts : LangEn.Posts}</Text>
+                    </View>   
+                    <Image source={{ uri: this.props.uri }} style={[styles.profileImage, AorE.A == true ? { marginLeft: 50 } : { marginLeft: 70 }]}></Image>
                     <View style={styles.header}>
                         <Text style={styles.label1}>{this.props.traineesNum}</Text>
-                        <Text style={[styles.label2, { color: this.props.color }]}>Trainees</Text>
+                        <Text style={[styles.label2, { color: this.props.color }]}>{AorE.A == true ? LangAr.Trainees : LangEn.Trainees}</Text>
                     </View>
                 </View>
                 {/*The second row in the header starts here */}
@@ -53,7 +57,6 @@ const styles = StyleSheet.create({
         borderColor: "#D4D1D1",
         borderRadius: 90,
         marginRight: 50,
-        marginLeft: 70
     },
     label1: {
         fontSize: 20,

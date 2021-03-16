@@ -5,6 +5,8 @@ import _ from "lodash";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import AppLoading from "expo-app-loading";
 import Slides from "../../components/Slides";
+//import language files for translation
+import AorE from "../../lang/AorE";
 
 //The content of welcome slides
 const SLIDE_DATA = [
@@ -27,8 +29,14 @@ export default class WelcomeScreen extends Component {
         }
     }
 
-    onSlidesComplete = () => {
+    onCompleteArabic = () => {
         this.props.navigation.navigate("Sign");
+        AorE.A = true
+    }
+
+    onCompleteEnglish = () => {
+        this.props.navigation.navigate("Sign");
+        AorE.A = false
     }
 
     render() {
@@ -36,7 +44,7 @@ export default class WelcomeScreen extends Component {
             return <AppLoading />;
         }
         return (
-            <Slides data={SLIDE_DATA} onComplete={this.onSlidesComplete} />
+            <Slides data={SLIDE_DATA} onCompleteArabic={this.onCompleteArabic} onCompleteEnglish={this.onCompleteEnglish}/>
         );
     }
 }

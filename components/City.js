@@ -37,7 +37,7 @@ export default class City extends Component {
 //Declare the style
 const styles = StyleSheet.create({
     container: {
-        height: 40,
+        height: 60,
         backgroundColor: "#FFF",
         textAlign: "left",
         borderColor: "#808080",

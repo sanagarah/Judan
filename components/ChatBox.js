@@ -2,6 +2,10 @@
 import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+//import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
+import AorE from "../lang/AorE";
 
 //The beginning of the class
 export default class ChaBox extends Component {
@@ -14,7 +18,10 @@ export default class ChaBox extends Component {
                     <Text style={styles.text1}>{this.props.name}</Text>
                     <Text style={styles.text2}>{this.props.lastMassage}</Text>
                 </View>
+                <View style={styles.timeContainer}>
                 <Text style={styles.text3}>{this.props.time}</Text>
+                    <Text style={styles.text3}>  {AorE.A == true ? LangAr.m : LangEn.m}  </Text>
+                </View>
             </TouchableOpacity>
         )
     }
@@ -48,5 +55,9 @@ const styles = StyleSheet.create({
         fontSize: 13,
         marginVertical: "5%",
         marginRight: "2%"
+    },
+    timeContainer: {
+        flexDirection: "row",
+        alignItems: "center"
     }
 });

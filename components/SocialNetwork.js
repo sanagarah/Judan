@@ -2,13 +2,18 @@
 import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
+//import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
+import AorE from "../lang/AorE";
+
 
 export default class SocialNetwork extends Component {
     render() {
         return (
             <View style={styles.container}>
                 {/** text  */}
-                <Text style={styles.text}> Sign up easily via your favorite social network </Text>
+                <Text style={styles.text}> {AorE.A == true ? LangAr.SocialSign : LangEn.SocialSign} </Text>
 
                 {/** pic  */}
                     <TouchableOpacity style={styles.GoogleView}>
@@ -28,15 +33,13 @@ export default class SocialNetwork extends Component {
 //Declare the style
 const styles = StyleSheet.create({
     container: {
-        flex: 2.5,
         width: "100%",
         alignItems: "center"
     },
     text: {
         fontSize: 17,
         color: "#808080",
-        marginBottom: 10,
-        marginTop: 5
+        marginVertical: 10,
     },
     image: {
         width: 40,

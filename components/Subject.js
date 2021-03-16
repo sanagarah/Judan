@@ -3,6 +3,10 @@ import React, { Component } from "react";
 //import all the components we are going to use
 import { View, StyleSheet, Text } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
+//import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
+import AorE from "../lang/AorE";
 
 //The beginning of the class
 export default class Subject extends Component {
@@ -11,7 +15,7 @@ export default class Subject extends Component {
 
         //Declare the initial values for states
         this.state = {
-            subject: "Subject",
+            subject: AorE.A == true ? LangAr.Subject : LangEn.Subject
         }
     }
     //To make the chosen valuse appear in the box
@@ -28,15 +32,16 @@ export default class Subject extends Component {
                         onValueChange={(value) => this.setValue(value)}
                         placeholder={{ label: "", value: null }}
                         items={[
-                            { label: "Acrobatic and Sports", value: "Acrobatic and Sports" },
-                            { label: "Acting", value: "Acting" },
-                            { label: "Authoring and Diction", value: "Authoring and Diction" },
-                            { label: "Dancing", value: "Dancing" },
-                            { label: "Drawing", value: "Drawing" },
-                            { label: "Instruments playing", value: "Instruments playing" },
-                            { label: "Magic Tricks", value: "Magic Tricks" },
-                            { label: "Science Shows", value: "Science Shows" },
-                            { label: "Stand-up Comedy", value: "Stand-up Comedy" },
+                            { label: AorE.A == true ? LangAr.Sport : LangEn.Sport, value: AorE.A == true ? LangAr.Sport : LangEn.Sport},
+                            { label: AorE.A == true ? LangAr.Act : LangEn.Act, value: AorE.A == true ? LangAr.Sport : LangEn.Sport,},
+                            { label: AorE.A == true ? LangAr.Act : LangEn.Act, value: AorE.A == true ? LangAr.Act : LangEn.Act },
+                            { label: AorE.A == true ? LangAr.Diction : LangEn.Diction, value: AorE.A == true ? LangAr.Diction : LangEn.Diction },
+                            { label: AorE.A == true ? LangAr.Dance : LangEn.Dance, value: AorE.A == true ? LangAr.Dance : LangEn.Dance },
+                            { label: AorE.A == true ? LangAr.Draw : LangEn.Draw, value: AorE.A == true ? LangAr.Draw : LangEn.Draw },
+                            { label: AorE.A == true ? LangAr.Instrument : LangEn.Instrument, value: AorE.A == true ? LangAr.Instrument : LangEn.Instrument },
+                            { label: AorE.A == true ? LangAr.Magic : LangEn.Magic, value: AorE.A == true ? LangAr.Magic : LangEn.Magic},
+                            { label: AorE.A == true ? LangAr.Science : LangEn.Science, value: AorE.A == true ? LangAr.Science : LangEn.Science },
+                            { label: AorE.A == true ? LangAr.Comedy : LangEn.Comedy, value: AorE.A == true ? LangAr.Comedy : LangEn.Comedy },
                         ]} />
                 </View>
             </View>
@@ -57,7 +62,8 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: "#808080",
         marginTop: 15,
-        marginLeft: 15,
-        position: "absolute",
+        paddingRight: 30,
+        alignSelf: "center",
+        position: "absolute"
     },
 });
