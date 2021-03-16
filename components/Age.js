@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
     picker: {
         flex: 1,
-        marginLeft: "80%",
+        marginLeft: "95%",
         alignSelf: "center"
     }
 });

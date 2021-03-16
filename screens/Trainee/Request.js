@@ -11,8 +11,11 @@ import LangAr from "../../lang/ar.json";
 import LangEn from "../../lang/en.json";
 import AorE from "../../lang/AorE";
 
+
 //The beginning of the class
 export default class Request extends Component {
+    timeBlank = AorE.A == true ? LangAr.TimeBlank : LangEn.TimeBlank;
+    dateBlank = AorE.A == true ? LangAr.DateBlank : LangEn.DateBlank;
     constructor(props) {
         super(props)
 
@@ -22,8 +25,8 @@ export default class Request extends Component {
             show: false,
             border: 0,
             place: " ",
-            time: AorE.A == true ? LangAr.TimeBlank : LangEn.TimeBlank,
-            date: AorE.A == true ? LangAr.DateBlank : LangEn.DateBlank
+            time: this.timeBlank,
+            date: this.dateBlank
         }
     }
 
@@ -36,8 +39,8 @@ export default class Request extends Component {
         }
     }
 
-     //Function used to set the choesn value in the box
-    setPlace= (value) => {
+    //Function used to set the choesn value in the box
+    setPlace = (value) => {
         this.setState({ place: value });
     }
 
@@ -57,16 +60,16 @@ export default class Request extends Component {
     checkTextInput = () => {
         //Check for the place TextInput
         if (this.state.place == " " && this.state.border == 0) {
-            alert(AorE.A == true ? LangAr.AlertPlace : LangEn.AlertAlertPlace);
+            alert(AorE.A == true ? LangAr.AlertPlace : LangEn.AlertPlace);
             return;
         }
         //Check for the time TextInput
-        if (this.state.time == AorE.A == true ? LangAr.TimeBlank : LangEn.TimeBlank) {
+        if (this.state.time == this.timeBlank) {
             alert(AorE.A == true ? LangAr.AlertTime : LangEn.AlertTime);
             return;
         }
         //Check for the date TextInput
-        if (this.state.date == AorE.A == true ? LangAr.DateBlank : LangEn.DateBlank) {
+        if (this.state.date == this.dateBlank) {
             alert(AorE.A == true ? LangAr.AlertDate : LangEn.AlertDate);
             return;
         }
@@ -113,11 +116,11 @@ export default class Request extends Component {
                         </View> : null}
                     <Text style={styles.label}>{AorE.A == true ? LangAr.Time : LangEn.Time}</Text>
                     <View style={styles.timeDateContainer}>
-                        <Time time={this.state.time} setTime={this.setTime}/>
+                        <Time time={this.state.time} setTime={this.setTime} />
                     </View>
                     <Text style={styles.label}>{AorE.A == true ? LangAr.Date : LangEn.Date}</Text>
                     <View style={styles.timeDateContainer}>
-                        <Date date={this.state.date} setDate={this.setDate}/>
+                        <Date date={this.state.date} setDate={this.setDate} />
                     </View>
                     <TouchableOpacity style={styles.paymentButton} onPress={this.checkTextInput}>
                         <Text style={styles.text2}>{AorE.A == true ? LangAr.ToPayment : LangEn.ToPayment}</Text>

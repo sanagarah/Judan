@@ -12,6 +12,8 @@ import AorE from "../../lang/AorE";
 
 //The beginning of the class
 export default class BankCard extends Component {
+    timeBlank = AorE.A == true ? LangAr.TimeBlank : LangEn.TimeBlank;
+    dateBlank = AorE.A == true ? LangAr.DateBlank : LangEn.DateBlank;
     constructor(props) {
         super(props)
 
@@ -24,8 +26,8 @@ export default class BankCard extends Component {
             name: "",
             number: "",
             bank: "",
-            date: AorE.A == true ? LangAr.DateBlank : LangEn.DateBlank ,
-            time: AorE.A == true ? LangAr.TimeBlank : LangEn.TimeBlank
+            date: this.dateBlank,
+            time: this.timeBlank
         }
     }
 
@@ -133,12 +135,12 @@ export default class BankCard extends Component {
             return;
         }
         //Check for the date TextInput
-        if (this.state.date == AorE.A == true ? LangAr.DateBlank : LangEn.DateBlank) {
+        if (this.state.date == this.dateBlank) {
             alert(AorE.A == true ? LangAr.AlertDate : LangEn.AlertDate);
             return;
         }
         //Check for the time TextInput
-        if (this.state.time == AorE.A == true ? LangAr.TimeBlank : LangEn.TimeBlank) {
+        if (this.state.time == this.timeBlank) {
             alert(AorE.A == true ? LangAr.AlertTime : LangEn.AlertTime);
             return;
         }

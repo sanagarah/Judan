@@ -40,6 +40,6 @@ export default class ChatList extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? 25 : 0,
+    paddingTop: 25 
   },
 });

@@ -21,7 +21,7 @@ export default class FindTrainer extends Component {
             <View style={styles.container}>
                 <Image
                     style={styles.imageStyle}
-                    source={AorE.A == true ? require("../assets/images/findTrainerA.jpg") : require("../assets/images/findTrainer.png")} />
+                    source={AorE.A == true ? require("../assets/images/findTrainerA.png") : require("../assets/images/findTrainer.png")} />
                 <Image
                     style={styles.imageboxStyle}
                     source={AorE.A == true ? require("../assets/images/matchmeA.png") : require("../assets/images/matchme.png")} />

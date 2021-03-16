@@ -47,7 +47,8 @@ export default class Home extends Component {
 //Declare the style
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: "#FFF",
   },
   label: {
     marginTop: 5,
