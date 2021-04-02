@@ -23,33 +23,38 @@ export default class SignInput extends Component {
                 <TextInput
                     placeholder={AorE.A == true ? LangAr.Name : LangEn.Name}
                     onChangeText={this.props.setName}
-                    style={styles.textinput}>
+                    style={styles.textInput}>
                 </TextInput>
                 <TextInput
                     placeholder={AorE.A == true ? LangAr.Email : LangEn.Email}
                     onChangeText={this.props.setEmail}
-                    style={styles.textinput}>
+                    style={styles.textInput}>
+                </TextInput>
+                <TextInput
+                    placeholder={AorE.A == true ? LangAr.Password : LangEn.Password}
+                    onChangeText={this.props.setPassword}
+                    style={styles.textInput}>
                 </TextInput>
                 <Country country={this.props.country} setCountry={this.props.setCountry} />
                 <City city={this.props.city} setCity={this.props.setCity} />
                 <Age age={this.props.age} setAge={this.props.setAge} />
                 <View style={styles.fieldContainer}>
-                <Text style={styles.text}>{this.props.field}</Text>
-                <RNPickerSelect
-                    onValueChange={this.props.setField}
-                    placeholder={{ label: "", value: null }}
-                    items={[
-                        { label: AorE.A == true ? LangAr.Sport : LangEn.Sport, value: AorE.A == true ? LangAr.Sport : LangEn.Sport },
-                        { label: AorE.A == true ? LangAr.Act : LangEn.Act, value: AorE.A == true ? LangAr.Sport : LangEn.Sport, },
-                        { label: AorE.A == true ? LangAr.Act : LangEn.Act, value: AorE.A == true ? LangAr.Act : LangEn.Act },
-                        { label: AorE.A == true ? LangAr.Diction : LangEn.Diction, value: AorE.A == true ? LangAr.Diction : LangEn.Diction },
-                        { label: AorE.A == true ? LangAr.Dance : LangEn.Dance, value: AorE.A == true ? LangAr.Dance : LangEn.Dance },
-                        { label: AorE.A == true ? LangAr.Draw : LangEn.Draw, value: AorE.A == true ? LangAr.Draw : LangEn.Draw },
-                        { label: AorE.A == true ? LangAr.Instrument : LangEn.Instrument, value: AorE.A == true ? LangAr.Instrument : LangEn.Instrument },
-                        { label: AorE.A == true ? LangAr.Magic : LangEn.Magic, value: AorE.A == true ? LangAr.Magic : LangEn.Magic },
-                        { label: AorE.A == true ? LangAr.Science : LangEn.Science, value: AorE.A == true ? LangAr.Science : LangEn.Science },
-                        { label: AorE.A == true ? LangAr.Comedy : LangEn.Comedy, value: AorE.A == true ? LangAr.Comedy : LangEn.Comedy },
-                    ]} />
+                    <Text style={styles.text}>{this.props.field}</Text>
+                    <RNPickerSelect
+                        onValueChange={this.props.setField}
+                        placeholder={{ label: "", value: null }}
+                        items={[
+                            { label: AorE.A == true ? LangAr.Sport : LangEn.Sport, value: AorE.A == true ? LangAr.Sport : LangEn.Sport },
+                            { label: AorE.A == true ? LangAr.Act : LangEn.Act, value: AorE.A == true ? LangAr.Sport : LangEn.Sport, },
+                            { label: AorE.A == true ? LangAr.Act : LangEn.Act, value: AorE.A == true ? LangAr.Act : LangEn.Act },
+                            { label: AorE.A == true ? LangAr.Diction : LangEn.Diction, value: AorE.A == true ? LangAr.Diction : LangEn.Diction },
+                            { label: AorE.A == true ? LangAr.Dance : LangEn.Dance, value: AorE.A == true ? LangAr.Dance : LangEn.Dance },
+                            { label: AorE.A == true ? LangAr.Draw : LangEn.Draw, value: AorE.A == true ? LangAr.Draw : LangEn.Draw },
+                            { label: AorE.A == true ? LangAr.Instrument : LangEn.Instrument, value: AorE.A == true ? LangAr.Instrument : LangEn.Instrument },
+                            { label: AorE.A == true ? LangAr.Magic : LangEn.Magic, value: AorE.A == true ? LangAr.Magic : LangEn.Magic },
+                            { label: AorE.A == true ? LangAr.Science : LangEn.Science, value: AorE.A == true ? LangAr.Science : LangEn.Science },
+                            { label: AorE.A == true ? LangAr.Comedy : LangEn.Comedy, value: AorE.A == true ? LangAr.Comedy : LangEn.Comedy },
+                        ]} />
                 </View>
             </View>
         );
@@ -61,7 +66,7 @@ const styles = StyleSheet.create({
         width: "100%",
         marginVertical: 10,
     },
-    textinput: {
+    textInput: {
         textAlign: "left",
         borderColor: "#808080",
         borderWidth: 1,

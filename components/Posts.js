@@ -19,7 +19,7 @@ export default class Posts extends Component {
                             resizeMode: "contain"
                         }
                     }>
-                    <Image source={this.props.image} style={styles.media}></Image>
+                    <Image source={{ uri: this.props.image }} style={styles.media}></Image>
                 </Lightbox>
             </View>
         )

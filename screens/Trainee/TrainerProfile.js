@@ -7,10 +7,16 @@ import Post from "../../components/Posts";
 import Review from "../../components/Reviews";
 import Modal from "react-native-modal";
 import Header from "../../components/ProfileHeader";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 //import language files for translation
 import LangAr from "../../lang/ar.json";
 import LangEn from "../../lang/en.json";
 import AorE from "../../lang/AorE";
+//import Api link
+import Api from "../../Api";
+
+let api = Api.link;
 
 //To have the total height of the screen
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -25,12 +31,57 @@ export default class TrainerProfile extends Component {
       show: false,
       toggle: true,
       text: "",
-      review: []
+      review: [],
+      interests: [],
+      posts: [],
+      reviews: [],
+      id: 0,
+      name: "",
+      field: "",
+      picture: "",
+      bio: "",
+      postNum: 0,
+      traineeNum: 0
     }
   }
 
+  componentDidMount = async () => {
+    const { params } = this.props.navigation.state
+    let id = await params.id
+    let name = await params.name
+    let field = await params.field
+    let picture = await params.picture
+    let bio = await params.bio
+    let postNum = await params.postNum
+    let traineeNum = await params.traineeNum
+    this.setState({ id: id });
+    this.setState({ name: name });
+    this.setState({ field: field });
+    this.setState({ picture: picture });
+    this.setState({ bio: bio });
+    this.setState({ postNum: postNum });
+    this.setState({ traineeNum: traineeNum });
+
+
+    await axios.get(api + "/Interests/" + this.state.id).then(resp => {
+      let response = resp.data;
+      this.setState({ interests: response })
+    })
+
+    await axios.get(api + "/Posts/" + this.state.id).then(resp => {
+      let response = resp.data;
+      this.setState({ posts: response })
+    })
+
+    await axios.get(api + "/Reviews/" + this.state.id).then(resp => {
+      let response = resp.data;
+      this.setState({ reviews: response })
+    })
+  }
+
+
   //Function used to change the show state
-    onShow = () => {
+  onShow = () => {
     if (this.state.toggle)
       this.setState({ show: true, toggle: false });
     else {
@@ -39,7 +90,13 @@ export default class TrainerProfile extends Component {
   }
 
   //Function to push the new review into the array
-  addReview = () => {
+  addReview = async () => {
+    let userId = await AsyncStorage.getItem("userId");
+    await axios.post(api + "/ReviewPost/", {
+      content: this.state.text,
+      trainerId: this.state.id,
+      traineeId: parseInt(userId)
+    });
     let name = this.state.text;
     let component = this.state.review;
     component.push(name);
@@ -54,40 +111,46 @@ export default class TrainerProfile extends Component {
           {/* Header section */}
           <Header
             color="#F25F5C"
-            postsNum={100}
-            traineesNum={100}
-            uri="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
-            name="Sara"
-            field="Piano"
-            rate={4.5}
-            bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></Header>
+            postsNum={this.state.postNum}
+            traineesNum={this.state.traineeNum}
+            uri={this.state.picture}
+            name={this.state.name}
+            field={this.state.field}
+            rateForUser={this.state.id}
+            bio={this.state.bio}>
+          </Header>
           <View style={styles.section2}>
             {/* To have small left margin */}
             <View style={styles.marginContainer}>
               {/* Inserted media section */}
               <ScrollView horizontal={true}>
-                <Post image={require("../../assets/images/post1.jpg")}></Post>
-                <Post image={require("../../assets/images/post2.jpg")}></Post>
-                <Post image={require("../../assets/images/post3.png")}></Post>
-                <Post image={require("../../assets/images/post1.jpg")}></Post>
+                {this.state.posts.map((data) => {
+                  return (
+                    <Post key={data.id} image={data.uri}></Post>
+                  )
+                })}
               </ScrollView>
               {/* Interests section */}
               <Text style={styles.label}>{AorE.A == true ? LangAr.Interests : LangEn.Interests}</Text>
-              <View style={[styles.container], AorE.A == true ? { alignSelf: "flex-end" } : { alignSelf: "flex-start"}}>
-                <Interest interest="piano"></Interest>
-              </View>
+              <ScrollView horizontal={true} style={[styles.container], AorE.A == true ? { alignSelf: "flex-end" } : { alignSelf: "flex-start" }}>
+                {this.state.interests.map((data) => {
+                  return (
+                    <Interest key={data.id} interest={data.name} textColor="#F25F5C"></Interest>
+                  )
+                })}
+              </ScrollView>
               {/* Reviews section */}
               <Text style={styles.label}>{AorE.A == true ? LangAr.Reviews : LangEn.Reviews}</Text>
             </View>
           </View>
           <View style={styles.section1}>
-            {this.state.review.map((data, index) => {
-              return <Review text={data} key={index} />
+            {this.state.reviews.map((data) => {
+              return <Review key={data.id} reviewFromUser={data.traineeId.toString()} text={data.content} />
             })}
           </View>
         </ScrollView>
         {/* Write button */}
-        <TouchableOpacity style={[styles.write, AorE.A == true ? { left: 5 } : { right: 5 } ]} onPress={this.onShow}>
+        <TouchableOpacity style={styles.write} onPress={this.onShow}>
           <Image source={require("../../assets/images/write.png")} style={styles.writeImage} ></Image>
         </TouchableOpacity>
 
@@ -112,6 +175,7 @@ const styles = StyleSheet.create({
   write: {
     position: "absolute",
     bottom: 5,
+    right: 5
   },
   writeImage: {
     height: 60,

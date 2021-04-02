@@ -9,6 +9,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import welcome from "../screens/Sign/Welcome";
 import sign from "../screens/Sign/Sign";
 import signUp from "../screens/Sign/SignUp";
+import login from "../screens/Sign/Login";
 import thanks from "../screens/Sign/Thanks";
 import userInfo from "../screens/Sign/UserInfo";
 
@@ -16,6 +17,7 @@ const rootNavigation = createStackNavigator(
     {
         Welcome: welcome,
         Sign: sign,
+        Login: login,
         SignUp: signUp,
         UserInfo: userInfo,
         Thanks: thanks

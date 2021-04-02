@@ -10,7 +10,7 @@ export default class SignButton extends Component {
             <View style={styles.container}>
                 {/*Sign up buton */}
                 <TouchableOpacity
-                    style={[styles.BlockButton, {backgroundColor:this.props.color}]}
+                    style={[styles.BlockButton, { backgroundColor: this.props.color }]}
                     onPress={this.props.nav}>
                     <Text style={styles.text}>{this.props.text}</Text>
                 </TouchableOpacity>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: "80%",
         position: "absolute",
-        bottom: 30
+        bottom: 20
     },
     text: {
         fontSize: 25,

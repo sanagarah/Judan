@@ -5,10 +5,17 @@ import { StyleSheet, View, ScrollView, TouchableOpacity, Text } from "react-nati
 import Constants from "expo-constants";
 import * as ImagePicker from "expo-image-picker";
 import PaymentDetails from "../../components/PaymentDetails";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 //import language files for translation
 import LangAr from "../../lang/ar.json";
 import LangEn from "../../lang/en.json";
 import AorE from "../../lang/AorE";
+//import Api link
+import Api from "../../Api";
+
+let api = Api.link;
+let traineeId;
 
 //The beginning of the class
 export default class BankCard extends Component {
@@ -26,9 +33,32 @@ export default class BankCard extends Component {
             name: "",
             number: "",
             bank: "",
-            date: this.dateBlank,
-            time: this.timeBlank
+            payDate: this.dateBlank,
+            payTime: this.timeBlank,
+            trainerId: 0,
+            isOnline: true,
+            platform: "",
+            date: "",
+            time: "",
+            payment: "Hourly",
         }
+    }
+
+    componentDidMount = async () => {
+        traineeId = await AsyncStorage.getItem("userId")
+        const { params } = this.props.navigation.state
+        let trainerId = params.trainerId
+        let isOnline = params.isOnline
+        let platform = params.platform
+        let time = params.time
+        let date = params.date
+        let payment = params.payment
+        this.setState({ trainerId: trainerId });
+        this.setState({ isOnline: isOnline });
+        this.setState({ platform: platform });
+        this.setState({ time: time });
+        this.setState({ date: date });
+        this.setState({ payment: payment });
     }
 
     //To show the popup page for uploading a certification
@@ -58,13 +88,13 @@ export default class BankCard extends Component {
     //Function used to set the choesn value in the box after chaning it to String and ignore unnecessary text
     setDate = (date) => {
         var stringDate = date.toLocaleString().substring(0, 10);
-        this.setState({ date: stringDate })
+        this.setState({ payDate: stringDate })
     };
 
     //Function used to set the choesn value in the box after chaning it to String and ignore unnecessary text
     setTime = (time) => {
         var stringTime = time.toLocaleString().substring(10, 16);
-        this.setState({ time: stringTime })
+        this.setState({ payTime: stringTime })
     };
 
     //To push the new image uri into an array and creat certification component using that uri
@@ -108,7 +138,7 @@ export default class BankCard extends Component {
     };
 
     //To validate TextInputs
-    checkTextInput = () => {
+    checkTextInput = async () => {
         //Check for the name TextInput
         if (!this.state.name.trim()) {
             alert(AorE.A == true ? LangAr.AlertCardName : LangEn.AlertCardName);
@@ -135,12 +165,12 @@ export default class BankCard extends Component {
             return;
         }
         //Check for the date TextInput
-        if (this.state.date == this.dateBlank) {
+        if (this.state.payDate == this.dateBlank) {
             alert(AorE.A == true ? LangAr.AlertDate : LangEn.AlertDate);
             return;
         }
         //Check for the time TextInput
-        if (this.state.time == this.timeBlank) {
+        if (this.state.payTime == this.timeBlank) {
             alert(AorE.A == true ? LangAr.AlertTime : LangEn.AlertTime);
             return;
         }
@@ -150,6 +180,14 @@ export default class BankCard extends Component {
             return;
         }
         //Checked successfully
+        await axios.post(api + "/RegisterTrainer/" + this.state.trainerId + "/" + traineeId, {
+            trainerId: this.state.trainerId,
+            isOnline: this.state.isOnline,
+            platform: this.state.platform,
+            time: this.state.time,
+            date: this.state.date,
+            payment: this.state.payment,
+        });
         this.props.navigation.navigate("Thanks")
     };
 
@@ -164,8 +202,8 @@ export default class BankCard extends Component {
                         name={this.state.name}
                         number={this.state.number}
                         bank={this.state.bank}
-                        date={this.state.date}
-                        time={this.state.time}
+                        date={this.state.payDate}
+                        time={this.state.payTime}
                         setShow={this.onShow}
                         setName={this.setName}
                         setNumber={this.setNumber}
@@ -174,7 +212,7 @@ export default class BankCard extends Component {
                         setTime={this.setTime}
                         _pickImage={this._pickImage}
                         addCertification={this.addCertification}
-                       />
+                    />
                     <TouchableOpacity
                         onPress={this.checkTextInput}
                         style={styles.buttonContainer}>

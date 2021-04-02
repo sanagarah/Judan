@@ -11,7 +11,6 @@ import LangAr from "../../lang/ar.json";
 import LangEn from "../../lang/en.json";
 import AorE from "../../lang/AorE";
 
-
 //The beginning of the class
 export default class Request extends Component {
     timeBlank = AorE.A == true ? LangAr.TimeBlank : LangEn.TimeBlank;
@@ -24,10 +23,17 @@ export default class Request extends Component {
             toggle: true,
             show: false,
             border: 0,
-            place: " ",
+            place: "",
             time: this.timeBlank,
-            date: this.dateBlank
+            date: this.dateBlank,
+            trainerId: 0
         }
+    }
+
+    componentDidMount() {
+        const { params } = this.props.navigation.state
+        let trainerId = params.id
+        this.setState({ trainerId: trainerId });
     }
 
     //Function used to change the show state
@@ -59,7 +65,7 @@ export default class Request extends Component {
     //To validate TextInputs
     checkTextInput = () => {
         //Check for the place TextInput
-        if (this.state.place == " " && this.state.border == 0) {
+        if (this.state.place == "" && this.state.border == 0) {
             alert(AorE.A == true ? LangAr.AlertPlace : LangEn.AlertPlace);
             return;
         }
@@ -74,8 +80,14 @@ export default class Request extends Component {
             return;
         }
         //Checked successfully
-        this.props.navigation.navigate("Payment")
-    };
+        this.props.navigation.navigate("Payment", {
+            trainerId: this.state.trainerId,
+            type: this.state.border,
+            place: this.state.place,
+            time: this.state.time,
+            date: this.state.date
+        })
+    }
 
     render() {
         return (
@@ -112,7 +124,7 @@ export default class Request extends Component {
                     {this.state.show ? null : <Place place={this.state.place} setPlace={this.setPlace} />}
                     {this.state.show ?
                         <View style={styles.mapView}>
-                            <Map />
+                            <Map mapForUser={this.state.id} />
                         </View> : null}
                     <Text style={styles.label}>{AorE.A == true ? LangAr.Time : LangEn.Time}</Text>
                     <View style={styles.timeDateContainer}>

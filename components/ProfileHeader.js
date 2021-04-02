@@ -18,8 +18,8 @@ export default class ProfileHeader extends Component {
                     <View style={styles.header}>
                         <Text style={styles.label1}>{this.props.postsNum}</Text>
                         <Text style={[styles.label2, { color: this.props.color }]}>{AorE.A == true ? LangAr.Posts : LangEn.Posts}</Text>
-                    </View>   
-                    <Image source={{ uri: this.props.uri }} style={[styles.profileImage, AorE.A == true ? { marginLeft: 50 } : { marginLeft: 70 }]}></Image>
+                    </View>
+                    <Image source={this.props.uri ? { uri: this.props.uri } : null} style={[styles.profileImage, AorE.A == true ? { marginLeft: 50 } : { marginLeft: 70 }]}></Image>
                     <View style={styles.header}>
                         <Text style={styles.label1}>{this.props.traineesNum}</Text>
                         <Text style={[styles.label2, { color: this.props.color }]}>{AorE.A == true ? LangAr.Trainees : LangEn.Trainees}</Text>
@@ -32,7 +32,7 @@ export default class ProfileHeader extends Component {
                 {/*The fourth row in the header starts here */}
                 <Text style={styles.label3}>{this.props.bio} </Text>
                 {/*The fifth row in the header starts here */}
-                <StarBar rate={this.props.rate} />
+                <StarBar rateForUser={this.props.rateForUser} />
             </View>
         )
     }

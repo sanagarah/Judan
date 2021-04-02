@@ -1,7 +1,7 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, View, Image, Dimensions} from "react-native";
+import { StyleSheet, View, Image, Dimensions, Text, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -27,18 +27,30 @@ class SignUp extends Component {
     }
 
     //To validate TextInputs
-    checkAuthintication = async () => {
-       /*  //Check for the authintication of user TextInput
-        let token = await AsyncStorage.getItem("fb_token");
-        if (!token) {
-            alert(AorE.A == true ? LangAr.SignupFirst : LangEn.SignupFirst);
-            return;
-        }
-         */
+    checkAuthintication1 = async () => {
+        // //Check for the authintication of user TextInput
+        // let token = await AsyncStorage.getItem("fb_token");
+        // if (!token) {
+        //     alert(AorE.A == true ? LangAr.SignupFirst : LangEn.SignupFirst);
+        //     return;
+        // }
 
         //Checked successfully
         this.props.navigation.navigate("UserInfo")
-    } 
+    }
+
+    //To validate TextInputs
+    checkAuthintication2 = async () => {
+        // //Check for the authintication of user TextInput
+        // let token = await AsyncStorage.getItem("fb_token");
+        // if (!token) {
+        //     alert(AorE.A == true ? LangAr.SignupFirst : LangEn.SignupFirst);
+        //     return;
+        // }
+
+        //Checked successfully
+        this.props.navigation.navigate("Login")
+    }
 
     render() {
         return (
@@ -47,17 +59,23 @@ class SignUp extends Component {
                     style={styles.header}
                     source={AorE.A == true ? require("../../assets/images/signupA.png") : require("../../assets/images/signup.png")} />
                 <SocialNetwork
-                    nav1={() => this.googleLogin()} 
+                    nav1={() => this.googleLogin()}
                     nav2={() => this.facebookLogin()} />
                 <Image
                     style={styles.image}
                     source={require("../../assets/images/signup.jpg")} />
-                <SignButton 
+                <SignButton
                     color="#F26D6A"
-                    text={AorE.A == true ? LangAr.Continue : LangEn.Continue}
-                    nav={this.checkAuthintication}
+                    text={AorE.A == true ? LangAr.SignUp : LangEn.SignUp}
+                    nav={this.checkAuthintication1}
                 />
-            </View>
+                <View style={[styles.textButton, AorE.A == true ? { flexDirection: "row-reverse" } : { flexDirection: "row" }]}>
+                    <Text> {AorE.A == true ? LangAr.Already : LangEn.Already} </Text>
+                    <TouchableOpacity onPress={this.checkAuthintication2}>
+                        <Text style={styles.text}> {AorE.A == true ? LangAr.LogIn : LangEn.LogIn}</Text>
+                    </TouchableOpacity>
+                </View>
+            </View >
         );
     }
 }
@@ -82,6 +100,13 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 60,
         borderBottomRightRadius: 60,
     },
-}); 
+    textButton: {
+        marginBottom: 20,
+        alignItems: "center"
+    },
+    text: {
+        color: "#F25F5C",
+    }
+});
 
-export default connect(null, actions)(SignUp); 
+export default connect(null, actions)(SignUp);

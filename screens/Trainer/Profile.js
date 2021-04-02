@@ -9,10 +9,17 @@ import Modal from "react-native-modal";
 import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
 import Header from "../../components/ProfileHeader";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 //import language files for translation
 import LangAr from "../../lang/ar.json";
 import LangEn from "../../lang/en.json";
 import AorE from "../../lang/AorE";
+//import Api link
+import Api from "../../Api";
+
+let api = Api.link;
+let userId;
 
 //The beginning of the class
 export default class Profile extends Component {
@@ -29,17 +36,82 @@ export default class Profile extends Component {
       toggle2: true,
       image: null,
       image2: null,
-      images: [],
+      posts: [],
       interests: [],
+      reviews: [],
       text: "",
-      name:  AorE.A == true ? LangAr.Name : LangEn.Name,
-      field: AorE.A == true ? LangAr.Field : LangEn.Field,
+      id: 0,
+      name: "",
+      field: "",
       bio: " ",
+      rate: 0,
+      postNum: 0,
+      traineeNum: 0
     }
   }
 
+  //To have trainer's profile information
+  componentDidMount = async () => {
+    userId = await AsyncStorage.getItem("userId");
+    let name = ""
+    let field = ""
+    let bio = ""
+    let rate = 0
+    let picture = ""
+    let traineeNum = 0
+    let postNum = 0
+    let interests = this.state.interests
+    let posts = this.state.posts
+    let reviews = this.state.reviews
+
+    //To get trainer's interests
+    await axios.get(api + "/Posts/" + userId).then(resp => {
+      let items = (resp.data);
+      items.filter(function (item) {
+        posts.push(item.uri);
+      });
+    })
+
+    //To get trainer's posts
+    await axios.get(api + "/Interests/" + userId).then(resp => {
+      let items = (resp.data);
+      items.filter(function (item) {
+        interests.push(item.name);
+      });
+    })
+
+    //To get trainer's reviews
+    await axios.get(api + "/Reviews/" + userId).then(resp => {
+      let items = (resp.data);
+      items.filter(function (item) {
+        reviews.push({ content: item.content, traineeId: item.traineeId });
+      });
+    })
+
+    await axios.get(api + "/IdTrainer/" + userId).then(resp => {
+      let items = (resp.data);
+      items.filter(function (item) {
+        name = item.name
+        field = item.field
+        rate = item.rate
+        bio = item.bio
+        picture = item.picture
+        traineeNum = item.traineeNum
+        postNum = item.postNum
+      });
+    })
+    this.setState({ id: userId })
+    this.setState({ name: name })
+    this.setState({ field: field })
+    this.setState({ bio: bio })
+    this.setState({ rate: rate })
+    this.setState({ image2: picture })
+    this.setState({ traineeNum: traineeNum })
+    this.setState({ postNum: postNum })
+  }
+
   //To show the popup page for adding interest
-    onShow = () => {
+  onShow = () => {
     if (this.state.toggle)
       this.setState({ show: true, toggle: false });
     else {
@@ -57,30 +129,51 @@ export default class Profile extends Component {
   }
 
   //To show the popup page for editing profile
-  onShow2 = () => {
+  onShow2 = async () => {
     if (this.state.toggle2)
       this.setState({ show2: true, toggle2: false });
     else {
       this.setState({ show2: false, toggle2: true });
     }
+    let userId = await AsyncStorage.getItem("userId");
+    await axios.post(api + "/TrainerUpdate/" + userId, {
+      picture: this.state.image2,
+      name: this.state.name,
+      field: this.state.field,
+      bio: this.state.bio
+    });
   }
 
   //To push text into an array and creat Interest component using that text
-  addInterest = () => {
+  addInterest = async () => {
     let name = this.state.text;
     let component = this.state.interests;
     component.push(name);
-    this.setState({ review: component, text: "" })
     this.onShow();
+    await axios.post(api + "/InterestsPost/" + userId, {
+      name: this.state.text
+    });
   }
 
   //To push the new image uri into an array and creat post component using that uri
-  addPost = () => {
-    let name = this.state.image;
-    let component = this.state.images;
-    component.push(name);
-    this.setState({ array: component, text: "" })
+  addPost = async () => {
+    let uri = this.state.image;
+    let component = this.state.posts;
+    component.push(uri);
     this.onShow1();
+    if (this.state.posts.length != 0) {
+      this.setState({ postNum: this.state.posts.length })
+      await axios.post(api + "/TrainerUpdate/" + userId, {
+        picture: this.state.image2,
+        name: this.state.name,
+        field: this.state.field,
+        bio: this.state.bio,
+        postNum: this.state.postNum + 1
+      });
+      await axios.post(api + "/PostsPost/" + userId, {
+        uri: this.state.image
+      });
+    }
   }
 
   //To change the name in the header
@@ -135,7 +228,8 @@ export default class Profile extends Component {
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
-      quality: 1
+      quality: 1,
+      postNumbers: 0
     });
     if (!result.cancelled) {
       {/*Saving the uri of the selected photo*/ }
@@ -150,9 +244,9 @@ export default class Profile extends Component {
           <Button title={AorE.A == true ? LangAr.Edit : LangEn.Edit} color="#247BA0" onPress={this.onShow2}></Button>
           {/* Header section */}
           <Header
-            rate={5}
-            postsNum={100}
-            traineesNum={100}
+            rateForUser={this.state.id}
+            postsNum={this.state.postNum}
+            traineesNum={this.state.traineeNum}
             uri={this.state.image2}
             name={this.state.name}
             field={this.state.field}
@@ -167,13 +261,13 @@ export default class Profile extends Component {
                 <TouchableOpacity onPress={this._pickImage1}>
                   <Image style={styles.post} source={require("../../assets/images/post.png")}></Image>
                 </TouchableOpacity>
-                {this.state.images.map((data, index) => {
-                  return <Post image={{ uri: data }} key={index}></Post>
+                {this.state.posts.map((data, index) => {
+                  return <Post image={data} key={index}></Post>
                 })}
               </ScrollView>
               {/* Interests section */}
               <Text style={styles.label}>{AorE.A == true ? LangAr.Interests : LangEn.Interests}</Text>
-              <View style={[styles.container],  AorE.A == true ? { alignSelf: "flex-end" } : { alignSelf: "flex-start" }}>
+              <ScrollView horizontal={true} style={[styles.container], AorE.A == true ? { alignSelf: "flex-end" } : { alignSelf: "flex-start" }}>
                 <TouchableOpacity onPress={this.onShow}>
                   <View style={styles.background}>
                     <Image source={require("../../assets/images/plus.png")} style={styles.plusImage} ></Image>
@@ -182,13 +276,15 @@ export default class Profile extends Component {
                 {this.state.interests.map((data, index) => {
                   return <Interest interest={data} key={index} />
                 })}
-              </View>
+              </ScrollView>
               {/* Reviews section */}
               <Text style={styles.label}>{AorE.A == true ? LangAr.Reviews : LangEn.Reviews}</Text>
             </View>
           </View>
           <View style={styles.section1}>
-            <Review text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></Review>
+            {this.state.reviews.map((data, index) => {
+              return <Review text={data.content} reviewFromUser={data.traineeId} key={index} />
+            })}
           </View>
         </ScrollView>
 
@@ -211,7 +307,7 @@ export default class Profile extends Component {
             <View style={styles.popUp1}>
               {/* To push the new image uri into an array and creat post component using that uri */}
               <View style={styles.postContainer}>
-                <Post image={{ uri: this.state.image }}></Post>
+                <Post image={this.state.image}></Post>
               </View>
               <TouchableOpacity style={styles.checkImage} onPress={this.addPost}>
                 <Image source={require("../../assets/images/check.png")} style={styles.checkImage}></Image>

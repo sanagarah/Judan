@@ -12,6 +12,7 @@ export default class Age extends Component {
                 <Text style={styles.text} >{this.props.age}</Text>
                 <View style={styles.picker}>
                     <RNPickerSelect
+                        placeholder={{ label: "", value: null }}
                         onValueChange={this.props.setAge}
                         items={[
                             { label: "5-9", value: "5-9" },
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     },
     picker: {
         flex: 1,
-        marginLeft: "95%",
+        marginLeft: "80%",
         alignSelf: "center"
     }
 });

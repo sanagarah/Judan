@@ -25,6 +25,7 @@ export default class app extends React.Component {
   async componentDidMount() {
     //AsyncStorage.removeItem("fb_token");
     //AsyncStorage.removeItem("user");
+    //AsyncStorage.removeItem("userId");
     let token = await AsyncStorage.getItem("fb_token");
     let user = await AsyncStorage.getItem("user");
 

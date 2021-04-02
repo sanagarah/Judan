@@ -3,13 +3,16 @@ import React, { Component } from "react";
 // import all the components we are going to use
 import { Text, StyleSheet, View, FlatList, ScrollView } from "react-native";
 import { SearchBar } from "react-native-elements";
-import jsonData from "../trainersInfo.json";
 import { LogBox } from "react-native";
 LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
 //import language files for translation
 import LangAr from "../lang/ar.json";
 import LangEn from "../lang/en.json";
 import AorE from "../lang/AorE";
+//import Api link
+import Api from "../Api";
+
+let api = Api.link;
 
 //The beginning of the class
 export default class SearchBox extends Component {
@@ -19,10 +22,23 @@ export default class SearchBox extends Component {
         //Declare the initial values for states
         this.state = {
             search: "",
-            filteredDataSource: jsonData,
-            masterDataSource: jsonData
+            filteredDataSource: "",
+            masterDataSource: ""
         }
     }
+
+    componentDidMount = () => {
+        fetch(api + "/trainerGet")
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({ filteredDataSource: responseJson })
+                this.setState({ masterDataSource: responseJson })
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
 
     searchFilterFunction = (text) => {
         // Check if searched text is not blank
@@ -31,8 +47,8 @@ export default class SearchBox extends Component {
             // Filter the masterDataSource
             // Update FilteredDataSource
             const newData = this.state.masterDataSource.filter(function (item) {
-                const itemData = item.title
-                    ? item.title.toUpperCase()
+                const itemData = item.name
+                    ? item.name.toUpperCase()
                     : ''.toUpperCase();
                 const textData = text.toUpperCase();
                 return itemData.indexOf(textData) > -1;
@@ -51,7 +67,8 @@ export default class SearchBox extends Component {
         return (
             // Flat List Item Separator
             <View style={styles.separation} />
-        );};
+        );
+    };
 
     render() {
         return (
@@ -68,21 +85,21 @@ export default class SearchBox extends Component {
                     placeholder={AorE.A == true ? LangAr.TypeHere : LangEn.TypeHere}
                     value={this.state.search}
                 />
-                    <FlatList
-                        data={this.state.filteredDataSource}
-                        keyExtractor={(item, index) => index.toString()}
-                        ItemSeparatorComponent={this.ItemSeparatorView}
-                        renderItem={({ item }) => {
-                            return (
-                                // Flat List Item
-                                <Text style={styles.itemStyle} onPress={this.props.nav}>
-                                    {item.title}
-                                    {"\n" + "\n"}
-                                    { item.body}
-                                </Text>
-                            );
-                        }}
-                    />
+                <FlatList
+                    data={this.state.filteredDataSource}
+                    keyExtractor={(item, index) => index.toString()}
+                    ItemSeparatorComponent={this.ItemSeparatorView}
+                    renderItem={({ item }) => {
+                        return (
+                            // Flat List Item
+                            <Text style={styles.itemStyle} onPress={this.props.nav}>
+                                {item.name}
+                                {"\n" + "\n"}
+                                { item.field}
+                            </Text>
+                        );
+                    }}
+                />
             </ScrollView>
         );
     };

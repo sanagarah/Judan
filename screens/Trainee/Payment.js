@@ -2,11 +2,17 @@
 import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, Text, TouchableOpacity, ScrollView, View } from "react-native";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 //import language files for translation
 import LangAr from "../../lang/ar.json";
 import LangEn from "../../lang/en.json";
 import AorE from "../../lang/AorE";
+//import Api link
+import Api from "../../Api";
 
+let api = Api.link;
+let traineeId;
 
 //The beginning of the class
 export default class Payment extends Component {
@@ -15,40 +21,85 @@ export default class Payment extends Component {
 
         //Declare the initial values for states
         this.state = {
-            border: 0
+            border: 0,
+            trainerId: 0,
+            isOnline: true,
+            place: "",
+            date: "",
+            time: "",
+            payment: "Hourly",
         }
     }
+
+    componentDidMount = async () => {
+        traineeId = await AsyncStorage.getItem("userId")
+        const { params } = this.props.navigation.state
+        let trainerId = params.trainerId
+        let type = params.type
+        let place = params.place
+        let time = params.time
+        let date = params.date
+        if (type == 0)
+            isOnline = true
+        else
+            isOnline = false
+        this.setState({ trainerId: trainerId });
+        this.setState({ isOnline: isOnline });
+        this.setState({ place: place });
+        this.setState({ time: time });
+        this.setState({ date: date });
+    }
+
     changeColor1 = () => {
         this.setState({ border: 1 })
+        this.setState({ payment: "Hourly" })
     }
 
     changeColor2 = () => {
         this.setState({ border: 2 })
+        this.setState({ payment: "Monthly" })
     }
 
     changeColor3 = () => {
         this.setState({ border: 3 })
+        this.setState({ payment: "Yearly" })
     }
 
     //To validate
     check1 = () => {
-        //Check if plan has beed chosen
-        if (this.state.border==0) {
-            alert(AorE.A == true ? LangAr.AlertPlan : LangEn.AlertPlan);
-            return;
-        }
-        //Choosed successfully
-        this.props.navigation.navigate("BankCard")
-    };
-
-    //To validate
-    check2 = () => {
         //Check if plan has beed chosen
         if (this.state.border == 0) {
             alert(AorE.A == true ? LangAr.AlertPlan : LangEn.AlertPlan);
             return;
         }
         //Choosed successfully
+        this.props.navigation.navigate("BankCard", {
+            trainerId: this.state.trainerId,
+            isOnline: this.state.isOnline,
+            platform: this.state.place,
+            time: this.state.time,
+            date: this.state.date,
+            payment: this.state.payment,
+        })
+    };
+
+    //To validate
+    check2 = async () => {
+        //Check if plan has beed chosen
+        if (this.state.border == 0) {
+            alert(AorE.A == true ? LangAr.AlertPlan : LangEn.AlertPlan);
+            return;
+        }
+        //Choosed successfully;
+        await console.log(this.state.payment)
+        await axios.post(api + "/RegisterTrainer/" + this.state.trainerId + "/" + traineeId, {
+            trainerId: this.state.trainerId,
+            isOnline: this.state.isOnline,
+            platform: this.state.place,
+            time: this.state.time,
+            date: this.state.date,
+            payment: this.state.payment,
+        });
         this.props.navigation.navigate("Thanks")
     };
 
@@ -97,13 +148,13 @@ export default class Payment extends Component {
                                 <Text style={styles.descrition}>{AorE.A == true ? LangAr.YearlyDes : LangEn.YearlyDes}</Text>
                             </View>
                             <View>
-                                <Text style={styles.price}>{AorE.A == true ? LangAr.YearlyPrice : LangEn.YearlyPrice }</Text>
+                                <Text style={styles.price}>{AorE.A == true ? LangAr.YearlyPrice : LangEn.YearlyPrice}</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity
-                    style={styles.ButtonContainer} 
+                    style={styles.ButtonContainer}
                     onPress={this.check1}>
                     <Text style={styles.ButtonText}>{AorE.A == true ? LangAr.ToPaymentDetails : LangEn.ToPaymentDetails}</Text>
                 </TouchableOpacity>
