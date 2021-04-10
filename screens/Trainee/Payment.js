@@ -28,6 +28,7 @@ export default class Payment extends Component {
             date: "",
             time: "",
             payment: "Hourly",
+            serviceType: ""
         }
     }
 
@@ -39,6 +40,8 @@ export default class Payment extends Component {
         let place = params.place
         let time = params.time
         let date = params.date
+        let serviceType = params.serviceType
+        let isOnline;
         if (type == 0)
             isOnline = true
         else
@@ -48,6 +51,7 @@ export default class Payment extends Component {
         this.setState({ place: place });
         this.setState({ time: time });
         this.setState({ date: date });
+        this.setState({ serviceType: serviceType });
     }
 
     changeColor1 = () => {
@@ -76,10 +80,11 @@ export default class Payment extends Component {
         this.props.navigation.navigate("BankCard", {
             trainerId: this.state.trainerId,
             isOnline: this.state.isOnline,
-            platform: this.state.place,
+            place: this.state.place,
             time: this.state.time,
             date: this.state.date,
             payment: this.state.payment,
+            serviceType: this.state.serviceType
         })
     };
 
@@ -91,7 +96,7 @@ export default class Payment extends Component {
             return;
         }
         //Choosed successfully;
-        await console.log(this.state.payment)
+        //To post it in request table
         await axios.post(api + "/RegisterTrainer/" + this.state.trainerId + "/" + traineeId, {
             trainerId: this.state.trainerId,
             isOnline: this.state.isOnline,
@@ -99,7 +104,23 @@ export default class Payment extends Component {
             time: this.state.time,
             date: this.state.date,
             payment: this.state.payment,
+            type: this.state.serviceType
         });
+
+        //To get trainer's traineeNum
+        let traineeNum;
+        await axios.get(api + "/IdTrainer/" + this.state.trainerId).then(resp => {
+            let items = (resp.data);
+            items.filter(function (item) {
+                traineeNum = item.traineeNum;
+            });
+        })
+
+        //Update trainees number is trainer table (increasing it by 1)
+        await axios.post(api + "/TrainerNumUpdate/" + this.state.trainerId, {
+            traineeNum: traineeNum + 1
+        });
+
         this.props.navigation.navigate("Thanks")
     };
 

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, View } from "react-native";
-import ChatDpnd from "../../components/ChatDpnd";
+import ChatDpnd from "../../components/ChatDpndTrainer";
 import Header from "../../components/ChatHeader";
 //import language files for translation
 import LangAr from "../../lang/ar.json";
@@ -16,21 +16,33 @@ export default class Chat extends Component {
 
     //Declare the initial values for states
     this.state = {
-      text: ""
+      text: "",
+      id: 0,
+      name: "",
     }
   }
+
+  componentDidMount() {
+    const { params } = this.props.navigation.state
+    let id = params.id
+    let name = params.name
+    this.setState({ id: id });
+    this.setState({ name: name });
+  }
+
   render() {
     return (
       <View style={styles.container1}>
+
         {/*view for header box*/}
         <View style={styles.container2}>
-          <Header name={this.props.navigation.state.params.trainerName} subname={AorE.A == true ? LangAr.Requested : LangEn.Requested} nav={() => this.props.navigation.navigate("Chat")}>
+          <Header name={this.state.name} subname={AorE.A == true ? LangAr.Requested : LangEn.Requested} nav={() => this.props.navigation.navigate("Chat")}>
           </Header>
         </View>
 
         {/*view for masseage box*/}
         <View style={styles.container3}>
-          <ChatDpnd />
+          <ChatDpnd traineeId={this.state.id} />
         </View>
       </View>
     );
@@ -53,7 +65,6 @@ const styles = StyleSheet.create({
     flex: 5,
     backgroundColor: "#E7E8EF",
     width: "100%",
-    justifyContent: "center",
+    justifyContent: "center"
   },
 });
-

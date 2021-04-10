@@ -31,7 +31,6 @@ export default class TrainerProfile extends Component {
       show: false,
       toggle: true,
       text: "",
-      review: [],
       interests: [],
       posts: [],
       reviews: [],
@@ -92,16 +91,17 @@ export default class TrainerProfile extends Component {
   //Function to push the new review into the array
   addReview = async () => {
     let userId = await AsyncStorage.getItem("userId");
+    let id = userId.toString()
+    let name = { traineeId: id, content: this.state.text }
+    let component = this.state.reviews;
+    component.push(name);
+    this.setState({ reviews: component })
+    this.onShow();
     await axios.post(api + "/ReviewPost/", {
       content: this.state.text,
       trainerId: this.state.id,
       traineeId: parseInt(userId)
     });
-    let name = this.state.text;
-    let component = this.state.review;
-    component.push(name);
-    this.setState({ review: component, text: "" })
-    this.onShow();
   }
 
   render() {
@@ -145,7 +145,7 @@ export default class TrainerProfile extends Component {
           </View>
           <View style={styles.section1}>
             {this.state.reviews.map((data) => {
-              return <Review key={data.id} reviewFromUser={data.traineeId.toString()} text={data.content} />
+              return <Review key={data.id} reviewFromUser={data.traineeId} text={data.content} />
             })}
           </View>
         </ScrollView>
@@ -158,7 +158,8 @@ export default class TrainerProfile extends Component {
         <Modal isVisible={this.state.show}>
           <TouchableOpacity style={styles.modal} onPress={this.onShow}>
             <View style={styles.popUp}>
-              <TextInput placeholder={AorE.A == true ? LangAr.WriteReview : LangEn.WriteReview} style={styles.textInput} onChangeText={(txt) => { this.setState({ text: txt }) }}>
+              <TextInput placeholder={AorE.A == true ? LangAr.WriteReview : LangEn.WriteReview} style={styles.textInput}
+                onChangeText={(txt) => { this.setState({ text: txt }) }}>
               </TextInput>
               <TouchableOpacity style={styles.checkImage} onPress={this.addReview}>
                 <Image source={require("../../assets/images/check.png")} style={styles.checkImage}></Image>
@@ -172,6 +173,22 @@ export default class TrainerProfile extends Component {
 }
 //Declare the style
 const styles = StyleSheet.create({
+  container: {
+    width: "90%",
+    marginTop: 6
+  },
+  text: {
+    color: "#D2B204",
+    fontWeight: "bold"
+  },
+  review: {
+    backgroundColor: "#FFF",
+    width: "90%",
+    borderWidth: 1,
+    borderColor: "#808080",
+    borderRadius: 10,
+    padding: 10
+  },
   write: {
     position: "absolute",
     bottom: 5,

@@ -21,9 +21,10 @@ export default class Reviews extends Component {
     }
     componentDidMount = async () => {
         let name = ""
-        let user = await AsyncStorage.getItem("user");
+        let user = await this.props.reviewFromUser
+
         //Get trainee name and interest by using the id
-        await axios.get(api + "/IdTrainee/" + this.props.reviewFromUser).then(resp => {
+        await axios.get(api + "/IdTrainee/" + user).then(resp => {
             let items = (resp.data);
             items.filter(function (item) {
                 name = item.name;

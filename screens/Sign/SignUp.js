@@ -28,12 +28,12 @@ class SignUp extends Component {
 
     //To validate TextInputs
     checkAuthintication1 = async () => {
-        // //Check for the authintication of user TextInput
-        // let token = await AsyncStorage.getItem("fb_token");
-        // if (!token) {
-        //     alert(AorE.A == true ? LangAr.SignupFirst : LangEn.SignupFirst);
-        //     return;
-        // }
+        //Check for the authintication of user TextInput
+        let token = await AsyncStorage.getItem("fb_token");
+        if (!token) {
+            alert(AorE.A == true ? LangAr.SignupFirst : LangEn.SignupFirst);
+            return;
+        }
 
         //Checked successfully
         this.props.navigation.navigate("UserInfo")
@@ -41,13 +41,6 @@ class SignUp extends Component {
 
     //To validate TextInputs
     checkAuthintication2 = async () => {
-        // //Check for the authintication of user TextInput
-        // let token = await AsyncStorage.getItem("fb_token");
-        // if (!token) {
-        //     alert(AorE.A == true ? LangAr.SignupFirst : LangEn.SignupFirst);
-        //     return;
-        // }
-
         //Checked successfully
         this.props.navigation.navigate("Login")
     }
@@ -85,7 +78,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#FFF",
         alignItems: "center",
-        justifyContent: "center",
+
     },
     header: {
         height: SCREEN_HEIGHT / 4.4,
@@ -94,7 +87,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 60,
     },
     image: {
-        height: SCREEN_HEIGHT / 3,
+        height: SCREEN_HEIGHT / 3.5,
         width: "100%",
         marginTop: 60,
         borderBottomLeftRadius: 60,

@@ -48,7 +48,7 @@ export default class TrainerCard extends Component {
                     <TouchableOpacity onPress={this.props.nav}>
                         <Image
                             source={require("../assets/images/chat.png")}
-                            style={{ height: 70, width: 70, marginLeft: 250 }}
+                            style={styles.chatImage}
                         />
                     </TouchableOpacity>
                 </View>
@@ -133,11 +133,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         width: 120,
         justifyContent: "space-around"
-
     },
     scrollText: {
         color: "#FFF",
         fontSize: 18,
-
+    },
+    chatImage: {
+        height: 70,
+        width: 70,
+        marginLeft: 250
     }
 });

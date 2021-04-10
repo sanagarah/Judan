@@ -5,11 +5,17 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from "rea
 import Place from "../../components/Place";
 import Time from "../../components/Time";
 import Date from "../../components/Date";
-import Map from "../../components/Map";
+import MapView, { Marker } from "react-native-maps";
+import axios from "axios";
 //import language files for translation
 import LangAr from "../../lang/ar.json";
 import LangEn from "../../lang/en.json";
 import AorE from "../../lang/AorE";
+//import Api link
+import Api from "../../Api";
+
+let api = Api.link;
+
 
 //The beginning of the class
 export default class Request extends Component {
@@ -26,14 +32,124 @@ export default class Request extends Component {
             place: "",
             time: this.timeBlank,
             date: this.dateBlank,
-            trainerId: 0
+            trainerId: 0,
+            type: "",
+            markerData: {
+                latitude: 24.470901,
+                longitude: 39.612236,
+            },
+            initial: {
+                latitude: 24.470901,
+                longitude: 39.612236,
+            },
+            mapData: {
+                latitude: 24.470901,
+                longitude: 39.612236,
+                latitudeDelta: 0.015,
+                longitudeDelta: 0.0121,
+            },
         }
     }
 
-    componentDidMount() {
+    componentDidMount = async () => {
         const { params } = this.props.navigation.state
         let trainerId = params.id
-        this.setState({ trainerId: trainerId });
+        let type = params.type
+        await this.setState({ trainerId: trainerId });
+        await this.setState({ type: type });
+
+        //For map
+        let currentCity;
+        await axios.get(api + "/IdTrainer/" + this.state.trainerId).then(resp => {
+            let items = (resp.data);
+            items.filter(function (item) {
+                currentCity = item.city
+            });
+            switch (currentCity) {
+                case "Jeddah":
+                    this.setState({ mapData: { latitude: 21.543333, longitude: 39.172779, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 21.543333, longitude: 39.172779 } });
+                    break;
+                case "Madinah":
+                    this.setState({ mapData: { latitude: 24.470901, longitude: 39.612236, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 24.470901, longitude: 39.612236 } });
+                    break;
+                case "Makkah":
+                    this.setState({ mapData: { latitude: 21.422510, longitude: 39.826168, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 21.422510, longitude: 39.826168 } });
+                    break;
+                case "Taif":
+                    this.setState({ mapData: { latitude: 21.437273, longitude: 40.512714, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 21.437273, longitude: 40.512714 } });
+                    break;
+                case "Yanbu":
+                    this.setState({ mapData: { latitude: 24.186848, longitude: 38.026428, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 24.186848, longitude: 38.026428 } });
+                    break;
+                case "Qunfudhah":
+                    this.setState({ mapData: { latitude: 19.12814, longitude: 41.078739, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 19.12814, longitude: 41.078739 } });
+                    break;
+                case "Laith":
+                    this.setState({ mapData: { latitude: 20.151259, longitude: 40.269649, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 20.151259, longitude: 40.269649 } });
+                    break;
+                case "Khulays":
+                    this.setState({ mapData: { latitude: 22.150369, longitude: 39.341375, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 22.150369, longitude: 39.341375 } });
+                    break;
+                case "Khurmah":
+                    this.setState({ mapData: { latitude: 21.923937, longitude: 42.06494, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 21.923937, longitude: 42.06494 } });
+                    break;
+                case "Ranyah":
+                    this.setState({ mapData: { latitude: 21.262738, longitude: 42.85404, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 21.262738, longitude: 42.85404 } });
+                    break;
+                case "Alula":
+                    this.setState({ mapData: { latitude: 26.6167, longitude: 37.9167, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 26.6167, longitude: 37.9167 } });
+                    break;
+                case "Hinakiyah":
+                    this.setState({ mapData: { latitude: 24.8797, longitude: 40.5153, latitudeDelta: 0.015, longitudeDelta: 0.0121 } });
+                    this.setState({ initial: { latitude: 24.8797, longitude: 40.5153 } });
+                    break;
+            }
+        })
+    }
+
+    //To change red marker position and move the map with it
+    handleRegionChange = mapData => {
+        this.setState({
+            markerData: { latitude: mapData.latitude, longitude: mapData.longitude },
+            mapData,
+        });
+        this.distance(this.state.initial.latitude, this.state.initial.longitude, this.state.mapData.latitude, this.state.mapData.longitude, "K");
+    };
+
+    //To calculate the distance from longitude and latitude
+    distance(lat1, lon1, lat2, lon2, unit) {
+        if ((lat1 == lat2) && (lon1 == lon2)) {
+            return 0;
+        }
+        else {
+            var radlat1 = Math.PI * lat1 / 180;
+            var radlat2 = Math.PI * lat2 / 180;
+            var theta = lon1 - lon2;
+            var radtheta = Math.PI * theta / 180;
+            var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+            if (dist > 1) {
+                dist = 1;
+            }
+            dist = Math.acos(dist);
+            dist = dist * 180 / Math.PI;
+            dist = dist * 60 * 1.1515;
+            if (unit == "K") { dist = dist * 1.609344 }
+            if (unit == "N") { dist = dist * 0.8684 }
+            if (dist > 80) {
+                alert(AorE.A == true ? LangAr.Distance : LangEn.Distance)
+            }
+        }
     }
 
     //Function used to change the show state
@@ -63,7 +179,7 @@ export default class Request extends Component {
     };
 
     //To validate TextInputs
-    checkTextInput = () => {
+    checkTextInput = async () => {
         //Check for the place TextInput
         if (this.state.place == "" && this.state.border == 0) {
             alert(AorE.A == true ? LangAr.AlertPlace : LangEn.AlertPlace);
@@ -79,19 +195,25 @@ export default class Request extends Component {
             alert(AorE.A == true ? LangAr.AlertDate : LangEn.AlertDate);
             return;
         }
+
+        if (this.state.border == 1) {
+            let latLong = "lat: " + this.state.markerData.latitude.toString() + " long: " + this.state.markerData.longitude.toString()
+            await this.setState({ place: latLong });
+        }
         //Checked successfully
         this.props.navigation.navigate("Payment", {
             trainerId: this.state.trainerId,
             type: this.state.border,
             place: this.state.place,
             time: this.state.time,
-            date: this.state.date
+            date: this.state.date,
+            serviceType: this.state.type
         })
     }
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={styles.flex}>
                 <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     <Text style={styles.label}>{AorE.A == true ? LangAr.Type : LangEn.Type}</Text>
                     <View style={styles.onlinePersonalContainer}>
@@ -124,7 +246,15 @@ export default class Request extends Component {
                     {this.state.show ? null : <Place place={this.state.place} setPlace={this.setPlace} />}
                     {this.state.show ?
                         <View style={styles.mapView}>
-                            <Map mapForUser={this.state.id} />
+                            <MapView
+                                style={styles.flex}
+                                region={this.state.mapData}
+                                onRegionChangeComplete={this.handleRegionChange}>
+                                <Marker
+                                    coordinate={this.state.markerData}
+                                    title="Your location"
+                                />
+                            </MapView>
                         </View> : null}
                     <Text style={styles.label}>{AorE.A == true ? LangAr.Time : LangEn.Time}</Text>
                     <View style={styles.timeDateContainer}>
@@ -145,6 +275,14 @@ export default class Request extends Component {
 //Declare the style
 const styles = StyleSheet.create({
     container: {
+        ...StyleSheet.absoluteFillObject,
+        justifyContent: "flex-end",
+        alignItems: "center",
+    },
+    map: {
+        ...StyleSheet.absoluteFillObject,
+    },
+    flex: {
         flex: 1,
     },
     timeDateContainer: {

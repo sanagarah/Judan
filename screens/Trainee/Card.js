@@ -56,9 +56,11 @@ export default class Card extends Component {
           })}
           tNav={() => this.props.navigation.navigate("Request", {
             id: this.state.id,
+            type: "Training"
           })}
           perNav={() => this.props.navigation.navigate("Request", {
             id: this.state.id,
+            type: "Performing"
           })}>
 
         </Header>

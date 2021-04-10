@@ -1,7 +1,7 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { View, Text, ScrollView, Dimensions, StyleSheet } from "react-native";
+import { View, Text, ScrollView, Dimensions, StyleSheet, Image } from "react-native";
 import { Button } from "react-native-elements";
 
 //To have the total width of the screen
@@ -14,21 +14,22 @@ export default class Slides extends Component {
     renderLastSlide(index) {
         if (index === this.props.data.length - 1) {
             return (
-                <View>
-                    <Text style={{ marginTop: 50, color: "#FFE066", textAlign: "center"}}>Choose a language</Text>
-                <View style={{flexDirection: "row"}}>
-                    <Button
-                        title="Arabic"
-                        titleStyle={styles.buttonText}
-                        buttonStyle={styles.buttonStyle}
-                        onPress={this.props.onCompleteArabic}
-                    />
-                    <Button
-                        title="English"
-                        titleStyle={styles.buttonText}
-                        buttonStyle={styles.buttonStyle}
-                        onPress={this.props.onCompleteEnglish}
-                    />
+                <View style={styles.center}>
+                    <Image source={require("../assets/images/icon.png")} style={styles.logo} />
+                    <Text style={styles.buttonContainer}>Choose a language</Text>
+                    <View style={styles.row}>
+                        <Button
+                            title="Arabic"
+                            titleStyle={styles.buttonText}
+                            buttonStyle={styles.buttonStyle}
+                            onPress={this.props.onCompleteArabic}
+                        />
+                        <Button
+                            title="English"
+                            titleStyle={styles.buttonText}
+                            buttonStyle={styles.buttonStyle}
+                            onPress={this.props.onCompleteEnglish}
+                        />
                     </View>
                 </View>
             );
@@ -73,6 +74,17 @@ const styles = StyleSheet.create({
     scroll: {
         flex: 1
     },
+    row: {
+        flexDirection: "row"
+    },
+    logo: {
+        marginTop: 20,
+        height: 200,
+        width: 200
+    },
+    center: {
+        alignItems: "center"
+    },
     text: {
         fontSize: 30,
         color: "#FFF",
@@ -91,9 +103,14 @@ const styles = StyleSheet.create({
         borderRadius: 30
     },
     buttonStyle: {
-        backgroundColor: "#FFE066",
+        backgroundColor: "#F25F5C",
         marginTop: 5,
-        marginHorizontal:2
+        marginHorizontal: 2
+    },
+    buttonContainer: {
+        marginTop: 50,
+        color: "#000000",
+        textAlign: "center"
     },
     buttonText: {
         color: "#000000"

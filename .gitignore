@@ -2,3 +2,4 @@ node_modules/**/*
 .expo
 Api.js
 SecretKey.js
+Token.js

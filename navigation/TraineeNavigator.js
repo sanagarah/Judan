@@ -39,7 +39,7 @@ const rootNavigation = createStackNavigator(
     Payment: Payment,
     BankCard: BankCard,
     Thanks: Thanks,
-    Search: Search 
+    Search: Search
   },
   {
     initialRouteName: "Home",
@@ -59,7 +59,6 @@ const rootDrawerNavigation = createDrawerNavigator(
   {
     Home: rootNavigation,
     Progress: TraineeProgress,
-    Competition: TraineeCompetition,
     Chat: TraineeChatList,
     About: TraineeAbout,
   },
@@ -95,7 +94,7 @@ const rootBottomTabNavigation = createBottomTabNavigator(
   {
     Home: rootDrawerNavigation,
     Progress: TraineeProgress,
-    Competition: TraineeCompetition,
+    Chat: TraineeChatList,
     About: TraineeAbout,
   },
   {
@@ -110,6 +109,9 @@ const rootBottomTabNavigation = createBottomTabNavigator(
         }
         else if (routeName === "Progress") {
           iconName = "straighten";
+        }
+        else if (routeName === "Chat") {
+          iconName = "chat";
         }
         else {
           if (routeName === "About") {

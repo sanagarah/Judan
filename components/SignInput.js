@@ -33,6 +33,7 @@ export default class SignInput extends Component {
                 <TextInput
                     placeholder={AorE.A == true ? LangAr.Password : LangEn.Password}
                     onChangeText={this.props.setPassword}
+                    secureTextEntry={true}
                     style={styles.textInput}>
                 </TextInput>
                 <Country country={this.props.country} setCountry={this.props.setCountry} />
@@ -45,7 +46,6 @@ export default class SignInput extends Component {
                         placeholder={{ label: "", value: null }}
                         items={[
                             { label: AorE.A == true ? LangAr.Sport : LangEn.Sport, value: AorE.A == true ? LangAr.Sport : LangEn.Sport },
-                            { label: AorE.A == true ? LangAr.Act : LangEn.Act, value: AorE.A == true ? LangAr.Sport : LangEn.Sport, },
                             { label: AorE.A == true ? LangAr.Act : LangEn.Act, value: AorE.A == true ? LangAr.Act : LangEn.Act },
                             { label: AorE.A == true ? LangAr.Diction : LangEn.Diction, value: AorE.A == true ? LangAr.Diction : LangEn.Diction },
                             { label: AorE.A == true ? LangAr.Dance : LangEn.Dance, value: AorE.A == true ? LangAr.Dance : LangEn.Dance },

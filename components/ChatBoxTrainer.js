@@ -1,26 +1,25 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-//import language files for translation
-import LangAr from "../lang/ar.json";
-import LangEn from "../lang/en.json";
-import AorE from "../lang/AorE";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 
 //The beginning of the class
-export default class ChaBox extends Component {
+export default class ChaBoxTrainer extends Component {
     render() {
         return (
             <TouchableOpacity
                 onPress={this.props.nav}
                 style={styles.chatbox}>
-                <View style={{ flexDirection: "column" }}>
+                <View style={styles.column}>
                     <Text style={styles.text1}>{this.props.name}</Text>
-                    <Text style={styles.text2}>{this.props.lastMassage}</Text>
+                    <Text style={styles.text2}>{this.props.field}</Text>
                 </View>
                 <View style={styles.timeContainer}>
-                <Text style={styles.text3}>{this.props.time}</Text>
-                    <Text style={styles.text3}>  {AorE.A == true ? LangAr.m : LangEn.m}  </Text>
+                    <Image source={require("../assets/images/arrow.png")}
+                        style={styles.arrow}>
+                    </Image>
+                    {/* <Text style={styles.text3}>{this.props.time}</Text>
+                    <Text style={styles.text3}>  {AorE.A == true ? LangAr.m : LangEn.m}  </Text> */}
                 </View>
             </TouchableOpacity>
         )
@@ -29,11 +28,11 @@ export default class ChaBox extends Component {
 //Declare the style
 const styles = StyleSheet.create({
     chatbox: {
-        backgroundColor: "#f4f4f4",
+        backgroundColor: "#F4F4F4",
         width: "95%",
         flexDirection: "row",
         alignSelf: "center",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         padding: "3%",
         borderWidth: 1,
         borderColor: "#808080",
@@ -59,5 +58,13 @@ const styles = StyleSheet.create({
     timeContainer: {
         flexDirection: "row",
         alignItems: "center"
+    },
+    arrow: {
+        height: 20,
+        width: 20,
+        opacity: 0.9
+    },
+    column: {
+        flexDirection: "column"
     }
 });

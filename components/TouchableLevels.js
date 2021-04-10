@@ -14,7 +14,9 @@ export default class TouchableLevels extends Component {
         return (
             <View style={styles.container}>
                 <View>
-                    <View style={styles.circle1} ></View>
+                    <TouchableOpacity onPress={this.props.press0}>
+                        <View style={[styles.circle1, { backgroundColor: this.props.cColor0 }]}></View>
+                    </TouchableOpacity>
                     <Text style={styles.text}>{AorE.A == true ? LangAr.Beginner : LangEn.Beginner}</Text>
                 </View>
                 <View style={[styles.line, { backgroundColor: this.props.pColor1 }]} ></View>

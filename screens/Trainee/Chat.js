@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, View } from "react-native";
-import ChatDpnd from "../../components/ChatDpnd";
+import ChatDpnd from "../../components/ChatDpndTrainee";
 import Header from "../../components/ChatHeader";
 //import language files for translation
 import LangAr from "../../lang/ar.json";
@@ -17,13 +17,16 @@ export default class Chat extends Component {
     //Declare the initial values for states
     this.state = {
       text: "",
+      id: 0,
       name: "",
     }
   }
 
   componentDidMount() {
     const { params } = this.props.navigation.state
+    let id = params.id
     let name = params.name
+    this.setState({ id: id });
     this.setState({ name: name });
   }
 
@@ -39,7 +42,7 @@ export default class Chat extends Component {
 
         {/*view for masseage box*/}
         <View style={styles.container3}>
-          <ChatDpnd />
+          <ChatDpnd trainerId={this.state.id} />
         </View>
       </View>
     );

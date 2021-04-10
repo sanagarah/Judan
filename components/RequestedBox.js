@@ -3,6 +3,8 @@ import React, { Component } from "react";
 //import all the components we are going to use
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 //import language files for translation
+import LangAr from "../lang/ar.json";
+import LangEn from "../lang/en.json";
 import AorE from "../lang/AorE";
 
 //The beginning of the class
@@ -36,10 +38,23 @@ export default class RequestedBox extends Component {
                 }]}>
                 <View style={styles.textContainer}>
                     <Text style={styles.text1}>{this.props.name}</Text>
-                    <Text style={styles.text2}>{this.props.type}</Text>
+                    <Text style={styles.text2}>{this.props.serviceType}</Text>
                     {this.state.show ? <View>
-                        <Text style={styles.text3}>{this.props.place}</Text>
-                        <Text style={styles.text3}>{this.props.time}</Text>
+                        <View style={styles.row}>
+                            <Text style={styles.text3}>{this.props.time}</Text>
+                            <Text style={styles.text3}>{this.props.date}</Text>
+                        </View>
+                        <Text style={styles.text2}>{this.props.payment}</Text>
+                        <View style={AorE.A == true ? { flexDirection: "row-reverse", justifyContent: "flex-end", alignItems: "center" } : { flexDirection: "row", alignItems: "center" }}>
+                            <Text style={styles.text4}>{this.props.type}</Text>
+                            {this.props.place.includes("lat") ?
+                                <TouchableOpacity style={styles.button} onPress={this.props.viewMap}>
+                                    <Text>{AorE.A == true ? LangAr.ViewMap : LangEn.ViewMap}</Text>
+                                </TouchableOpacity>
+                                :
+                                <Text style={styles.text4}>{this.props.place}</Text>
+                            }
+                        </View>
                     </View> : null}
                 </View>
                 <View style={styles.imageContainer}>
@@ -68,7 +83,11 @@ const styles = StyleSheet.create({
         justifyContent: "space-between"
     },
     textContainer: {
-        justifyContent: "center"
+        justifyContent: "center",
+        alignItems: "flex-start"
+    },
+    row: {
+        flexDirection: "row",
     },
     imageContainer: {
         justifyContent: "space-evenly",
@@ -81,13 +100,19 @@ const styles = StyleSheet.create({
     },
     text2: {
         color: "#F25F5C",
+        fontWeight: "bold",
         fontSize: 15,
-        alignSelf: "flex-start"
+        textAlign: "justify"
     },
     text3: {
         color: "#70C1B3",
         fontWeight: "bold",
-        fontSize: 17
+        fontSize: 16
+    },
+    text4: {
+        color: "#E5C40E",
+        fontWeight: "bold",
+        fontSize: 15
     },
     image1: {
         width: 104,
@@ -96,5 +121,13 @@ const styles = StyleSheet.create({
     image2: {
         width: 108,
         height: 40
+    },
+    button: {
+        height: 20,
+        backgroundColor: "#FFE066",
+        padding: 5,
+        marginVertical: 5,
+        justifyContent: "center",
+        alignItems: "center"
     }
 });

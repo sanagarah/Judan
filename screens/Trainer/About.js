@@ -1,7 +1,7 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, View, Linking, ScrollView, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, View, Linking, ScrollView, TouchableOpacity, Text, Image } from "react-native";
 import Settinglist from "../../components/Settinglist";
 import Modal from "react-native-modal";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -20,6 +20,7 @@ export default class About extends Component {
     this.state = {
       show1: false,
       show2: false,
+      show3: false,
       text: ""
     }
   }
@@ -40,8 +41,18 @@ export default class About extends Component {
   }
 
   //Function used to change the show state 
+  onShow3 = () => {
+    this.setState({ show3: true });
+  }
+
+  //Function used to change the show state 
   onHide2 = () => {
     this.setState({ show2: false });
+  }
+
+  //Function used to change the show state 
+  onHide3 = () => {
+    this.setState({ show3: false });
   }
 
   //Function to open the call service in the phone
@@ -104,7 +115,8 @@ export default class About extends Component {
                 icon={require("../../assets/images/logout.png")}
                 name={AorE.A == true ? LangAr.Logout : LangEn.Logout}
                 right={require("../../assets/images/rightS.png")}
-                nav={() => AsyncStorage.removeItem("fb_token")} />
+                nav={() => this.onShow3()}
+              />
             </View>
           </ScrollView>
         </View>
@@ -112,10 +124,12 @@ export default class About extends Component {
         <Modal isVisible={this.state.show1}>
           <TouchableOpacity style={styles.container} onPress={this.onHide1}>
             <View style={styles.about}>
-              <Text style={styles.text1}>{AorE.A == true ? LangAr.AboutJudan : LangEn.AboutJudan}</Text>
+              <View style={styles.rowContainer}>
+                <Text style={styles.text1}>{AorE.A == true ? LangAr.AboutJudan : LangEn.AboutJudan}</Text>
+                <Image source={require("../../assets/images/icon.png")} style={styles.logo}></Image>
+              </View>
               <Text style={styles.text2}> {AorE.A == true ? LangAr.AboutUsText1 : LangEn.AboutUsText1}</Text>
-              <Text style={styles.text2}> {AorE.A == true ? LangAr.AboutUsText2 : LangEn.AboutUsText2}
-              </Text>
+              <Text style={styles.text2}> {AorE.A == true ? LangAr.AboutUsText2 : LangEn.AboutUsText2}</Text>
             </View>
           </TouchableOpacity>
         </Modal>
@@ -131,6 +145,23 @@ export default class About extends Component {
             </View>
           </TouchableOpacity>
         </Modal>
+
+        {/* To render about popup page */}
+        <Modal isVisible={this.state.show3}>
+          <TouchableOpacity style={styles.container} onPress={this.onHide3}>
+            <View style={styles.logout}>
+              <Text style={styles.text1}>{AorE.A == true ? LangAr.LogoutConfirm : LangEn.LogoutConfirm}</Text>
+              <View style={styles.row}>
+                <TouchableOpacity style={styles.button} onPress={() => AsyncStorage.removeItem("user")}>
+                  <Text>{AorE.A == true ? LangAr.Logout : LangEn.Logout}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={() => this.onHide3()}>
+                  <Text>{AorE.A == true ? LangAr.Cancel : LangEn.Cancel}</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </TouchableOpacity>
+        </Modal>
       </View>
     );
   }
@@ -139,12 +170,23 @@ export default class About extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center"
+  },
+  rowContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   },
   about: {
     flex: 1,
     backgroundColor: "#FFF",
+    paddingTop: 40
+  },
+  logout: {
+    flex: 0.3,
+    backgroundColor: "#FFF",
     alignItems: "center",
-    paddingTop: 50
+    justifyContent: "space-around",
   },
   header: {
     height: 15,
@@ -169,18 +211,34 @@ const styles = StyleSheet.create({
   },
   text1: {
     fontSize: 20,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    textAlign: "center"
   },
   text2: {
     fontSize: 17,
     marginTop: 30,
-    paddingHorizontal: 40,
+    paddingHorizontal: 35,
     textAlign: "center"
   },
   text3: {
-    fontSize: 13,
+    fontSize: 14,
     marginTop: 15,
     paddingHorizontal: 5,
     textAlign: "center"
   },
+  row: {
+    flexDirection: "row"
+  },
+  button: {
+    backgroundColor: "#FFE066",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 5,
+    width: 100,
+    marginHorizontal: 20
+  },
+  logo: {
+    height: 90,
+    width: 90
+  }
 });

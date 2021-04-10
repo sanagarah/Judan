@@ -20,7 +20,7 @@ export default class Certificate extends Component {
                             resizeMode: "contain"
                         }
                     }>
-                    <Image resizeMode="cover" source={this.props.image} style={styles.certification}></Image>
+                    <Image source={{ uri: this.props.image }} style={styles.certification}></Image>
                 </Lightbox>
             </View>
         )

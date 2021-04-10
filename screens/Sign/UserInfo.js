@@ -129,12 +129,6 @@ export default class UserInfo extends Component {
         //encrypting the password
         let password = this.state.password
         let ciphertext = CryptoJS.AES.encrypt(password, key).toString();
-        // console.log(ciphertext);
-
-        // //decrypting the password
-        // let bytes = CryptoJS.AES.decrypt(ciphertext, key);
-        // let originalText = bytes.toString(CryptoJS.enc.Utf8);
-        // console.log(originalText);
 
         let user = await AsyncStorage.getItem("user");
 
@@ -217,6 +211,5 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#FFF",
         alignItems: "center",
-        justifyContent: "center",
     },
 });

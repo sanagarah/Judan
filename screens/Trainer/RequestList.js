@@ -1,7 +1,9 @@
 //import React in the code
 import React, { Component } from "react";
 //import all the components we are going to use
-import { StyleSheet, Image, Dimensions, ScrollView } from "react-native";
+import { StyleSheet, Image, Dimensions, ScrollView, TouchableOpacity, Text, View } from "react-native";
+import Modal from "react-native-modal";
+import Map from "../../components/Map"
 import RequestedBox from "../../components/RequestedBox";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
@@ -28,7 +30,10 @@ export default class RequestList extends Component {
     //Declare the initial values for states
     this.state = {
       traineeId: [],
-      registrationInfo: []
+      registrationInfo: [],
+      show: false,
+      latitude: 24.470901,
+      longitude: 39.612236
     }
   }
 
@@ -53,7 +58,7 @@ export default class RequestList extends Component {
     //To get the registration information
     let traineeInfo = this.state.traineeId;
     traineeInfo.filter(async (item) => {
-      await axios.get(api + "/RegisterGet/" + item.id).then(resp => {
+      await axios.get(api + "/RegisterGet/" + item.id + "/" + userId).then(resp => {
         let items = (resp.data);
         items.filter((t) => {
           traineesInfo.push({
@@ -63,7 +68,8 @@ export default class RequestList extends Component {
             time: t.time,
             platform: t.platform,
             isOnline: t.isOnline,
-            payment: t.payment
+            payment: t.payment,
+            type: t.type
           })
           this.setState({ registrationInfo: traineesInfo })
         })
@@ -71,37 +77,100 @@ export default class RequestList extends Component {
     })
   }
 
+  //Function used to change the show state 
+  onShow = () => {
+    this.setState({ show: true });
+  }
+
+  //Function used to change the show state 
+  onHide = () => {
+    this.setState({ show: false });
+  }
+
+
   lapsList() {
     return this.state.registrationInfo.map((data) => {
-      let trainingType;
+      let trainingType
+      let serviceType
+      let paymentType
+      let place = data.platform
+      let latitude
+      let longitude
+
+      //To show if the request is online or not
       if (data.isOnline == true)
         trainingType = AorE.A == true ? LangAr.Online : LangEn.Online
       else trainingType = AorE.A == true ? LangAr.Personal : LangEn.Personal
+
+      //To show service type
+      if (data.type == "Training")
+        serviceType = AorE.A == true ? LangAr.Training : LangEn.Training
+      else serviceType = AorE.A == true ? LangAr.Performing : LangEn.Performing
+
+
+      //To show payment type
+      if (data.payment == "Hourly")
+        paymentType = AorE.A == true ? LangAr.Hourly : LangEn.Hourly
+      else if (data.payment == "Monthly")
+        paymentType = AorE.A == true ? LangAr.Monthly : LangEn.Monthly
+      else
+        paymentType = AorE.A == true ? LangAr.Yearly : LangEn.Yearly
+
+
+      if (place.includes("lat")) {
+        let strip = place.indexOf(" l")
+        latitude = parseFloat(place.substr(5, strip - 5))
+        longitude = parseFloat(place.substr(strip + 7, place.length))
+        return (
+          <View key={data.id}>
+            <RequestedBox
+              name={data.traineeName}
+              type={"  " + trainingType + " "}
+              place={data.platform}
+              time={data.time}
+              date={" - " + data.date}
+              payment={"  " + paymentType}
+              serviceType={"  " + serviceType}
+              viewMap={this.onShow}
+              nav1={() => this.props.navigation.navigate("Chating", {
+                id: data.id,
+                name: data.traineeName
+              })}
+              nav2={() => this.props.navigation.navigate("Progress", {
+                traineeId: data.id,
+                traineeName: data.traineeName
+              })}>
+            </RequestedBox>
+            < Modal isVisible={this.state.show} >
+              <TouchableOpacity style={styles.modal} onPress={this.onHide}>
+                <Map latitude={latitude} longitude={longitude} ></Map>
+              </TouchableOpacity>
+            </Modal >
+          </View>)
+      }
+
       return (
         <RequestedBox
           key={data.id}
           name={data.traineeName}
-          type={trainingType}
-          place={data.platform}
+          type={"  " + trainingType + " "}
+          place={data.platform + " "}
           time={data.time}
+          date={" - " + data.date}
+          payment={"  " + paymentType}
+          serviceType={"  " + serviceType}
+          viewMap={this.onShow}
           nav1={() => this.props.navigation.navigate("Chating", {
-            trainerName: data.traineeName
+            id: data.id,
+            name: data.traineeName
           })}
           nav2={() => this.props.navigation.navigate("Progress", {
-            trainerName: data.traineeName
+            traineeId: data.id,
+            traineeName: data.traineeName
           })}>
         </RequestedBox>
       )
     })
-  }
-
-  //To show the details
-  onShow = () => {
-    if (this.state.toggle)
-      this.setState({ show: true, toggle: false });
-    else {
-      this.setState({ show: false, toggle: true });
-    }
   }
 
   render() {
@@ -119,5 +188,8 @@ export default class RequestList extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFF"
+  },
+  modal: {
+    flex: 1
   }
 });

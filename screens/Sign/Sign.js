@@ -39,7 +39,7 @@ export default class Sign extends Component {
     check = () => {
         //Check if an option has been chosen
         if (this.state.opacity == 0) {
-            alert(AorE.A == true ? LangAr.AlertSign : LangEn.AlertSign );
+            alert(AorE.A == true ? LangAr.AlertSign : LangEn.AlertSign);
             return;
         }
         //Choosed successfully
@@ -58,7 +58,7 @@ export default class Sign extends Component {
                 </View>
 
                 <Text style={styles.text}>{AorE.A == true ? LangAr.ChooseWhatToBe : LangEn.ChooseWhatToBe}</Text>
-                
+
                 {/* component for showing the choices */}
                 <TraineeTrainer opacity={this.state.opacity} changeOpacity1={this.changeOpacity1} changeOpacity2={this.changeOpacity2} />
 
@@ -76,10 +76,12 @@ export default class Sign extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#FFF"
+        backgroundColor: "#FFF",
+        alignItems: "center",
+        marginBottom: 30
     },
     header: {
-        height: SCREEN_HEIGHT /1.8,
+        height: SCREEN_HEIGHT / 1.8,
         width: "100%",
         alignItems: "center",
         justifyContent: "center",

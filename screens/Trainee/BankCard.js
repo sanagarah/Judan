@@ -37,10 +37,11 @@ export default class BankCard extends Component {
             payTime: this.timeBlank,
             trainerId: 0,
             isOnline: true,
-            platform: "",
+            place: "",
             date: "",
             time: "",
             payment: "Hourly",
+            serviceType: ""
         }
     }
 
@@ -49,16 +50,18 @@ export default class BankCard extends Component {
         const { params } = this.props.navigation.state
         let trainerId = params.trainerId
         let isOnline = params.isOnline
-        let platform = params.platform
+        let place = params.place
         let time = params.time
         let date = params.date
         let payment = params.payment
+        let serviceType = params.serviceType
         this.setState({ trainerId: trainerId });
         this.setState({ isOnline: isOnline });
-        this.setState({ platform: platform });
+        this.setState({ place: place });
         this.setState({ time: time });
         this.setState({ date: date });
         this.setState({ payment: payment });
+        this.setState({ serviceType: serviceType });
     }
 
     //To show the popup page for uploading a certification
@@ -180,14 +183,41 @@ export default class BankCard extends Component {
             return;
         }
         //Checked successfully
+        //To post it in request table
         await axios.post(api + "/RegisterTrainer/" + this.state.trainerId + "/" + traineeId, {
             trainerId: this.state.trainerId,
             isOnline: this.state.isOnline,
-            platform: this.state.platform,
+            platform: this.state.place,
             time: this.state.time,
             date: this.state.date,
             payment: this.state.payment,
+            type: this.state.serviceType
         });
+
+        await axios.post(api + "/BankDetailsPost/", {
+            ownerName: this.state.name,
+            bankName: this.state.bank,
+            accountNumber: parseInt(this.state.number),
+            date: this.state.payDate,
+            time: this.state.payTime,
+            picture: this.state.image,
+            isConfirmed: false,
+        });
+
+        //To get trainer's traineeNum
+        let traineeNum;
+        await axios.get(api + "/IdTrainer/" + this.state.trainerId).then(resp => {
+            let items = (resp.data);
+            items.filter(function (item) {
+                traineeNum = item.traineeNum;
+            });
+        })
+
+        //Update trainees number is trainer table (increasing it by 1)
+        await axios.post(api + "/TrainerNumUpdate/" + this.state.trainerId, {
+            traineeNum: traineeNum + 1
+        });
+
         this.props.navigation.navigate("Thanks")
     };
 

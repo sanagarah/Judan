@@ -25,8 +25,8 @@ export default class Home extends Component {
     }
   }
 
-  //To have the top six trainers
   componentDidMount = async () => {
+    //To have the top six trainers
     await axios.get(api + "/rate").then(resp => {
       let response = resp.data;
       let topSix = response.slice(0, 6);

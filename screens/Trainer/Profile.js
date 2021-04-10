@@ -161,6 +161,7 @@ export default class Profile extends Component {
     let component = this.state.posts;
     component.push(uri);
     this.onShow1();
+    //To update the number of posts
     if (this.state.posts.length != 0) {
       this.setState({ postNum: this.state.posts.length })
       await axios.post(api + "/TrainerUpdate/" + userId, {
@@ -170,6 +171,8 @@ export default class Profile extends Component {
         bio: this.state.bio,
         postNum: this.state.postNum + 1
       });
+
+      //To post the new post
       await axios.post(api + "/PostsPost/" + userId, {
         uri: this.state.image
       });

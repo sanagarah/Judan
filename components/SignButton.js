@@ -21,18 +21,16 @@ export default class SignButton extends Component {
 //Declare the style
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         alignItems: "center",
-        justifyContent: "center",
+        width: "80%",
     },
     BlockButton: {
         height: 60,
+        width: "90%",
         alignItems: "center",
+        alignSelf: "center",
         justifyContent: "center",
         borderRadius: 10,
-        width: "80%",
-        position: "absolute",
-        bottom: 20
     },
     text: {
         fontSize: 25,

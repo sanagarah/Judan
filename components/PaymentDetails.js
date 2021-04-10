@@ -34,7 +34,7 @@ export default class PaymentDetails extends Component {
 
                     <Text style={styles.text}>ِ{AorE.A == true ? LangAr.AccountNumber : LangEn.AccountNumber}</Text>
                     <TextInput
-                        placeholder={AorE.A == true ? LangAr.AccountNumberBlank: LangEn.AccountNumberBlank}
+                        placeholder={AorE.A == true ? LangAr.AccountNumberBlank : LangEn.AccountNumberBlank}
                         placeholderTextColor="#c7c7c7"
                         onChangeText={this.props.setNumber}
                         fontSize={16}
@@ -58,7 +58,7 @@ export default class PaymentDetails extends Component {
                         style={styles.insertContainer}>
                         <Text style={styles.insertText}>{AorE.A == true ? LangAr.InsertBlank : LangEn.InsertBlank}</Text>
                         {this.props.images.map((data, index) => {
-                            return <Certificate image={{ uri: data }} key={index}></Certificate>
+                            return <Certificate image={data} key={index}></Certificate>
                         })}
                     </TouchableOpacity>
                 </View>
@@ -69,7 +69,7 @@ export default class PaymentDetails extends Component {
                         <View style={styles.popUp1}>
                             {/* To push the new image uri into an array and creat certification component using that uri */}
                             <View style={styles.certificationContainer}>
-                                <Certificate image={{ uri: this.props.image }}></Certificate>
+                                <Certificate image={this.props.image}></Certificate>
                             </View>
                             <TouchableOpacity style={styles.checkImage} onPress={this.props.addCertification}>
                                 <Image source={require("../assets/images/check.png")} style={styles.checkImage}></Image>

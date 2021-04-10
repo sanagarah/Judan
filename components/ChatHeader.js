@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     text: {
         color: "#FFF",
         fontSize: 15,
+        textAlign: "center",
     },
     LeftImagechat: {
         width: 30,

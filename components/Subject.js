@@ -10,36 +10,22 @@ import AorE from "../lang/AorE";
 
 //The beginning of the class
 export default class Subject extends Component {
-    constructor(props) {
-        super(props)
-
-        //Declare the initial values for states
-        this.state = {
-            subject: AorE.A == true ? LangAr.Subject : LangEn.Subject
-        }
-    }
-    //To make the chosen valuse appear in the box
-    setValue(value) {
-        this.setState({ subject: value });
-    }
-
     render() {
         return (
             <View>
                 <View style={styles.container}>
-                    <Text style={styles.text}>{this.state.subject}</Text>
+                    <Text style={styles.text}>{this.props.subject}</Text>
                     <RNPickerSelect
-                        onValueChange={(value) => this.setValue(value)}
+                        onValueChange={this.props.setSubject}
                         placeholder={{ label: "", value: null }}
                         items={[
-                            { label: AorE.A == true ? LangAr.Sport : LangEn.Sport, value: AorE.A == true ? LangAr.Sport : LangEn.Sport},
-                            { label: AorE.A == true ? LangAr.Act : LangEn.Act, value: AorE.A == true ? LangAr.Sport : LangEn.Sport,},
+                            { label: AorE.A == true ? LangAr.Sport : LangEn.Sport, value: AorE.A == true ? LangAr.Sport : LangEn.Sport },
                             { label: AorE.A == true ? LangAr.Act : LangEn.Act, value: AorE.A == true ? LangAr.Act : LangEn.Act },
                             { label: AorE.A == true ? LangAr.Diction : LangEn.Diction, value: AorE.A == true ? LangAr.Diction : LangEn.Diction },
                             { label: AorE.A == true ? LangAr.Dance : LangEn.Dance, value: AorE.A == true ? LangAr.Dance : LangEn.Dance },
                             { label: AorE.A == true ? LangAr.Draw : LangEn.Draw, value: AorE.A == true ? LangAr.Draw : LangEn.Draw },
                             { label: AorE.A == true ? LangAr.Instrument : LangEn.Instrument, value: AorE.A == true ? LangAr.Instrument : LangEn.Instrument },
-                            { label: AorE.A == true ? LangAr.Magic : LangEn.Magic, value: AorE.A == true ? LangAr.Magic : LangEn.Magic},
+                            { label: AorE.A == true ? LangAr.Magic : LangEn.Magic, value: AorE.A == true ? LangAr.Magic : LangEn.Magic },
                             { label: AorE.A == true ? LangAr.Science : LangEn.Science, value: AorE.A == true ? LangAr.Science : LangEn.Science },
                             { label: AorE.A == true ? LangAr.Comedy : LangEn.Comedy, value: AorE.A == true ? LangAr.Comedy : LangEn.Comedy },
                         ]} />

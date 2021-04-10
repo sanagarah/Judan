@@ -18,7 +18,8 @@ export default class app extends React.Component {
 
   state = {
     token: null,
-    user: ""
+    user: "",
+    userId: null
   }
 
   //Check whether to token and the type of user exist in the local storage of the device and store them as states
@@ -28,6 +29,7 @@ export default class app extends React.Component {
     //AsyncStorage.removeItem("userId");
     let token = await AsyncStorage.getItem("fb_token");
     let user = await AsyncStorage.getItem("user");
+    let userId = await AsyncStorage.getItem("userId");
 
     if (user) {
       this.setState({ user });
@@ -40,16 +42,22 @@ export default class app extends React.Component {
     } else {
       this.setState({ token: false });
     }
+
+    if (userId) {
+      this.setState({ userId });
+    } else {
+      this.setState({ userId: false });
+    }
   }
 
   render() {
-    if (this.state.token && this.state.user == "trainee") {
+    if (this.state.token && this.state.userId && this.state.user == "trainee") {
       return (
         //Return the navigation stack of the trainee
         <Provider store={store}>
           <TraineeNav />
         </Provider >)
-    } else if (this.state.token && this.state.user == "trainer") {
+    } else if (this.state.token && this.state.userId && this.state.user == "trainer") {
       return (
         //Return the navigation stack of the trainer
         <Provider store={store}>
